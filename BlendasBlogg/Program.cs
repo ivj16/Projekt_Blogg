@@ -18,10 +18,8 @@
                 //Huvudmeny
                 //case 1: Använda bloggen som användare
                 case 1:
-                    break;
-
 //**************************************************************************************************************************************************************************
-                    //Användarmeny
+                    //användarmeny
                     switch (x)
                     { 
                     // case 1: Lista alla inlägg
@@ -37,7 +35,7 @@
                         //case 3: Söka efter inlägg
                         case 3:
                             //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
-                            switch()
+                            switch(x)
                             {
                                 //case 1: Sök efter rubrik
                                 case 1: 
@@ -45,8 +43,8 @@
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                     break;
 
-                                case 2: 
                                 //case 2: Sök efter kategori
+                                case 2: 
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                     break;
 
@@ -54,65 +52,43 @@
                                 case 3:
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                     break;
-                        }
-                            break;
+                            }
+                        break;
                     }
+                    break;
 //**************************************************************************************************************************************************************************
 
-                
+
                 //case 2: Logga in som admin
                 case 2:
-                    break;
-                    //**************************************************************************************************************************************************************************
+                    //IF-sats för att kolla användarnamn och lösenord
 
+ //**************************************************************************************************************************************************************************
+                    
                     //Admin-meny
                     switch ()
                     {
                         //case 1: Skapa nytt inlägg
                         case 1:
+                            //anropa metod från Post-klassen för att skapa nytt inlägg
                             break;
 
                         //case 2: Redigera befintligt inlägg eller ta bort kommentarer
                         case 2:
-                            //Lista alla inlägg med ID
-
-                            //Välj inlägg att redigera
-                            //Redigeringsmeny
-
-                            switch (x)
-                            {
-
-                                //case 1: Redigera rubrik
-                                case 1:
-                                    break;
-                                //case 2: Redigera kategori
-                                case 2:
-                                    break;
-                                //case 3: Redigera innehåll
-                                case 3:
-                                    break;
-                                //case 4: Redigera header
-                                case 4:
-                                    break;
-                                //case 5: Ta bort kommentar
-                                case 5:
-                                    //Lista alla kommentarer med ID
-                                    //Välj kommentar att ta bort
-                                    break;
-
-                                //case 6: Gå tillbaka till admin-menyn
-                                case 6:
-                                    break;
-
-                            }
-
+                            //Lista alla inlägg med ID - via metod från Post-klassen
+                            //Ta input från användaren för att välja inlägg att redigera
+                            //Anropa redigera inlägg-metoden från Post-klassen
+                            break;
+                  
                         //case 3: Ta bort inlägg
                         case 3:
 
-                            //Liknande upplägg som för användare när inlägg listas
-                            //Utifrån ID ska admin kunna ta bort inlägg eller gå tillbaka till admin-menyn
+                            //Liknande upplägg som för användare när inlägg listas - metod från Post-klassen.
+
+                            //if-else-sats för att välja ta bort eller gå tillbaka till admin-menyn
                             break;
                     }
+                break;
 //**************************************************************************************************************************************************************************
 
 
