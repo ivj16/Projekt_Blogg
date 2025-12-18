@@ -13,6 +13,7 @@ namespace BlendasBlogg
         // Content : string
         // Date : dagens datum
         // Comments
+        // Anropa listan med kommentarer och sorterar på key för postID
         // Likes : int
         // Category : Category enum
         // Header : string array
@@ -25,7 +26,7 @@ namespace BlendasBlogg
             "ღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღ",
             "■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■"
         };
-        // ID : int
+        // postID : int
         // Posts : List (Post)
 
         // Konstruktor:
@@ -56,6 +57,8 @@ namespace BlendasBlogg
         // Input för nytt värde
         // Header
         // Input för nytt värde
+        // Avsluta
+        // Gå tillbaka med break
 
         // Ta bort inlägg:
         // Välj ett inlägg via ID - variabel : idChoice : int
