@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlendasBlogg
 {
-    internal class Post
+    public class Post
     {
     }
 }
