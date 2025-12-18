@@ -10,14 +10,23 @@ namespace BlendasBlogg
     {
         // Properties
         // Title : string
+        public string Title { get; set; }
+
         // Content : string
+        public string Content { get; set; }
+
         // Date : dagens datum
+        public DateTime Date;
+
         // Comments
         // Anropa listan med kommentarer och sorterar på key för postID
         // Likes : int
-        // Category : Category enum
-        // Header : string array
+        public int Likes { get; set; }
 
+        // Category : Category enum
+        public Category Category { get; set; }
+
+        // Header : string array
         string[] header =
         {
             "",
@@ -26,26 +35,58 @@ namespace BlendasBlogg
             "ღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღ",
             "■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■"
         };
+
+        public int HeaderIndex { get; set; } = 0;
+
         // postID : int
+
+
         // Posts : List (Post)
+        public List<Post> Posts = new List<Post>();
 
         // Konstruktor:
         // Innehåller Title, Content, Category, Header, Likes, ID, Date, Comments 
 
-        // Metoder
+        public Post(
+            int headerIndex,
+            string title,
+            string content,
+            Category category
+        )
+        {
+            HeaderIndex = headerIndex;
+            Title = title;
+            Content = content;
+            Category = category;
+            Likes = 0;
+            DateTime Date = DateTime.Now;
+            CreateID();
 
-        // Overridead ToString-metod
-        // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
+        }
 
-        // Lägga till inlägg:
-        // Input för title, content och category
-        // Tilldelar dagens datum till Date
-        // Anropar Skapa ID-metoden
-        // Lägger till nya inlägget i listan med alla inlägg
+            // Metoder
 
-        // Skapa ID:
-        // For-loop som räknar antalet inlägg som finns
-        // Plussar på 1 på ID-countern för varje inlägg
+            // Overridead ToString-metod
+            // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
+
+            // Lägga till inlägg:
+            // Input för title, content och category
+            // Tilldelar dagens datum till Date
+            // Anropar Skapa ID-metoden
+            // Lägger till nya inlägget i listan med alla inlägg
+
+            // Skapa ID:
+            // For-loop som räknar antalet inlägg som finns
+            // Plussar på 1 på ID-countern för varje inlägg
+            public int CreateID()
+            {
+                int idCounter = 0;
+                for (int i = 0; i <= Posts.Count; i++)
+                {
+                    idCounter++;
+                }
+                return idCounter;
+        }
 
         // Redigera inlägg:
         // Switch-case för vilken del av inlägget som vill redigeras

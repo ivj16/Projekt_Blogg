@@ -92,6 +92,11 @@
                             //**************************************************************************************************************************************************************************
 
                             //Admin-meny
+                            Console.WriteLine("Ja det är verkligen du Blenda, hej!! Vad önskar du göra idag?\n");
+                            Console.WriteLine("1, Skapa ett nytt inlägg  \n2, Redigera ett befintligt inlägg eller ta bort en kommentar \n3, Ta bort ett inlägg");
+                            Console.Write("Skriv den siffra som motsvara ditt val: ");
+                            userChoice = Console.ReadLine();
+
                             switch (userChoice)
                             {
                                 //case 1: Skapa nytt inlägg
@@ -118,8 +123,8 @@
                         }
                         else
                         {
-                            Console.WriteLine("Du är inte Blenda, vänligen gå in som användare i stället.");
-                            Console.WriteLine("PS. Om du faktiskt är Blenda så skrev du in fel inloggningsuppgifter. Försök igen!");
+                            Console.WriteLine("`\nDu är inte Blenda, vänligen gå in som användare i stället.");
+                            Console.WriteLine("PS. Om du faktiskt är Blenda så skrev du in fel inloggningsuppgifter. Försök igen!\n");
                         }
                         break;
     //**************************************************************************************************************************************************************************
