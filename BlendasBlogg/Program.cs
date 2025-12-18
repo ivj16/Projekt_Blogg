@@ -22,7 +22,7 @@
 
 //**************************************************************************************************************************************************************************
                     //Användarmeny
-                    switch ()
+                    switch (x)
                     { 
                     // case 1: Lista alla inlägg
                         case 1:    
@@ -60,30 +60,59 @@
 //**************************************************************************************************************************************************************************
 
                 
-        //case 2: Logga in som admin
+                //case 2: Logga in som admin
                 case 2:
                     break;
-//**************************************************************************************************************************************************************************
+                    //**************************************************************************************************************************************************************************
 
-            //Admin-meny
-                //case 1: Skapa nytt inlägg
-                //case 2: Redigera befintligt inlägg eller ta bort kommentarer
-                    //Lista alla inlägg med ID
-                    //Välj inlägg att redigera
-                    //Redigeringsmeny
-                        //case 1: Redigera rubrik
-                        //case 2: Redigera kategori
-                        //case 3: Redigera innehåll
-                        //case 4: Redigera header
-                        //case 5: Ta bort kommentar
-                            //Lista alla kommentarer med ID
-                            //Välj kommentar att ta bort
-                        //case 6: Gå tillbaka till admin-menyn
-                
-                //case 3: Ta bort inlägg
+                    //Admin-meny
+                    switch ()
+                    {
+                        //case 1: Skapa nytt inlägg
+                        case 1:
+                            break;
 
-                    //Liknande upplägg som för användare när inlägg listas
-                    //Utifrån ID ska admin kunna ta bort inlägg eller gå tillbaka till admin-menyn
+                        //case 2: Redigera befintligt inlägg eller ta bort kommentarer
+                        case 2:
+                            //Lista alla inlägg med ID
+
+                            //Välj inlägg att redigera
+                            //Redigeringsmeny
+
+                            switch (x)
+                            {
+
+                                //case 1: Redigera rubrik
+                                case 1:
+                                    break;
+                                //case 2: Redigera kategori
+                                case 2:
+                                    break;
+                                //case 3: Redigera innehåll
+                                case 3:
+                                    break;
+                                //case 4: Redigera header
+                                case 4:
+                                    break;
+                                //case 5: Ta bort kommentar
+                                case 5:
+                                    //Lista alla kommentarer med ID
+                                    //Välj kommentar att ta bort
+                                    break;
+
+                                //case 6: Gå tillbaka till admin-menyn
+                                case 6:
+                                    break;
+
+                            }
+
+                        //case 3: Ta bort inlägg
+                        case 3:
+
+                            //Liknande upplägg som för användare när inlägg listas
+                            //Utifrån ID ska admin kunna ta bort inlägg eller gå tillbaka till admin-menyn
+                            break;
+                    }
 //**************************************************************************************************************************************************************************
 
 
