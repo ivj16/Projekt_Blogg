@@ -8,13 +8,11 @@
 
             //switch-sats för att hantera användarens val utifrån en meny
 
-            //case 1: visa alla inlägg inom en kategori (i senare steg får man välja kategori)
+            //case 1: ANvända bloggen som användare
 
-            //case 2: Söka inlägg
+            //case 2: Logga in som admin
 
-            //case 3: logga in som admin
-
-            //case 4: avsluta programmet
+            //case 3: avsluta programmet
         }
     }
 }
