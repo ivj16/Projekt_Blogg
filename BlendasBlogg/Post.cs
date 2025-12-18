@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlendasBlogg
+﻿namespace BlendasBlogg
 {
     public class Post
     {
+        // Fält
+        string header;
         // Properties
         // Title : string
         public string Title { get; set; }
@@ -27,7 +23,7 @@ namespace BlendasBlogg
         public Category Category { get; set; }
 
         // Header : string array
-        string[] header =
+        static string[] headerArray =
         {
             "",
             "═══════•°• ⚠ •°•══════════════•°• ⚠ •°•══════════════•°• ⚠ •°•═══════",
@@ -47,6 +43,7 @@ namespace BlendasBlogg
         // Konstruktor:
         // Innehåller Title, Content, Category, Header, Likes, ID, Date, Comments 
 
+        public Post() { }
         public Post(
             int headerIndex,
             string title,
@@ -55,6 +52,7 @@ namespace BlendasBlogg
         )
         {
             HeaderIndex = headerIndex;
+            header = headerArray[HeaderIndex];
             Title = title;
             Content = content;
             Category = category;
@@ -75,10 +73,36 @@ namespace BlendasBlogg
             // Anropar Skapa ID-metoden
             // Lägger till nya inlägget i listan med alla inlägg
 
-            // Skapa ID:
-            // For-loop som räknar antalet inlägg som finns
-            // Plussar på 1 på ID-countern för varje inlägg
-            public int CreateID()
+            public void AddPost()
+            {
+            Console.WriteLine("Välj en header till ditt inlägg!" +
+                "\n1. Tom" +
+                "\n2. Varningstrianglar" +
+                "\n3. Blommor" +
+                "\n4. Maxade krumelurer" +
+                "\n5. Kvadrater");
+            int headerIndex = Convert.ToInt32(Console.ReadLine()) - 1;
+            Console.WriteLine("\nSkriv in en titel för ditt inlägg: ");
+            string title = Console.ReadLine();
+            Console.WriteLine("\nSkriv in innehållet för ditt inlägg: ");
+            string content = Console.ReadLine();
+            Console.WriteLine("\nVälj en kategori för ditt inlägg!" +
+                "\n1. Nyheter" +
+                "\n2. Ordspråk" +
+                "\n3. Roliga fakta");
+            Console.Write("Skriv den siffra som motsvarar ditt val: ");
+            Category category = (Category)(Convert.ToInt32(Console.ReadLine()) - 1);
+
+            Post newPost = new Post(headerIndex, title, content, category);
+
+            Posts.Add(newPost);
+        }
+
+
+        // Skapa ID:
+        // For-loop som räknar antalet inlägg som finns
+        // Plussar på 1 på ID-countern för varje inlägg
+        public int CreateID()
             {
                 int idCounter = 0;
                 for (int i = 0; i <= Posts.Count; i++)

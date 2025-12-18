@@ -9,8 +9,9 @@
 
             bool isRunAgain = true;
             string userChoice;
+            Post postObj = new Post();
 
-        //while-loop som skriver ut menyn tills användaren väljer att avsluta
+            //while-loop som skriver ut menyn tills användaren väljer att avsluta
 
             //switch-sats för att hantera användarens val utifrån en meny
             while (isRunAgain)
@@ -101,6 +102,8 @@
                             {
                                 //case 1: Skapa nytt inlägg
                                 case "1":
+                                    postObj.AddPost();
+                                    Console.WriteLine(postObj.Posts);
                                     //anropa metod från Post-klassen för att skapa nytt inlägg
                                     break;
 
