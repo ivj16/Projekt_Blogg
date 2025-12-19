@@ -29,6 +29,9 @@ namespace BlendasBlogg
 
         Category categoryChoice;
 
+       public int PostID { get; set; }
+
+        int postID = 0;
         // Header : string array
         static string[] headerArray =
         {
@@ -49,13 +52,15 @@ namespace BlendasBlogg
 
         // Konstruktor:
         // Innehåller Title, Content, Category, Header, Likes, ID, Date, Comments 
-
+        
         public Post() { }
         public Post(
             int headerIndex,
             string title,
             string content,
-            Category category
+            Category category,
+            int postID
+            
         )
         {
             HeaderIndex = headerIndex;
@@ -65,7 +70,7 @@ namespace BlendasBlogg
             Category = category;
             Likes = 0;
             date = DateTime.Now;
-            CreateID();
+            PostID = postID;
 
         }
 
@@ -95,7 +100,9 @@ namespace BlendasBlogg
             string content = Console.ReadLine();
             CategoryChoice();
 
-            Post newPost = new Post(headerIndex, title, content, categoryChoice);
+            postID = PostList.Count +1;
+
+            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID);
 
             PostList.Add(newPost);
         }
@@ -110,20 +117,26 @@ namespace BlendasBlogg
             categoryChoice = (Category)(Convert.ToInt32(Console.ReadLine()) - 1);
         }
 
+        public void RemovePost()
+        {
+            Console.Write("Ange ID på det inlägg du vill ta bort: ");
+            int idChoice = Convert.ToInt32(Console.ReadLine());
+            foreach (Post post in PostList)
+            {
+                if (post.PostID == idChoice)
+                {
+                    PostList.Remove(post);
+                    break;
+                }
+            }
+        }
+
         // Skapa ID:
         // For-loop som räknar antalet inlägg som finns
         // Plussar på 1 på ID-countern för varje inlägg
-        int idCounter;
-        public int CreateID()
-            {
-                idCounter = 0;
-                for (int i = 0; i < PostList.Count; i++)
-                {
-                    idCounter++;
-                }
-                idCounter++;
-                return idCounter;
-        }
+        //int idCounter;
+
+
 
         // Redigera inlägg:
         // Switch-case för vilken del av inlägget som vill redigeras
@@ -147,7 +160,7 @@ namespace BlendasBlogg
         {
             return $"{header}\n {Title}\n\n{Content}" +
                 $"\n\nKategori: {Category}\nDatum: {date}\n" +
-                $"InläggsID: {idCounter}\n\n" +
+                $"InläggsID: {PostID}\n\n" +
                 $"****** Reaktioner och Kommentarer ******\n" +
                 $"Gilla-markeringar: {Likes}\n";
                 //$"Kommentarer: \n" +
