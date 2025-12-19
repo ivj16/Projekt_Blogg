@@ -6,6 +6,7 @@ namespace BlendasBlogg
 {
     public class Post
     {
+        Comment comment = new Comment();
         // Fält
         string header;
         // Properties
@@ -116,10 +117,11 @@ namespace BlendasBlogg
         public int CreateID()
             {
                 idCounter = 0;
-                for (int i = 0; i <= PostList.Count; i++)
+                for (int i = 0; i < PostList.Count; i++)
                 {
                     idCounter++;
                 }
+                idCounter++;
                 return idCounter;
         }
 
@@ -144,9 +146,12 @@ namespace BlendasBlogg
         public override string ToString()
         {
             return $"{header}\n {Title}\n\n{Content}" +
-                $"\n\nKategori: {Category}\n\nDatum: {date}\n\n" +
-                $"Gilla-markeringar: {Likes}\n\n" +
-                $"InläggsID: {idCounter}";
+                $"\n\nKategori: {Category}\nDatum: {date}\n" +
+                $"InläggsID: {idCounter}\n\n" +
+                $"****** Reaktioner och Kommentarer ******\n" +
+                $"Gilla-markeringar: {Likes}\n";
+                //$"Kommentarer: \n" +
+                //$"{comment.}";
         }
 
 
