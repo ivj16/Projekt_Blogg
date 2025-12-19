@@ -38,14 +38,16 @@
                         switch (userChoice)
                         { 
                         // case 1: Lista alla inlägg
-                            case "1":    
+                            case "1":
+                                postObj.ListPosts();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                                 break;
+                                break;
 
                             // case 2: Lista alla inlägg utifrån kategori
                             case "2":
+                                postObj.ListPostFromCategory();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                                 break;
+                                break;
 
                             //case 3: Söka efter inlägg
                             case "3":
@@ -80,7 +82,7 @@
                         Console.WriteLine("************************\n");
                         Console.WriteLine("Välkommen Blenda! Eller är det verkligen du??\n\n");
                         Console.Write("Skriv in ditt användarnamn: ");
-                        user.Username = Console.ReadLine(); 
+                        user.Username = Console.ReadLine();
                         Console.Write("Skriv in ditt lösenord: ");
                         user.Password = Console.ReadLine();
                         //IF-sats för att kolla användarnamn och lösenord
@@ -103,7 +105,7 @@
                                 //case 1: Skapa nytt inlägg
                                 case "1":
                                     postObj.AddPost();
-                                    Console.WriteLine(postObj.Posts);
+                                    
                                     //anropa metod från Post-klassen för att skapa nytt inlägg
                                     break;
 

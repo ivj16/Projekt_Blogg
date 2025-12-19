@@ -1,4 +1,8 @@
-﻿namespace BlendasBlogg
+﻿using System;
+using System.Diagnostics.Metrics;
+using System.Net.NetworkInformation;
+
+namespace BlendasBlogg
 {
     public class Post
     {
@@ -12,7 +16,7 @@
         public string Content { get; set; }
 
         // Date : dagens datum
-        public DateTime Date;
+        public DateTime date = DateTime.Now;
 
         // Comments
         // Anropa listan med kommentarer och sorterar på key för postID
@@ -22,11 +26,13 @@
         // Category : Category enum
         public Category Category { get; set; }
 
+        Category categoryChoice;
+
         // Header : string array
         static string[] headerArray =
         {
-            "",
-            "═══════•°• ⚠ •°•══════════════•°• ⚠ •°•══════════════•°• ⚠ •°•═══════",
+            "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
+            "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°",
             "*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*",
             "ღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღ",
             "■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■"
@@ -38,7 +44,7 @@
 
 
         // Posts : List (Post)
-        public List<Post> Posts = new List<Post>();
+        public List<Post> PostList = new List<Post>();
 
         // Konstruktor:
         // Innehåller Title, Content, Category, Header, Likes, ID, Date, Comments 
@@ -57,7 +63,7 @@
             Content = content;
             Category = category;
             Likes = 0;
-            DateTime Date = DateTime.Now;
+            date = DateTime.Now;
             CreateID();
 
         }
@@ -86,26 +92,31 @@
             string title = Console.ReadLine();
             Console.WriteLine("\nSkriv in innehållet för ditt inlägg: ");
             string content = Console.ReadLine();
-            Console.WriteLine("\nVälj en kategori för ditt inlägg!" +
-                "\n1. Nyheter" +
-                "\n2. Ordspråk" +
-                "\n3. Roliga fakta");
-            Console.Write("Skriv den siffra som motsvarar ditt val: ");
-            Category category = (Category)(Convert.ToInt32(Console.ReadLine()) - 1);
+            CategoryChoice();
 
-            Post newPost = new Post(headerIndex, title, content, category);
+            Post newPost = new Post(headerIndex, title, content, categoryChoice);
 
-            Posts.Add(newPost);
+            PostList.Add(newPost);
         }
 
+        public void CategoryChoice()
+        {
+            Console.WriteLine("\nVälj en kategori:" +
+               "\n1. Nyheter" +
+               "\n2. Ordspråk" +
+               "\n3. Roliga fakta");
+            Console.Write("Skriv den siffra som motsvarar ditt val: ");
+            categoryChoice = (Category)(Convert.ToInt32(Console.ReadLine()) - 1);
+        }
 
         // Skapa ID:
         // For-loop som räknar antalet inlägg som finns
         // Plussar på 1 på ID-countern för varje inlägg
+        int idCounter;
         public int CreateID()
             {
-                int idCounter = 0;
-                for (int i = 0; i <= Posts.Count; i++)
+                idCounter = 0;
+                for (int i = 0; i <= PostList.Count; i++)
                 {
                     idCounter++;
                 }
@@ -129,12 +140,44 @@
         // Välj ett inlägg via ID - variabel : idChoice : int
         // Ta bort inlägget ur listan med alla inlägg
 
+
+        public override string ToString()
+        {
+            return $"{header}\n {Title}\n\n{Content}" +
+                $"\n\nKategori: {Category}\n\nDatum: {date}\n\n" +
+                $"Gilla-markeringar: {Likes}\n\n" +
+                $"InläggsID: {idCounter}";
+        }
+
+
         // Skriva ut alla inlägg:
         // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
+        public void ListPosts()
+        {
+            foreach (Post post in PostList)
+            {
+                Console.WriteLine("--------------------------------------------------------------\n");
+                Console.WriteLine(post);
 
+                Thread.Sleep(1000);
+            }
+        }
         // Skriva ut inlägg från kategori:
         // Input för vilken kategori som ska skrivas ut - Variabel : categoryChoice : string
         // If-sats som skriver ut inläggen som matchar en vald kategori
+        public void ListPostFromCategory()
+        {
+            CategoryChoice();
+            foreach (Post post in PostList)
+            {
+                if (post.Category == categoryChoice)
+                {
+                    Console.WriteLine("--------------------------------------------------------------\n");
+                    Console.WriteLine(post);
+                    Thread.Sleep(1000);
+                }
+            }
+        }
 
         // Söka på inlägg:
         // Input för vilken del som ska sökas på: Title, Content och Category - Variabel: searchChoice: string
