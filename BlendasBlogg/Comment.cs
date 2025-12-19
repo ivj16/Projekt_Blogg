@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,11 @@ namespace BlendasBlogg
 
         // Mail : string
         public string CommentMail { get; set; }
-        
+
         // commentID : int
         public int CommentID { get; set; }
+
+        public int PostCommentID { get; set; }
 
         // Comments : List (key postID och value är comment)
         public List<Comment> CommentList = new List<Comment>();
@@ -38,7 +41,9 @@ namespace BlendasBlogg
             string commentMail, 
             string commentName, 
             string commentTitle, 
-            string commentContent
+            string commentContent,
+            int commentID,
+            int postCommentID
         )
         {
             CommentMail = commentMail;
@@ -46,7 +51,8 @@ namespace BlendasBlogg
             CommentTitle = commentTitle;
             CommentContent = commentContent;
             CommentDate = DateTime.Now;
-            CreateCommentID();
+            CommentID = commentID;
+            PostCommentID = postCommentID;
         }
 
         // Metoder
@@ -54,15 +60,12 @@ namespace BlendasBlogg
         // Skapa ID:
         // For-loop som räknar antalet kommentarer som finns
         // Plussar på 1 på ID-countern för varje kommentar
-        int commentIdCounter = 0;
-        public int CreateCommentID()
+
+        public int ChoosePostID()
         {
-            commentIdCounter = 0;
-            for (int i = 0; i <= CommentList.Count; i++)
-            {
-                commentIdCounter++;
-            }
-            return commentIdCounter;
+            Console.Write("Ange ID på det inlägg du vill interagera med: ");
+            int postCommentID = Convert.ToInt32(Console.ReadLine());
+            return postCommentID;
         }
 
         // Lägga till kommentar:
@@ -71,6 +74,9 @@ namespace BlendasBlogg
         // Anropar Skapa ID-metoden
         public void AddComment()
         {
+            int commentID = 1;
+            int postCommentID = ChoosePostID();
+
             Console.Write("\n Ange din e-postadress: ");
             string commentMail = Console.ReadLine();
 
@@ -83,7 +89,7 @@ namespace BlendasBlogg
             Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
             string commentContent = Console.ReadLine();
 
-            Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent);
+            Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
             CommentList.Add(newComment);
         }
 
@@ -94,7 +100,8 @@ namespace BlendasBlogg
                    $"{CommentTitle}\n" +
                    $"{CommentContent}\n" +
                    $"Datum: {CommentDate}\n" +
-                   $"Kommentar ID: {CommentID}\n";
+                   $"Kommentar ID: {CommentID}\n" +
+                   $"PostCommentID: {PostCommentID}";
         }
 
         public void PrintComments()

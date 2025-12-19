@@ -163,10 +163,8 @@ namespace BlendasBlogg
         {
             return $"{header}\n {Title}\n\n{Content}" +
                 $"\n\nKategori: {Category}\nDatum: {date}\n" +
-                $"InläggsID: {PostID}\n\n" +
-                $"****** Reaktioner och Kommentarer ******\n" +
-                $"Gilla-markeringar: {Likes}\n";
-                //$"Kommentarer: \n" +
+                $"InläggsID: {PostID}\n\n";
+                /*$"Kommentarer:{comment.CommentList} \n"*/
                 //$"{comment.}";
         }
 
@@ -179,7 +177,14 @@ namespace BlendasBlogg
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
                 Console.WriteLine(post);
+                Console.WriteLine($"****** Reaktioner och Kommentarer ******\n" +
+                   $"Gilla-markeringar: {Likes}\n");
 
+                //if (comment.PostCommentID == post.PostID)
+                //{              
+                //    Console.WriteLine($"{comment.PrintComments}"); 
+                //}
+               
                 Thread.Sleep(1000);
             }
         }

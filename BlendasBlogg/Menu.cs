@@ -34,6 +34,7 @@ namespace BlendasBlogg
                 // case 1: Lista alla inlägg
                 case "1":
                     postObj.ListPosts();
+                    
 
                     Console.WriteLine("Vill du interagera med inlägget?");
                     Console.WriteLine("1, Ge innlägget en tumme upp\n" +
@@ -65,7 +66,7 @@ namespace BlendasBlogg
                 // case 2: Lista alla inlägg utifrån kategori
                 case "2":
                     postObj.ListPostFromCategory();
-                    commentObj.PrintComments();
+                    
                     //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                     break;
 
