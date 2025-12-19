@@ -31,7 +31,7 @@ namespace BlendasBlogg
 
        public int PostID { get; set; }
 
-        int postID = 0;
+        int postID = 1;
         // Header : string array
         static string[] headerArray =
         {
