@@ -134,6 +134,9 @@ namespace BlendasBlogg
             }
         }
 
+
+
+
         // Skapa ID:
         // For-loop som räknar antalet inlägg som finns
         // Plussar på 1 på ID-countern för varje inlägg
@@ -171,23 +174,12 @@ namespace BlendasBlogg
 
         // Skriva ut alla inlägg:
         // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
-        public void ListPosts()
-        {
-            foreach (Post post in PostList)
-            {
-                Console.WriteLine("--------------------------------------------------------------\n");
-                Console.WriteLine(post);
-                Console.WriteLine($"****** Reaktioner och Kommentarer ******\n" +
-                   $"Gilla-markeringar: {Likes}\n");
 
-                //if (comment.PostCommentID == post.PostID)
-                //{              
-                //    Console.WriteLine($"{comment.PrintComments}"); 
-                //}
-               
-                Thread.Sleep(1000);
-            }
-        }
+
+
+
+
+
         // Skriva ut inlägg från kategori:
         // Input för vilken kategori som ska skrivas ut - Variabel : categoryChoice : string
         // If-sats som skriver ut inläggen som matchar en vald kategori

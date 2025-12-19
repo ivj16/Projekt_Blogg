@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BlendasBlogg
 {
@@ -12,6 +14,7 @@ namespace BlendasBlogg
 
         Post postObj = new Post();
         Comment commentObj = new Comment();
+        PostAndComment postAndCommentObj = new PostAndComment();
         public void MainMenu()
         {
             Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:\n");
@@ -33,10 +36,10 @@ namespace BlendasBlogg
             {
                 // case 1: Lista alla inlägg
                 case "1":
-                    postObj.ListPosts();
-                    
+                    postAndCommentObj.ListPosts();
 
-                    Console.WriteLine("Vill du interagera med inlägget?");
+
+        Console.WriteLine("Vill du interagera med inlägget?");
                     Console.WriteLine("1, Ge innlägget en tumme upp\n" +
                         "2, Ge inlägget en tumme ner\n" +
                         "3, Kommentera\n" +

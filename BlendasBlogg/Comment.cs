@@ -106,6 +106,7 @@ namespace BlendasBlogg
 
         public void PrintComments()
         {
+
             foreach (Comment comment in CommentList)
             {
                 Console.WriteLine(comment);
