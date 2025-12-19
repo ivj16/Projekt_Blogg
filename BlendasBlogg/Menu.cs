@@ -132,6 +132,7 @@ namespace BlendasBlogg
                     //case 3: Ta bort inlägg
                     case "3":
 
+                        postObj.RemovePost();
                         //Liknande upplägg som för användare när inlägg listas - metod från Post-klassen.
 
                         //if-else-sats för att välja ta bort eller gå tillbaka till admin-menyn
