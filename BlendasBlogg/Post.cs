@@ -26,10 +26,9 @@ namespace BlendasBlogg
 
         // Category : Category enum
         public Category Category { get; set; }
-         
-        public int CategoryIndex { get; set; } = 0;
+
+        public Category categoryChoice;
         
-        public int categoryIndexChoice;
 
         // postID : int
         public int PostID { get; set; }
@@ -61,7 +60,7 @@ namespace BlendasBlogg
             int headerIndex,
             string title,
             string content,
-            int categoryIndexChoice,
+            Category categoryChoice,
             int postID
             
         )
@@ -70,8 +69,7 @@ namespace BlendasBlogg
             header = headerArray[HeaderIndex];
             Title = title;
             Content = content;
-            CategoryIndex = categoryIndexChoice;
-            Category = (Category)CategoryIndex;
+            Category = categoryChoice;
             Likes = 0;
             date = DateTime.Now;
             PostID = postID;
@@ -106,23 +104,23 @@ namespace BlendasBlogg
 
 
 
-            Post newPost = new Post(headerIndex, title, content, categoryIndexChoice, postID++);
+            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++);
 
             PostList.Add(newPost);
         }
 
 
 
-        public int CategoryChoice()
+        public void CategoryChoice()
         {
             Console.WriteLine("\nVälj en kategori:" +
                "\n1. Nyheter" +
                "\n2. Ordspråk" +
                "\n3. Roliga fakta");
             Console.Write("Skriv den siffra som motsvarar ditt val: ");
-            categoryIndexChoice = (Convert.ToInt32(Console.ReadLine()));
+            categoryChoice = (Category)(Convert.ToInt32(Console.ReadLine()));
             
-            return categoryIndexChoice;
+           
         }
 
         public void RemovePost()

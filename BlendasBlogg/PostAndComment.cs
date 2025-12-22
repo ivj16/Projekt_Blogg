@@ -40,7 +40,7 @@ namespace BlendasBlogg
             postObj.CategoryChoice();
             foreach (Post post in Post.PostList)
             {
-                if (post.CategoryIndex == postObj.categoryIndexChoice)
+                if (post.Category == postObj.categoryChoice)
                 {
                     Console.WriteLine("--------------------------------------------------------------\n");
                     Console.WriteLine(post);
