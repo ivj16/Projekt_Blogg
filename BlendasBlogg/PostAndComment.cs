@@ -12,56 +12,49 @@ namespace BlendasBlogg
         Post post = new Post();
         Comment comment = new Comment();
         
-
         public PostAndComment() { }
-
-        //dictionary med inlägg och kommentarer
-        
-        Dictionary<Post, List<Comment>> postAndComments = new Dictionary<Post, List<Comment>>();
-
-        //Lägger till post (key) till dictionary
-        public void AddPostToDictionary()
-        {
-            post.AddPost();
-            postAndComments.Add(Post.PostList.Last(), new List<Comment>());
-
-        }
-
-        //Lägger till comment till listan (value)
-
-        public void AddCommentToDictonary()
-        {
-            comment.AddComment();
-
-            if (post.PostID == comment.PostCommentID)
-            {
-                if (!postAndComments.TryGetValue(Post.PostList[post.PostID], out List<Comment> list))
-                {
-                    list = new List<Comment>();
-                    postAndComments.Add(Post.PostList[post.PostID], list);
-                }
-                list.Add(Comment.CommentList.Last());
-            }
-        }
-        
-        
 
         public void ListPosts()
         {
-            foreach (var pair in postAndComments) 
+            foreach (var post in Post.PostList) 
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
-                Console.WriteLine(pair.Key);
-                foreach (Comment comment in pair.Value)
+                Console.WriteLine(post);
+                foreach (Comment comment in Comment.CommentList)
                 {
-                    Console.WriteLine(comment);
+                    if (comment.PostCommentID == post.PostID)
+                    {
+                        Console.WriteLine(comment);
+                    }
                 }
                 
-
                 Thread.Sleep(1000);
             }
         }
 
+        // Skriva ut inlägg från kategori:
+        // Input för vilken kategori som ska skrivas ut - Variabel : categoryChoice : string
+        // If-sats som skriver ut inläggen som matchar en vald kategori
+        public void ListPostFromCategory()
+        {
+            post.CategoryChoice();
+            foreach (Post post in Post.PostList)
+            {
+                if (post.CategoryIndex == post.categoryIndexChoice)
+                {
+                    Console.WriteLine("--------------------------------------------------------------\n");
+                    Console.WriteLine(post);
+                    foreach (Comment comment in Comment.CommentList)
+                    {
+                        if (comment.PostCommentID == post.PostID)
+                        {
+                            Console.WriteLine(comment);
+                        }
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+        }
 
     }
 }

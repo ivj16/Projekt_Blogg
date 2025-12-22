@@ -8,8 +8,8 @@ namespace BlendasBlogg
 {
     public enum Category
     {
-        News,
-        Saying,
+        Nyheter = 1,
+        Ordspråk,
         FunFact
     }
 }

@@ -60,8 +60,8 @@ namespace BlendasBlogg
                             break;
                         case "3":
                             //anropa metod för att kommentera inlägget
-                            postAndCommentObj.AddCommentToDictonary();
-
+                            //postAndCommentObj.AddCommentToDictonary();
+                            commentObj.AddComment();
                             break;
                         case "4":
                             //gå tillbaka till användarmenyn
@@ -72,7 +72,7 @@ namespace BlendasBlogg
 
                 // case 2: Lista alla inlägg utifrån kategori
                 case "2":
-                    postObj.ListPostFromCategory();
+                    postAndCommentObj.ListPostFromCategory();
                     
                     //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                     break;
@@ -105,6 +105,8 @@ namespace BlendasBlogg
 
         public void AdminMenu ()
         {
+
+            isLoggedIn = true;
             UserInfo user = new UserInfo();
             Console.WriteLine("************************\n");
             Console.WriteLine("Välkommen Blenda! Eller är det verkligen du??\n\n");
@@ -114,6 +116,7 @@ namespace BlendasBlogg
             user.Password = Console.ReadLine();
             Console.Clear();
 
+            
             //IF-sats för att kolla användarnamn och lösenord
             if (user.Username == user.BlendasUsername && user.Password == user.BlendasPassword)
             {
@@ -132,7 +135,8 @@ namespace BlendasBlogg
                     {
                         //case 1: Skapa nytt inlägg
                         case "1":
-                            postAndCommentObj.AddPostToDictionary();
+                            //postAndCommentObj.AddPostToDictionary();
+                            postObj.AddPost();
                             Console.Clear();
 
                             //anropa metod från Post-klassen för att skapa nytt inlägg

@@ -26,12 +26,17 @@ namespace BlendasBlogg
 
         // Category : Category enum
         public Category Category { get; set; }
+         
+        public int CategoryIndex { get; set; } = 0;
+        
+        public int categoryIndexChoice;
 
-        Category categoryChoice;
-
-       public int PostID { get; set; }
+        // postID : int
+        public int PostID { get; set; }
 
         int postID = 1;
+
+
         // Header : string array
         static string[] headerArray =
         {
@@ -43,8 +48,6 @@ namespace BlendasBlogg
         };
 
         public int HeaderIndex { get; set; } = 0;
-
-        // postID : int
 
 
         // Posts : List (Post)
@@ -58,7 +61,7 @@ namespace BlendasBlogg
             int headerIndex,
             string title,
             string content,
-            Category category,
+            int categoryIndexChoice,
             int postID
             
         )
@@ -67,7 +70,8 @@ namespace BlendasBlogg
             header = headerArray[HeaderIndex];
             Title = title;
             Content = content;
-            Category = category;
+            CategoryIndex = categoryIndexChoice;
+            Category = (Category)CategoryIndex;
             Likes = 0;
             date = DateTime.Now;
             PostID = postID;
@@ -102,21 +106,23 @@ namespace BlendasBlogg
 
 
 
-            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++);
+            Post newPost = new Post(headerIndex, title, content, categoryIndexChoice, postID++);
 
             PostList.Add(newPost);
         }
 
 
 
-        public void CategoryChoice()
+        public int CategoryChoice()
         {
             Console.WriteLine("\nVälj en kategori:" +
                "\n1. Nyheter" +
                "\n2. Ordspråk" +
                "\n3. Roliga fakta");
             Console.Write("Skriv den siffra som motsvarar ditt val: ");
-            categoryChoice = (Category)(Convert.ToInt32(Console.ReadLine()) - 1);
+            categoryIndexChoice = (Convert.ToInt32(Console.ReadLine()));
+            
+            return categoryIndexChoice;
         }
 
         public void RemovePost()
@@ -166,8 +172,6 @@ namespace BlendasBlogg
             return $"{header}\n {Title}\n\n{Content}" +
                 $"\n\nKategori: {Category}\nDatum: {date}\n" +
                 $"InläggsID: {PostID}\n\n";
-                /*$"Kommentarer:{comment.CommentList} \n"*/
-                //$"{comment.}";
         }
 
 
@@ -175,26 +179,6 @@ namespace BlendasBlogg
         // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
 
 
-
-
-
-
-        // Skriva ut inlägg från kategori:
-        // Input för vilken kategori som ska skrivas ut - Variabel : categoryChoice : string
-        // If-sats som skriver ut inläggen som matchar en vald kategori
-        public void ListPostFromCategory()
-        {
-            CategoryChoice();
-            foreach (Post post in PostList)
-            {
-                if (post.Category == categoryChoice)
-                {
-                    Console.WriteLine("--------------------------------------------------------------\n");
-                    Console.WriteLine(post);
-                    Thread.Sleep(1000);
-                }
-            }
-        }
 
         // Söka på inlägg:
         // Input för vilken del som ska sökas på: Title, Content och Category - Variabel: searchChoice: string
