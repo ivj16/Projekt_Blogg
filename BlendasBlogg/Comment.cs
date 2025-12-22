@@ -61,37 +61,32 @@ namespace BlendasBlogg
         // For-loop som räknar antalet kommentarer som finns
         // Plussar på 1 på ID-countern för varje kommentar
 
-        public int ChoosePostID()
-        {
-            Console.Write("Ange ID på det inlägg du vill interagera med: ");
-            int postCommentID = Convert.ToInt32(Console.ReadLine());
-            return postCommentID;
-        }
+
 
         // Lägga till kommentar:
         // Input för title, content, name och mail
         // Tilldelar dagens datum till Date
         // Anropar Skapa ID-metoden
-        public void AddComment()
-        {
-            int commentID = 1;
-            int postCommentID = ChoosePostID();
+        //public void AddComment()
+        //{
+        //    int commentID = 1;
+        //    int postCommentID = ChoosePostID();
 
-            Console.Write("\n Ange din e-postadress: ");
-            string commentMail = Console.ReadLine();
+        //    Console.Write("\n Ange din e-postadress: ");
+        //    string commentMail = Console.ReadLine();
 
-            Console.Write("Ange ditt användarnamn: ");
-            string commentName = Console.ReadLine();
+        //    Console.Write("Ange ditt användarnamn: ");
+        //    string commentName = Console.ReadLine();
 
-            Console.WriteLine("\nSkriv in en titel för din kommentar: ");
-            string CommentTitle = Console.ReadLine();
+        //    Console.WriteLine("\nSkriv in en titel för din kommentar: ");
+        //    string CommentTitle = Console.ReadLine();
 
-            Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
-            string commentContent = Console.ReadLine();
+        //    Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
+        //    string commentContent = Console.ReadLine();
 
-            Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
-            CommentList.Add(newComment);
-        }
+        //    Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
+        //    CommentList.Add(newComment);
+        //}
 
        public override string ToString()
         {

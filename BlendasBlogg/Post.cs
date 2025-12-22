@@ -48,7 +48,7 @@ namespace BlendasBlogg
 
 
         // Posts : List (Post)
-        public List<Post> PostList = new List<Post>();
+        public static List<Post> PostList = new List<Post>();
 
         // Konstruktor:
         // Innehåller Title, Content, Category, Header, Likes, ID, Date, Comments 

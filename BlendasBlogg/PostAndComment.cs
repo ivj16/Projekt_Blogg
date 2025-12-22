@@ -18,21 +18,49 @@ namespace BlendasBlogg
         
         Dictionary<Post, List<Comment>> postAndComments = new Dictionary<Post, List<Comment>>();
 
-        public void AddPostAndComment(Post post, Comment comment)
+        public void AddPostToDictionary()
         {
-            if (postAndComments.ContainsKey(post))
+            post.AddPost();
+            postAndComments.Add(Post.PostList.Last(), new List<Comment> { comment });
+        }
+
+        public int ChoosePostID()
+        {
+            Console.Write("Ange ID på det inlägg du vill interagera med: ");
+            int postCommentID = Convert.ToInt32(Console.ReadLine());
+            return postCommentID;
+        }
+
+        public void AddPostAndComment()
+        {
+            int commentID = 1;
+            int postCommentID = ChoosePostID();
+
+            Console.Write("\n Ange din e-postadress: ");
+            string commentMail = Console.ReadLine();
+
+            Console.Write("Ange ditt användarnamn: ");
+            string commentName = Console.ReadLine();
+
+            Console.WriteLine("\nSkriv in en titel för din kommentar: ");
+            string CommentTitle = Console.ReadLine();
+
+            Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
+            string commentContent = Console.ReadLine();
+
+            Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
+            
+            foreach (Post post in postAndComments)
+            if (post.PostID == comment.PostCommentID)
             {
-                postAndComments[post].Add(comment);
-            }
-            else
-            {
-                postAndComments[post] = new List<Comment> { comment };
-            }
+                postAndComments[post].Add(newComment);
+                }
+
         }
 
         public void ListPosts()
         {
-            foreach (Post post in post.PostList)
+            foreach (Post post in Post.PostList)
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
                 Console.WriteLine(post);

@@ -60,7 +60,7 @@ namespace BlendasBlogg
                             break;
                         case "3":
                             //anropa metod för att kommentera inlägget
-                            commentObj.AddComment();
+                            postAndCommentObj.AddPostAndComment();
 
                             break;
                         case "4":
@@ -132,7 +132,7 @@ namespace BlendasBlogg
                     {
                         //case 1: Skapa nytt inlägg
                         case "1":
-                            postObj.AddPost();
+                            postAndCommentObj.AddPostToDictionary();
                             Console.Clear();
 
                             //anropa metod från Post-klassen för att skapa nytt inlägg
