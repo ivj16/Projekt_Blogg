@@ -9,7 +9,7 @@ namespace BlendasBlogg
     public  class PostAndComment
     {
 
-        Post post = new Post();
+        Post postObj = new Post();
         Comment comment = new Comment();
         
         public PostAndComment() { }
@@ -37,10 +37,10 @@ namespace BlendasBlogg
         // If-sats som skriver ut inläggen som matchar en vald kategori
         public void ListPostFromCategory()
         {
-            post.CategoryChoice();
+            postObj.CategoryChoice();
             foreach (Post post in Post.PostList)
             {
-                if (post.CategoryIndex == post.categoryIndexChoice)
+                if (post.CategoryIndex == postObj.categoryIndexChoice)
                 {
                     Console.WriteLine("--------------------------------------------------------------\n");
                     Console.WriteLine(post);
