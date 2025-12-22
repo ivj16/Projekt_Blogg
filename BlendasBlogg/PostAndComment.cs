@@ -52,7 +52,10 @@ namespace BlendasBlogg
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
                 Console.WriteLine(pair.Key);
-                Console.WriteLine(pair.Value);
+                foreach (Comment comment in pair.Value)
+                {
+                    Console.WriteLine(comment);
+                }
                 
 
                 Thread.Sleep(1000);
