@@ -38,12 +38,12 @@ namespace BlendasBlogg
 
         // Header : string array
         static string[] headerArray =
-        {
+        {   
+            "",
             "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
-            "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°",
-            "*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*＊✿❀　❀✿＊*",
-            "ღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღღ꧁ღ╭⊱ꕥꕥ⊱╮ღ꧂ღ",
-            "■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■"
+            "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°",
+            "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
+            ":-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
         };
 
         public int HeaderIndex { get; set; } = 0;
@@ -91,10 +91,10 @@ namespace BlendasBlogg
             {
             Console.WriteLine("Välj en header till ditt inlägg!" +
                 "\n1. Tom" +
-                "\n2. Varningstrianglar" +
-                "\n3. Blommor" +
-                "\n4. Maxade krumelurer" +
-                "\n5. Kvadrater");
+                "\n2. Hjärtan" +
+                "\n3. Bubblor" +
+                "\n4. Glada ansikten" +
+                "\n5. Förvånade gubbar");
             int headerIndex = Convert.ToInt32(Console.ReadLine()) - 1;
             Console.WriteLine("\nSkriv in en titel för ditt inlägg: ");
             string title = Console.ReadLine();

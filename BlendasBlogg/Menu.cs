@@ -15,7 +15,8 @@ namespace BlendasBlogg
         Post postObj = new Post();
         Comment commentObj = new Comment();
         PostAndComment postAndCommentObj = new PostAndComment();
-        bool isLoggedIn = true;
+        bool isInMenu = true;
+        
         public void MainMenu()
         {
             Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:\n");
@@ -27,78 +28,89 @@ namespace BlendasBlogg
 
         public void UserMenu ()
         {
-            Console.WriteLine("************************\n");
-            Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
-            Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
-            Console.WriteLine("1, Jag vill läsa alla inlägg från alla kategorier! \n2, Lista alla inlägg utifrån en kategori \n3, Jag vill söka efter ett inlägg");
-            Console.Write("Skriv den siffra som motsvara ditt val: ");
-            userChoice = Console.ReadLine();
-            Console.Clear();
+            isInMenu = true;
+            while (isInMenu) {
+                Console.WriteLine("***********************************************************\n");
+                Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
+                Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
+                Console.WriteLine("1, Jag vill läsa alla inlägg från alla kategorier! \n" +
+                    "2, Lista alla inlägg utifrån en kategori \n" +
+                    "3, Jag vill söka efter ett inlägg \n" +
+                    "4, Gå tillbaka till huvudmenyn");
+                Console.Write("Skriv den siffra som motsvara ditt val: ");
+                userChoice = Console.ReadLine();
+                Console.Clear();
 
-            switch (userChoice)
-            {
-                // case 1: Lista alla inlägg
-                case "1":
-                    postAndCommentObj.ListPosts();
+                switch (userChoice)
+                {
+                    // case 1: Lista alla inlägg
+                    case "1":
+                        postAndCommentObj.ListPosts();
 
 
-        Console.WriteLine("Vill du interagera med inlägget?");
-                    Console.WriteLine("1, Ge innlägget en tumme upp\n" +
-                        "2, Ge inlägget en tumme ner\n" +
-                        "3, Kommentera\n" +
-                        "4, Återvänd till användarmenyn ");
-                    userChoice = Console.ReadLine();
-                    Console.Clear();
+                        Console.WriteLine("Vill du interagera med inlägget?");
+                        Console.WriteLine("1, Ge innlägget en tumme upp\n" +
+                            "2, Ge inlägget en tumme ner\n" +
+                            "3, Kommentera\n" +
+                            "4, Återvänd till användarmenyn ");
+                        userChoice = Console.ReadLine();
 
-                    switch (userChoice)
-                    {
-                        case "1":
-                            //anropa metod för att gilla inlägget
-                            break;
-                        case "2":
-                            //anropa metod för att ogilla inlägget
-                            break;
-                        case "3":
-                            //anropa metod för att kommentera inlägget
-                            //postAndCommentObj.AddCommentToDictonary();
-                            commentObj.AddComment();
-                            break;
-                        case "4":
-                            //gå tillbaka till användarmenyn
-                            break;
-                    }
-                    //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                    break;
 
-                // case 2: Lista alla inlägg utifrån kategori
-                case "2":
-                    postAndCommentObj.ListPostFromCategory();
-                    
-                    //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                    break;
+                        switch (userChoice)
+                        {
+                            case "1":
+                                //anropa metod för att gilla inlägget
+                                break;
+                            case "2":
+                                //anropa metod för att ogilla inlägget
+                                break;
+                            case "3":
+                                //anropa metod för att kommentera inlägget
+                                commentObj.AddComment();
+                                Console.Clear();
+                                break;
+                            default:
+                                //gå tillbaka till användarmenyn
+                                Console.Clear();
+                                break;
+                        }
+                        //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                        break;
 
-                //case 3: Söka efter inlägg
-                case "3":
-                    //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
-                    switch (userChoice)
-                    {
-                        //case 1: Sök efter rubrik
-                        case "1":
+                    // case 2: Lista alla inlägg utifrån kategori
+                    case "2":
+                        postAndCommentObj.ListPostFromCategory();
 
-                            //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                            break;
+                        //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                        break;
 
-                        //case 2: Sök efter kategori
-                        case "2":
-                            //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                            break;
+                    //case 3: Söka efter inlägg
+                    case "3":
+                        //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
+                        switch (userChoice)
+                        {
+                            //case 1: Sök efter rubrik
+                            case "1":
 
-                        //case 3: Sök efter fritext
-                        case "3":
-                            //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
-                            break;
-                    }
-                    break;
+                                //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                                break;
+
+                            //case 2: Sök efter kategori
+                            case "2":
+                                //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                                break;
+
+                            //case 3: Sök efter fritext
+                            case "3":
+                                //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                                break;
+                        }
+                        break;
+
+                    case "4":
+                        isInMenu = false;
+                        break;
+                }
             }
 
         }
@@ -106,7 +118,7 @@ namespace BlendasBlogg
         public void AdminMenu ()
         {
 
-            isLoggedIn = true;
+            isInMenu = true;
             UserInfo user = new UserInfo();
             Console.WriteLine("************************\n");
             Console.WriteLine("Välkommen Blenda! Eller är det verkligen du??\n\n");
@@ -119,8 +131,9 @@ namespace BlendasBlogg
             
             //IF-sats för att kolla användarnamn och lösenord
             if (user.Username == user.BlendasUsername && user.Password == user.BlendasPassword)
-            {
-                while (isLoggedIn)
+            {   
+
+                while (isInMenu)
                 {
                     Console.WriteLine("Du är inloggad som admin\n");
                     Console.WriteLine("1, Skapa ett nytt inlägg  \n" +
@@ -161,7 +174,7 @@ namespace BlendasBlogg
 
                         //case 4: Logga ut
                         case "4":
-                            isLoggedIn = false;
+                            isInMenu = false;
 
                             Console.WriteLine("Du har loggats ut från admin-kontot.\n");
 
