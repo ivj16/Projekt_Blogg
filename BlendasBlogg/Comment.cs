@@ -27,11 +27,12 @@ namespace BlendasBlogg
 
         // commentID : int
         public int CommentID { get; set; }
+        int commentID = 1;
 
         public int PostCommentID { get; set; }
 
         // Comments : List (key postID och value är comment)
-        public List<Comment> CommentList = new List<Comment>();
+        static public List<Comment> CommentList = new List<Comment>();
 
         // Konstruktor:
 
@@ -67,28 +68,35 @@ namespace BlendasBlogg
         // Input för title, content, name och mail
         // Tilldelar dagens datum till Date
         // Anropar Skapa ID-metoden
-        //public void AddComment()
+
+        //public int ChoosePostID()
         //{
-        //    int commentID = 1;
-        //    int postCommentID = ChoosePostID();
-
-        //    Console.Write("\n Ange din e-postadress: ");
-        //    string commentMail = Console.ReadLine();
-
-        //    Console.Write("Ange ditt användarnamn: ");
-        //    string commentName = Console.ReadLine();
-
-        //    Console.WriteLine("\nSkriv in en titel för din kommentar: ");
-        //    string CommentTitle = Console.ReadLine();
-
-        //    Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
-        //    string commentContent = Console.ReadLine();
-
-        //    Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
-        //    CommentList.Add(newComment);
+        //    Console.Write("Ange ID på det inlägg du vill interagera med: ");
+        //    postCommentID = Convert.ToInt32(Console.ReadLine());
+        //    return postCommentID;
         //}
+        public void AddComment()
+        {
+            Console.Write("Ange ID på det inlägg du vill interagera med: ");
+            int postCommentID = Convert.ToInt32(Console.ReadLine());
 
-       public override string ToString()
+            Console.Write("\n Ange din e-postadress: ");
+            string commentMail = Console.ReadLine();
+
+            Console.Write("Ange ditt användarnamn: ");
+            string commentName = Console.ReadLine();
+
+            Console.WriteLine("\nSkriv in en titel för din kommentar: ");
+            string CommentTitle = Console.ReadLine();
+
+            Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
+            string commentContent = Console.ReadLine();
+
+            Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
+            CommentList.Add(newComment);
+        }
+
+        public override string ToString()
         {
             return $"{CommentName}\n" +
                    $"{CommentMail}\n" +

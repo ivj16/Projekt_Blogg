@@ -60,7 +60,7 @@ namespace BlendasBlogg
                             break;
                         case "3":
                             //anropa metod för att kommentera inlägget
-                            postAndCommentObj.AddPostAndComment();
+                            postAndCommentObj.AddCommentToDictonary();
 
                             break;
                         case "4":

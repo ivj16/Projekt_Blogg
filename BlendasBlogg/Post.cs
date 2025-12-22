@@ -100,8 +100,7 @@ namespace BlendasBlogg
             string content = Console.ReadLine();
             CategoryChoice();
 
-            //int postAddingCounter = 0;
-            //postID = postAddingCounter++;
+
 
             Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++);
 
