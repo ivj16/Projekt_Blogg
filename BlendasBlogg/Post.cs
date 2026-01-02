@@ -107,6 +107,7 @@ namespace BlendasBlogg
             Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++);
 
             PostList.Add(newPost);
+            PostList.Sort((a, b) => b.date.CompareTo(a.date));
         }
 
 
