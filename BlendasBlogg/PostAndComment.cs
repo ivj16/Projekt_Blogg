@@ -16,6 +16,8 @@ namespace BlendasBlogg
 
         public void ListPosts()
         {
+            Post.PostList.Sort((a, b) => b.date.CompareTo(a.date));
+
             foreach (var post in Post.PostList) 
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
