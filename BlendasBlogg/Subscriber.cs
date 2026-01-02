@@ -37,6 +37,8 @@ namespace BlendasBlogg
 
             SubscribersList.Add(newSubscriber);
 
+            Console.Clear();
+
         }
         public void PrintSubscribers()
         {
@@ -48,13 +50,11 @@ namespace BlendasBlogg
                     Console.WriteLine($"Namn: {subscriber.SubscriberName}, E-post: {subscriber.SubscriberEmail}\n");
                 }
             }
-            else if (SubscribersList.Count == 0)
+            else 
             {
                 Console.WriteLine("Det finns inga prenumeranter att lista. :(");
-            }
-            else
-            {
-                Console.WriteLine("Nåt gick fel");
+                Thread.Sleep(2000);
+                Console.Clear();
             }
         } 
         
@@ -73,13 +73,14 @@ namespace BlendasBlogg
                 else if (removeInput.ToLower() == "ångra")
                 {
                     Console.WriteLine("Ingen prenumerant har tagits bort.");
+           
                 }
                 else
                 {
                     Console.WriteLine("Det hittades ingen prenumerant med den e-postadressen.");
                 }
             }
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             Console.Clear();
         }
 

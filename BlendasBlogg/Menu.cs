@@ -196,7 +196,7 @@ namespace BlendasBlogg
                                     subscriberObj.RemoveSubscriber();
                                 }
                             }
-                            Console.Clear();
+
                             break;
 
                         //case 4: Logga ut
