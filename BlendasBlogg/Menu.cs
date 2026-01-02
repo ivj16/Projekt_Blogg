@@ -15,6 +15,7 @@ namespace BlendasBlogg
         Post postObj = new Post();
         Comment commentObj = new Comment();
         PostAndComment postAndCommentObj = new PostAndComment();
+        Subscriber subscriberObj = new Subscriber();
         bool isInMenu = true;
         
         public void MainMenu()
@@ -36,7 +37,8 @@ namespace BlendasBlogg
                 Console.WriteLine("1, Jag vill läsa alla inlägg från alla kategorier! \n" +
                     "2, Lista alla inlägg utifrån en kategori \n" +
                     "3, Jag vill söka efter ett inlägg \n" +
-                    "4, Gå tillbaka till huvudmenyn");
+                    "4, Jag vill prenumerera på bloggen \n" +
+                    "5, Gå tillbaka till huvudmenyn");
                 Console.Write("Skriv den siffra som motsvara ditt val: ");
                 userChoice = Console.ReadLine();
                 Console.Clear();
@@ -110,6 +112,11 @@ namespace BlendasBlogg
                         break;
 
                     case "4":
+                        subscriberObj.AddSubscriber();
+                        break;
+
+
+                    case "5":
                         isInMenu = false;
                         break;
                 }
@@ -141,7 +148,8 @@ namespace BlendasBlogg
                     Console.WriteLine("1, Skapa ett nytt inlägg  \n" +
                         "2, Redigera ett befintligt inlägg eller ta bort en kommentar \n" +
                         "3, Ta bort ett inlägg\n" +
-                        "4, Logga ut");
+                        "4, Visa en lista över prenumeranter\n" +
+                        "5, Logga ut");
                     Console.Write("Skriv den siffra som motsvara ditt val: ");
                     userChoice = Console.ReadLine();
                     Console.Clear();
@@ -174,8 +182,25 @@ namespace BlendasBlogg
                             //if-else-sats för att välja ta bort eller gå tillbaka till admin-menyn
                             break;
 
-                        //case 4: Logga ut
                         case "4":
+                            subscriberObj.PrintSubscribers();
+                            if (Subscriber.SubscribersList.Count > 0)
+                            {
+                                Console.Write("Vill du ta bort en prenumerant? \n" +
+                                    "1, Ja\n" +
+                                    "2, Nej\n" +
+                                    "Skriv siffran som motsvarar ditt val: ");
+                                userChoice = Console.ReadLine();
+                                if (userChoice == "1")
+                                {
+                                    subscriberObj.RemoveSubscriber();
+                                }
+                            }
+                            Console.Clear();
+                            break;
+
+                        //case 4: Logga ut
+                        case "5":
                             isInMenu = false;
 
                             Console.WriteLine("Du har loggats ut från admin-kontot.\n");
