@@ -60,9 +60,11 @@ namespace BlendasBlogg
                         {
                             case "1":
                                 //anropa metod för att gilla inlägget
+                                postObj.LikePost();
                                 break;
                             case "2":
                                 //anropa metod för att ogilla inlägget
+                                postObj.DislikePost();
                                 break;
                             case "3":
                                 //anropa metod för att kommentera inlägget

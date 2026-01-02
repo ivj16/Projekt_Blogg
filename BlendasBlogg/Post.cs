@@ -23,6 +23,7 @@ namespace BlendasBlogg
         // Anropa listan med kommentarer och sorterar på key för postID
         // Likes : int
         public int Likes { get; set; }
+        int likes = 0;
 
         // Category : Category enum
         public Category Category { get; set; }
@@ -34,6 +35,7 @@ namespace BlendasBlogg
         public int PostID { get; set; }
 
         int postID = 1;
+
 
 
         // Header : string array
@@ -61,7 +63,8 @@ namespace BlendasBlogg
             string title,
             string content,
             Category categoryChoice,
-            int postID
+            int postID,
+            int likes
             
         )
         {
@@ -70,7 +73,7 @@ namespace BlendasBlogg
             Title = title;
             Content = content;
             Category = categoryChoice;
-            Likes = 0;
+            Likes = likes;
             date = DateTime.Now;
             PostID = postID;
 
@@ -104,7 +107,7 @@ namespace BlendasBlogg
 
 
 
-            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++);
+            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++, likes);
 
             PostList.Add(newPost);
             PostList.Sort((a, b) => b.date.CompareTo(a.date));
@@ -138,6 +141,37 @@ namespace BlendasBlogg
             }
         }
 
+        public void LikePost()
+        {
+            Console.Write("Ange ID på det inlägg du vill gilla: ");
+            int LikeID = Convert.ToInt32(Console.ReadLine());
+
+            foreach (Post post in PostList)
+            {
+                if (post.PostID == LikeID)
+                {
+                    post.likes++;
+                    break;
+                }
+            }
+
+        }
+
+        public void DislikePost()
+        {
+            Console.Write("Ange ID på det inlägg du vill gilla: ");
+            int LikeID = Convert.ToInt32(Console.ReadLine());
+
+            foreach (Post post in PostList)
+            {
+                if (post.PostID == LikeID)
+                {
+                    post.likes--;
+                    break;
+                }
+            }
+
+        }
 
 
 
@@ -170,7 +204,8 @@ namespace BlendasBlogg
         {
             return $"{header}\n {Title}\n\n{Content}" +
                 $"\n\nKategori: {Category}\nDatum: {date}\n" +
-                $"InläggsID: {PostID}\n\n";
+                $"InläggsID: {PostID}\n" +
+                $"Likes: {likes}\n\n";
         }
 
 

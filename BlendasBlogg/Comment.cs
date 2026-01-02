@@ -31,17 +31,21 @@ namespace BlendasBlogg
 
         public int PostCommentID { get; set; }
 
+        public int PostLikeID { get; set; }
+
         // Comments : List (key postID och value är comment)
         static public List<Comment> CommentList = new List<Comment>();
+
+        static public List<KeyValuePair<int, int>> LikesList = new List<KeyValuePair<int, int>>();
 
         // Konstruktor:
 
         public Comment() { }
         // Innehåller mail, name, title, content, date, commentID
         public Comment(
-            string commentMail, 
-            string commentName, 
-            string commentTitle, 
+            string commentMail,
+            string commentName,
+            string commentTitle,
             string commentContent,
             int commentID,
             int postCommentID
@@ -116,15 +120,18 @@ namespace BlendasBlogg
             }
         }
 
-            // Lägger till nya kommentaren i listan med alla kommentarer
+        // Lägger till nya kommentaren i listan med alla kommentarer
 
-            // Ta bort kommentar:
-            // Välj en kommentar via ID - variabel : idChoice : int
-            // Ta bort kommentaren ur listan med alla kommentarer
+        // Ta bort kommentar:
+        // Välj en kommentar via ID - variabel : idChoice : int
+        // Ta bort kommentaren ur listan med alla kommentarer
 
-            // Gilla / ogilla
-            // Input för om man vill likea eller dislikea - Variabel : likeChoice : string
-            // Switch-case eller if-sats som gör Likes++ eller Likes-- beroende på valet
-        }
+
+
+        // Gilla / ogilla
+        // två metoder för like / dislike av post
+
+
+    }
 
 }

@@ -28,6 +28,14 @@ namespace BlendasBlogg
                         Console.WriteLine(comment);
                     }
                 }
+
+                foreach (var like in Comment.LikesList)
+                {
+                    if (comment.PostLikeID == post.PostID)
+                    {
+                        Console.WriteLine(like.Value);
+                    }
+                }
                 
                 Thread.Sleep(1000);
             }
