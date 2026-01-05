@@ -159,10 +159,11 @@ namespace BlendasBlogg
                 {
                     Console.WriteLine("Du är inloggad som admin\n");
                     Console.WriteLine("1, Skapa ett nytt inlägg  \n" +
-                        "2, Redigera ett befintligt inlägg eller ta bort en kommentar \n" +
+                        "2, Redigera ett befintligt inlägg\n" +
                         "3, Ta bort ett inlägg\n" +
-                        "4, Visa en lista över prenumeranter\n" +
-                        "5, Logga ut");
+                        "4, Ta bort en kommentar\n" +
+                        "5, Visa en lista över prenumeranter\n" +
+                        "6, Logga ut");
                     Console.Write("Skriv den siffra som motsvara ditt val: ");
                     userChoice = Console.ReadLine();
                     Console.Clear();
@@ -181,6 +182,7 @@ namespace BlendasBlogg
                         //case 2: Redigera befintligt inlägg eller ta bort kommentarer
                         case "2":
                             postObj.EditPost();
+                            Console.Clear();
                             //Lista alla inlägg med ID - via metod från Post-klassen
                             //Ta input från användaren för att välja inlägg att redigera
                             //Anropa redigera inlägg-metoden från Post-klassen
@@ -197,6 +199,11 @@ namespace BlendasBlogg
                             break;
 
                         case "4":
+                            commentObj.RemoveComment();
+                            Console.Clear();
+                            break;
+
+                        case "5":
                             subscriberObj.PrintSubscribers();
                             if (Subscriber.SubscribersList.Count > 0)
                             {
@@ -214,7 +221,7 @@ namespace BlendasBlogg
                             break;
 
                         //case 4: Logga ut
-                        case "5":
+                        case "6":
                             isInMenu = false;
 
                             Console.WriteLine("Du har loggats ut från admin-kontot.\n");

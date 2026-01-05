@@ -129,6 +129,11 @@ namespace BlendasBlogg
 
         public void RemovePost()
         {
+            foreach (Post post in PostList)
+            {
+                Console.WriteLine(post);
+            }
+
             Console.Write("Ange ID på det inlägg du vill ta bort: ");
             int idChoice = Convert.ToInt32(Console.ReadLine());
             foreach (Post post in PostList)
@@ -183,6 +188,11 @@ namespace BlendasBlogg
 
         public void EditPost()
         {
+            foreach (Post post in PostList)
+            {
+                Console.WriteLine(post);
+            }
+
             Console.Write("Ange ID på det inlägg du vill redigera: ");
             int idChoice = Convert.ToInt32(Console.ReadLine());
             
@@ -191,12 +201,14 @@ namespace BlendasBlogg
             {
                 if (idChoice == post.PostID)
                 {
-                    Console.Write("Vad önskar du redigera?" +
+                    Console.WriteLine("Vad önskar du redigera?" +
                         "\n1, Titel" +
                         "\n2, Innehåll" +
                         "\n3, Kategori" +
                         "\n4, Header" +
                         "\n5, Gå tillbaka");
+                    Console.Write("Skriv den siffra som motsvarar ditt val: ");
+
                     string userChoice = Console.ReadLine();
                     switch (userChoice)
                     {

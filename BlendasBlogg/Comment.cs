@@ -107,8 +107,7 @@ namespace BlendasBlogg
                    $"{CommentTitle}\n" +
                    $"{CommentContent}\n" +
                    $"Datum: {CommentDate}\n" +
-                   $"Kommentar ID: {CommentID}\n" +
-                   $"PostCommentID: {PostCommentID}";
+                   $"Kommentar ID: {CommentID}\n";
         }
 
         public void PrintComments()
@@ -126,6 +125,30 @@ namespace BlendasBlogg
         // Välj en kommentar via ID - variabel : idChoice : int
         // Ta bort kommentaren ur listan med alla kommentarer
 
+        public void RemoveComment()
+        {
+            foreach (Comment comment in CommentList)
+            {
+                Console.WriteLine(comment);
+                Console.WriteLine("-----------------------------\n");
+            }
+
+            Console.Write("Ange ID på den kommentar du vill ta bort: ");
+            int idChoice = Convert.ToInt32(Console.ReadLine());
+            foreach (Comment comment in CommentList)
+            {
+                if (comment.commentID == idChoice)
+                {
+                    CommentList.Remove(comment);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Kommentaren med det ID:t finns inte.");
+                    break;
+                }
+            }
+        }
 
 
         // Gilla / ogilla
