@@ -33,6 +33,7 @@ namespace BlendasBlogg
         {
             isInMenu = true;
             while (isInMenu) {
+                Console.WriteLine("***********************************************************\n");
                 Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
                 Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
                 Console.WriteLine("\n1, Jag vill läsa alla inlägg från alla kategorier!" +
