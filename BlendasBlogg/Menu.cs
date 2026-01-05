@@ -91,16 +91,26 @@ namespace BlendasBlogg
                     //case 3: Söka efter inlägg
                     case "3":
                         //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
+                        Console.WriteLine("Nu ska vi leta reda på inlägget du söker! Hur vill du söka efter det?" +
+                            "\n1, Sök efter rubrik." +
+                            "\n2, Sök efter kategori." +
+                            "\n3, Sök efter fritext" +
+                            "\n4, Gå tillbaka.");
+                        Console.Write("Skriv den siffra som motsvarar ditt val: ");
+                        userChoice = Console.ReadLine();
+
                         switch (userChoice)
                         {
                             //case 1: Sök efter rubrik
                             case "1":
-
+                                postAndCommentObj.SearchPostTitle();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
 
                             //case 2: Sök efter kategori
                             case "2":
+                                postAndCommentObj.ListPostFromCategory();
+
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
 

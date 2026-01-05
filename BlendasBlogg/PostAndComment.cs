@@ -65,6 +65,29 @@ namespace BlendasBlogg
             }
         }
 
+        public void SearchPostTitle() 
+        {
+            Console.WriteLine("Här kan du hitta ett inlägg genom att söka på rubriken på inlägget.");
+            Console.Write("Skriv in sökordet här: ");
+            string searchTitle = Console.ReadLine();
+
+            foreach (Post post in Post.PostList)
+            {
+                if (post.Title.ToLower().Contains(searchTitle.ToLower()))
+                {
+                    Console.WriteLine(post);
+                    foreach (Comment comment in Comment.CommentList)
+                    {
+                        if (comment.PostCommentID == post.PostID)
+                        {
+                            Console.WriteLine(comment);
+                        }
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
     }
 }
 
