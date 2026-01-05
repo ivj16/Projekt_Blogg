@@ -16,7 +16,7 @@ namespace BlendasBlogg
         public PostAndComment() { }
 
 
-
+        bool hasComment;
         public void ListPosts()
         {
 
@@ -24,23 +24,24 @@ namespace BlendasBlogg
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
                 Console.WriteLine(post);
+                Console.WriteLine("******************* Kommentarer *******************");
+                hasComment = false;
+
                 foreach (Comment comment in Comment.CommentList)
                 {
                     if (comment.PostCommentID == post.PostID)
                     {
+                        hasComment = true;
                         Console.WriteLine(comment);
                     }
                 }
 
-                foreach (var like in Comment.LikesList)
+                if (!hasComment)
                 {
-                    if (comment.PostLikeID == post.PostID)
-                    {
-                        Console.WriteLine(like.Value);
-                    }
+                    Console.WriteLine("Inga kommentarer ännu\n");
                 }
-                
-                Thread.Sleep(1000);
+
+                Thread.Sleep(500);
             }
         }
 
@@ -56,14 +57,23 @@ namespace BlendasBlogg
                 {
                     Console.WriteLine("--------------------------------------------------------------\n");
                     Console.WriteLine(post);
+                    Console.WriteLine("******************* Kommentarer *******************");
+                    hasComment = false;
+
                     foreach (Comment comment in Comment.CommentList)
                     {
                         if (comment.PostCommentID == post.PostID)
                         {
+                            hasComment = true;
                             Console.WriteLine(comment);
                         }
                     }
-                    Thread.Sleep(1000);
+
+                    if (!hasComment)
+                    {
+                        Console.WriteLine("Inga kommentarer ännu\n");
+                    }
+                    Thread.Sleep(500);
                 }
             }
         }
@@ -79,14 +89,23 @@ namespace BlendasBlogg
                 if (post.Title.ToLower().Contains(searchTitle.ToLower()))
                 {
                     Console.WriteLine(post);
+                    Console.WriteLine("******************* Kommentarer *******************");
+                    hasComment = false;
+
                     foreach (Comment comment in Comment.CommentList)
                     {
                         if (comment.PostCommentID == post.PostID)
                         {
+                            hasComment = true;
                             Console.WriteLine(comment);
                         }
                     }
-                    Thread.Sleep(1000);
+
+                    if (!hasComment)
+                    {
+                        Console.WriteLine("Inga kommentarer ännu\n");
+                    }
+                    Thread.Sleep(500);
                 }
             }
         }
@@ -102,14 +121,23 @@ namespace BlendasBlogg
                 if (post.Content.ToLower().Contains(searchContent.ToLower()))
                 {
                     Console.WriteLine(post);
+                    Console.WriteLine("******************* Kommentarer *******************");
+                    hasComment = false;
+
                     foreach (Comment comment in Comment.CommentList)
                     {
                         if (comment.PostCommentID == post.PostID)
                         {
+                            hasComment = true;
                             Console.WriteLine(comment);
                         }
                     }
-                    Thread.Sleep(1000);
+
+                    if (!hasComment)
+                    {
+                        Console.WriteLine("Inga kommentarer ännu\n");
+                    }
+                    Thread.Sleep(500);
                 }
             }
         }

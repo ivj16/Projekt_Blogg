@@ -20,8 +20,10 @@ namespace BlendasBlogg
         
         public void MainMenu()
         {
-            Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:\n");
-            Console.WriteLine("1, Jag är en användare som vill läsa bloggen \n2, Jag vill logga in som admin och få full kontroll över bloggen \n3, Jag har läst nog för idag och vill säga hejdå\n");
+            Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:");
+            Console.WriteLine("\n1, Jag är en användare som vill läsa bloggen " +
+                "\n2, Jag vill logga in som admin och få full kontroll över bloggen " +
+                "\n3, Jag har läst nog för idag och vill säga hejdå\n");
             Console.Write("Skriv den siffra som motsvara ditt val: ");
             userChoice = Console.ReadLine();
             Console.Clear();
@@ -34,11 +36,11 @@ namespace BlendasBlogg
                 Console.WriteLine("***********************************************************\n");
                 Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
                 Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
-                Console.WriteLine("1, Jag vill läsa alla inlägg från alla kategorier! \n" +
-                    "2, Lista alla inlägg utifrån en kategori \n" +
-                    "3, Jag vill söka efter ett inlägg \n" +
-                    "4, Jag vill prenumerera på bloggen \n" +
-                    "5, Gå tillbaka till huvudmenyn");
+                Console.WriteLine("\n1, Jag vill läsa alla inlägg från alla kategorier!" +
+                    "\n2, Lista alla inlägg utifrån en kategori" +
+                    "\n3, Jag vill söka efter ett inlägg" +
+                    "\n4, Jag vill prenumerera på bloggen" +
+                    "\n5, Gå tillbaka till huvudmenyn");
                 Console.Write("Skriv den siffra som motsvara ditt val: ");
                 userChoice = Console.ReadLine();
                 Console.Clear();
@@ -49,11 +51,11 @@ namespace BlendasBlogg
                     case "1":
                         postAndCommentObj.ListPosts();
 
-                        Console.WriteLine("Vill du interagera med inlägget?");
-                        Console.WriteLine("1, Ge innlägget en tumme upp\n" +
-                            "2, Ge inlägget en tumme ner\n" +
-                            "3, Kommentera\n" +
-                            "4, Återvänd till användarmenyn ");
+                        Console.WriteLine("Vill du interagera med ett inlägg?");
+                        Console.WriteLine("\n1, Ge en tumme upp" +
+                            "\n2, Ge en tumme ner" +
+                            "\n3, Kommentera" +
+                            "\n4, Återvänd till användarmenyn");
                         userChoice = Console.ReadLine();
 
 
@@ -83,7 +85,6 @@ namespace BlendasBlogg
                     // case 2: Lista alla inlägg utifrån kategori
                     case "2":
                         postAndCommentObj.ListPostFromCategory();
-                        //postAndCommentObj.InteractWithPost();
 
                         //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                         break;
@@ -92,10 +93,10 @@ namespace BlendasBlogg
                     case "3":
                         //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
                         Console.WriteLine("Nu ska vi leta reda på inlägget du söker! Hur vill du söka efter det?" +
-                            "\n1, Sök efter rubrik." +
-                            "\n2, Sök efter kategori." +
+                            "\n1, Sök efter rubrik" +
+                            "\n2, Sök efter kategori" +
                             "\n3, Sök efter fritext" +
-                            "\n4, Gå tillbaka.");
+                            "\n4, Gå tillbaka");
                         Console.Write("Skriv den siffra som motsvarar ditt val: ");
                         userChoice = Console.ReadLine();
 
@@ -104,21 +105,18 @@ namespace BlendasBlogg
                             //case 1: Sök efter rubrik
                             case "1":
                                 postAndCommentObj.SearchPostTitle();
-                                //postAndCommentObj.InteractWithPost();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
 
                             //case 2: Sök efter kategori
                             case "2":
                                 postAndCommentObj.ListPostFromCategory();
-                                //postAndCommentObj.InteractWithPost();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
 
                             //case 3: Sök efter fritext
                             case "3":
                                 postAndCommentObj.SearchPostContent();
-                                //postAndCommentObj.InteractWithPost();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
                         }

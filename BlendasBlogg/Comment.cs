@@ -83,11 +83,12 @@ namespace BlendasBlogg
         {
             Console.Write("Ange ID på det inlägg du vill interagera med: ");
             int postCommentID = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
 
-            Console.Write("\n Ange din e-postadress: ");
+            Console.Write("\nAnge din e-postadress: ");
             string commentMail = Console.ReadLine();
 
-            Console.Write("Ange ditt användarnamn: ");
+            Console.Write("\nAnge ditt användarnamn: ");
             string commentName = Console.ReadLine();
 
             Console.WriteLine("\nSkriv in en titel för din kommentar: ");
@@ -98,16 +99,20 @@ namespace BlendasBlogg
 
             Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
             CommentList.Add(newComment);
+
+            Console.Clear();
+            Console.WriteLine("Kommentaren har laddats upp!");
+            Thread.Sleep(1500);
         }
 
         public override string ToString()
         {
-            return $"{CommentName}\n" +
-                   $"{CommentMail}\n" +
-                   $"{CommentTitle}\n" +
-                   $"{CommentContent}\n" +
-                   $"Datum: {CommentDate}\n" +
-                   $"Kommentar ID: {CommentID}\n";
+            return $"Användare: {CommentName}, {CommentMail}\n" +
+                   $"\n{CommentTitle}\n" +
+                   $"\n{CommentContent}\n" +
+                   $"\nDatum: {CommentDate}\n" +
+                   $"Kommentars-ID: {CommentID}\n" +
+                   $"------------------";
         }
 
         public void PrintComments()
@@ -140,6 +145,10 @@ namespace BlendasBlogg
                 if (comment.commentID == idChoice)
                 {
                     CommentList.Remove(comment);
+                   
+                    Console.Clear();
+                    Console.WriteLine("Kommentaren har tagits bort!");
+                    Thread.Sleep(1500);
                     break;
                 }
                 else
@@ -149,12 +158,5 @@ namespace BlendasBlogg
                 }
             }
         }
-
-
-        // Gilla / ogilla
-        // två metoder för like / dislike av post
-
-
     }
-
 }
