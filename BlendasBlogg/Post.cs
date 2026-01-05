@@ -25,6 +25,9 @@ namespace BlendasBlogg
         public int Likes { get; set; }
         int likes = 0;
 
+        public int Dislikes { get; set; }
+        int dislikes = 0;
+
         // Category : Category enum
         public Category Category { get; set; }
 
@@ -64,7 +67,8 @@ namespace BlendasBlogg
             string content,
             Category categoryChoice,
             int postID,
-            int likes
+            int likes,
+            int dislikes
             
         )
         {
@@ -74,6 +78,7 @@ namespace BlendasBlogg
             Content = content;
             Category = categoryChoice;
             Likes = likes;
+            Dislikes = dislikes;
             date = DateTime.Now;
             PostID = postID;
 
@@ -107,7 +112,7 @@ namespace BlendasBlogg
 
 
 
-            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++, likes);
+            Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++, likes, dislikes);
 
             PostList.Add(newPost);
             PostList.Sort((a, b) => b.date.CompareTo(a.date));
@@ -171,11 +176,10 @@ namespace BlendasBlogg
             {
                 if (post.PostID == LikeID)
                 {
-                    post.likes--;
+                    post.dislikes++;
                     break;
                 }
             }
-
         }
 
 
@@ -271,7 +275,8 @@ namespace BlendasBlogg
             return $"{header}\n {Title}\n\n{Content}" +
                 $"\n\nKategori: {Category}\nDatum: {date}\n" +
                 $"InläggsID: {PostID}\n" +
-                $"Likes: {likes}\n\n";
+                $"Likes: {likes}\n" +
+                $"Dislikes: {dislikes}\n\n";
         }
 
 
