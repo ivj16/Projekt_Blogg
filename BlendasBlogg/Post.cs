@@ -189,7 +189,7 @@ namespace BlendasBlogg
 
             foreach (Post post in PostList)
             {
-                if (idChoice == postID)
+                if (idChoice == post.PostID)
                 {
                     Console.Write("Vad önskar du redigera?" +
                         "\n1, Titel" +
