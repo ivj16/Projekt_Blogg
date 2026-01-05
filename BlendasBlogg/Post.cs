@@ -115,7 +115,14 @@ namespace BlendasBlogg
             Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++, likes, dislikes);
 
             PostList.Add(newPost);
+            
+            // Sortera inlägg på datum:
+            // Göra en List - Sort
+            // Skriva ut med ToString
             PostList.Sort((a, b) => b.date.CompareTo(a.date));
+            Console.Clear();
+            Console.WriteLine("Inlägget har laddats upp!");
+            Thread.Sleep(1500);
         }
 
 
@@ -132,6 +139,9 @@ namespace BlendasBlogg
            
         }
 
+        // Ta bort inlägg:
+        // Välj ett inlägg via ID - variabel : idChoice : int
+        // Ta bort inlägget ur listan med alla inlägg
         public void RemovePost()
         {
             foreach (Post post in PostList)
@@ -146,11 +156,16 @@ namespace BlendasBlogg
                 if (post.PostID == idChoice)
                 {
                     PostList.Remove(post);
+                    Console.Clear();
+                    Console.WriteLine("Inlägget har tagits bort!");
+                    Thread.Sleep(1500);
                     break;
                 }
             }
         }
 
+        // Gilla / ogilla
+        // Input för om man vill likea eller dislikea - Variabel : likeChoice : string
         public void LikePost()
         {
             Console.Write("Ange ID på det inlägg du vill gilla: ");
@@ -183,12 +198,18 @@ namespace BlendasBlogg
         }
 
 
-
-        // Skapa ID:
-        // For-loop som räknar antalet inlägg som finns
-        // Plussar på 1 på ID-countern för varje inlägg
-        //int idCounter;
-
+        // Redigera inlägg:
+        // Switch-case för vilken del av inlägget som vill redigeras
+        // Title:
+        // Input för nytt värde
+        // Content: 
+        // Input för nytt värde
+        // Category
+        // Input för nytt värde
+        // Header
+        // Input för nytt värde
+        // Avsluta
+        // Gå tillbaka med break
 
         public void EditPost()
         {
@@ -220,18 +241,27 @@ namespace BlendasBlogg
                             Console.Clear();
                             Console.WriteLine("Ange ny titel:");
                             post.Title = Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("Titeln har uppdaterats!");
+                            Thread.Sleep(1500);
                             break;
 
                         case "2":
                             Console.Clear();
                             Console.WriteLine("Ange nytt innehåll:");
                             post.Content = Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("Innehållet har uppdaterats!");
+                            Thread.Sleep(1500);
                             break;
 
                         case "3":
                             Console.Clear();
                             CategoryChoice();
                             post.categoryChoice = categoryChoice;
+                            Console.Clear();
+                            Console.WriteLine("Kategorin har uppdaterats!");
+                            Thread.Sleep(1500);
                             break;
 
                         case "4":
@@ -243,6 +273,9 @@ namespace BlendasBlogg
                             "\n4. Glada ansikten" +
                             "\n5. Förvånade gubbar");
                             post.HeaderIndex = Convert.ToInt32(Console.ReadLine()) - 1;
+                            Console.Clear();
+                            Console.WriteLine("Inläggets header har uppdaterats!");
+                            Thread.Sleep(1500);
                             break;
 
                         default:
@@ -252,54 +285,18 @@ namespace BlendasBlogg
                 }
             }
         }
-        // Redigera inlägg:
-        // Switch-case för vilken del av inlägget som vill redigeras
-        // Title:
-        // Input för nytt värde
-        // Content: 
-        // Input för nytt värde
-        // Category
-        // Input för nytt värde
-        // Header
-        // Input för nytt värde
-        // Avsluta
-        // Gå tillbaka med break
-
-        // Ta bort inlägg:
-        // Välj ett inlägg via ID - variabel : idChoice : int
-        // Ta bort inlägget ur listan med alla inlägg
 
 
         public override string ToString()
         {
-            return $"{header}\n {Title}\n\n{Content}" +
-                $"\n\nKategori: {Category}\nDatum: {date}\n" +
-                $"InläggsID: {PostID}\n" +
-                $"Likes: {likes}\n" +
-                $"Dislikes: {dislikes}\n\n";
+            return $"{header}" +
+                $"\n{Title}\n" +
+                $"\n{Content}\n" +
+                $"\n\nKategori: {Category}" +
+                $"\nDatum: {date}" +
+                $"\nInläggsID: {PostID}\n" +
+                $"\nLikes: {likes}" +
+                $"\nDislikes: {dislikes}\n\n";
         }
-
-
-        // Skriva ut alla inlägg:
-        // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
-
-
-
-        // Söka på inlägg:
-        // Input för vilken del som ska sökas på: Title, Content och Category - Variabel: searchChoice: string
-        // Input för sökord inom den valda delen - Variabel : searchWord : string
-        // För varje del som går att söka igenom:
-        // Foreach-loop som går igenom alla inlägg
-        // If-sats som skriver ut de som matchar sökordet
-
-        // Sortera inlägg på datum:
-        // Göra en List - Sort
-        // Skriva ut med ToString
-
-        // Gilla / ogilla
-        // Input för om man vill likea eller dislikea - Variabel : likeChoice : string
-        // Switch-case eller if-sats som gör Likes++ eller Likes-- beroende på valet
-
-
     }
 }

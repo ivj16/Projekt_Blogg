@@ -17,6 +17,9 @@ namespace BlendasBlogg
 
 
         bool hasComment;
+
+        // Skriva ut alla inlägg:
+        // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
         public void ListPosts()
         {
 
@@ -78,6 +81,13 @@ namespace BlendasBlogg
             }
         }
 
+
+        // Söka på inlägg:
+        // Input för vilken del som ska sökas på: Title, Content och Category - Variabel: searchChoice: string
+        // Input för sökord inom den valda delen - Variabel : searchWord : string
+        // För varje del som går att söka igenom:
+        // Foreach-loop som går igenom alla inlägg
+        // If-sats som skriver ut de som matchar sökordet
         public void SearchPostTitle() 
         {
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på rubriken på inlägget.");

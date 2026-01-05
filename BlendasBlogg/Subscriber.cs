@@ -38,6 +38,8 @@ namespace BlendasBlogg
             SubscribersList.Add(newSubscriber);
 
             Console.Clear();
+            Console.WriteLine("Klart! Tack för att du prenumererar!");
+            Thread.Sleep(1500);
 
         }
         public void PrintSubscribers()
