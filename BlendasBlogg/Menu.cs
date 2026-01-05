@@ -49,7 +49,6 @@ namespace BlendasBlogg
                     case "1":
                         postAndCommentObj.ListPosts();
 
-
                         Console.WriteLine("Vill du interagera med inlägget?");
                         Console.WriteLine("1, Ge innlägget en tumme upp\n" +
                             "2, Ge inlägget en tumme ner\n" +
@@ -84,6 +83,7 @@ namespace BlendasBlogg
                     // case 2: Lista alla inlägg utifrån kategori
                     case "2":
                         postAndCommentObj.ListPostFromCategory();
+                        //postAndCommentObj.InteractWithPost();
 
                         //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                         break;
@@ -104,18 +104,21 @@ namespace BlendasBlogg
                             //case 1: Sök efter rubrik
                             case "1":
                                 postAndCommentObj.SearchPostTitle();
+                                //postAndCommentObj.InteractWithPost();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
 
                             //case 2: Sök efter kategori
                             case "2":
                                 postAndCommentObj.ListPostFromCategory();
-
+                                //postAndCommentObj.InteractWithPost();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
 
                             //case 3: Sök efter fritext
                             case "3":
+                                postAndCommentObj.SearchPostContent();
+                                //postAndCommentObj.InteractWithPost();
                                 //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
                                 break;
                         }

@@ -11,8 +11,11 @@ namespace BlendasBlogg
 
         Post postObj = new Post();
         Comment comment = new Comment();
-        
+
+
         public PostAndComment() { }
+
+
 
         public void ListPosts()
         {
@@ -74,6 +77,29 @@ namespace BlendasBlogg
             foreach (Post post in Post.PostList)
             {
                 if (post.Title.ToLower().Contains(searchTitle.ToLower()))
+                {
+                    Console.WriteLine(post);
+                    foreach (Comment comment in Comment.CommentList)
+                    {
+                        if (comment.PostCommentID == post.PostID)
+                        {
+                            Console.WriteLine(comment);
+                        }
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        public void SearchPostContent()
+        {
+            Console.WriteLine("Här kan du hitta ett inlägg genom att söka på ett ord som inlägget innehåller");
+            Console.Write("Skriv in sökordet här: ");
+            string searchContent = Console.ReadLine();
+
+            foreach (Post post in Post.PostList)
+            {
+                if (post.Content.ToLower().Contains(searchContent.ToLower()))
                 {
                     Console.WriteLine(post);
                     foreach (Comment comment in Comment.CommentList)
