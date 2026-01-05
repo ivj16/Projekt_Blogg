@@ -180,6 +180,7 @@ namespace BlendasBlogg
 
                         //case 2: Redigera befintligt inlägg eller ta bort kommentarer
                         case "2":
+                            postObj.EditPost();
                             //Lista alla inlägg med ID - via metod från Post-klassen
                             //Ta input från användaren för att välja inlägg att redigera
                             //Anropa redigera inlägg-metoden från Post-klassen

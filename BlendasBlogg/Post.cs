@@ -181,7 +181,61 @@ namespace BlendasBlogg
         //int idCounter;
 
 
+        public void EditPost()
+        {
+            Console.Write("Ange ID på det inlägg du vill redigera: ");
+            int idChoice = Convert.ToInt32(Console.ReadLine());
+            
 
+            foreach (Post post in PostList)
+            {
+                if (idChoice == postID)
+                {
+                    Console.Write("Vad önskar du redigera?" +
+                        "\n1, Titel" +
+                        "\n2, Innehåll" +
+                        "\n3, Kategori" +
+                        "\n4, Header" +
+                        "\n5, Gå tillbaka");
+                    string userChoice = Console.ReadLine();
+                    switch (userChoice)
+                    {
+                        case "1":
+                            Console.Clear();
+                            Console.WriteLine("Ange ny titel:");
+                            post.Title = Console.ReadLine();
+                            break;
+
+                        case "2":
+                            Console.Clear();
+                            Console.WriteLine("Ange nytt innehåll:");
+                            post.Content = Console.ReadLine();
+                            break;
+
+                        case "3":
+                            Console.Clear();
+                            CategoryChoice();
+                            post.categoryChoice = categoryChoice;
+                            break;
+
+                        case "4":
+                            Console.Clear();
+                            Console.WriteLine("Välj en header till ditt inlägg!" +
+                            "\n1. Tom" +
+                            "\n2. Hjärtan" +
+                            "\n3. Bubblor" +
+                            "\n4. Glada ansikten" +
+                            "\n5. Förvånade gubbar");
+                            post.HeaderIndex = Convert.ToInt32(Console.ReadLine()) - 1;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                }
+            }
+        }
         // Redigera inlägg:
         // Switch-case för vilken del av inlägget som vill redigeras
         // Title:
