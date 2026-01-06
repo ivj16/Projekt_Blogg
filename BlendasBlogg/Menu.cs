@@ -206,16 +206,12 @@ namespace BlendasBlogg
                                         case "2":
                                             Console.Clear();
                                             Console.WriteLine("Ingen prenumerant har tagits bort");
-                                            Thread.Sleep(2000);
                                             Post.BackToMenuMessage();
                                             isInMenu = false;
                                             break;
 
                                         default:
-                                            Console.Clear();
                                             Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                                            Thread.Sleep(2500);
-                                            Console.Clear();
                                             break;
                                     }
                                 }
@@ -227,8 +223,6 @@ namespace BlendasBlogg
                             isInMenu = false;
 
                             Console.WriteLine("Du har loggats ut från admin-kontot.\n");
-
-                            Thread.Sleep(2000);
                             Post.BackToMenuMessage();
                             break;
 
