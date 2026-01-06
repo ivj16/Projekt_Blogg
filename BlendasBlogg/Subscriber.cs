@@ -8,6 +8,7 @@ namespace BlendasBlogg
 {
     public class Subscriber
     {
+        bool isInMenu = true;
         public string SubscriberName { get; set; }
         public string SubscriberEmail { get; set; }
 
@@ -60,30 +61,40 @@ namespace BlendasBlogg
         
         public void RemoveSubscriber()
         {
+            
             Console.WriteLine("Ange e-postadressen för den prenumerant du vill ta bort, " +
                 "\nalternativt skriv ångra för att gå tillbaka: ");
-            string removeInput = Console.ReadLine();
-            foreach (Subscriber subscriber in SubscribersList)
-            {
-                if (removeInput == subscriber.SubscriberEmail)
-                {
-                    SubscribersList.Remove(subscriber);
-                    Console.WriteLine($"{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
-                    Post.BackToMenuMessage();
-                    break;
-                }
-                else if (removeInput.ToLower() == "ångra")
-                {
-                    Console.WriteLine("Ingen prenumerant har tagits bort.");
-                    Post.BackToMenuMessage();
 
-                }
-                else
+            do
+            {
+                string removeInput = Console.ReadLine();
+                foreach (Subscriber subscriber in SubscribersList)
                 {
-                    Console.WriteLine("Det hittades ingen prenumerant med den e-postadressen.");
-                    Post.BackToMenuMessage();
+                    if (removeInput == subscriber.SubscriberEmail)
+                    {
+                        SubscribersList.Remove(subscriber);
+                        Console.WriteLine($"{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
+                        Post.BackToMenuMessage();
+                        isInMenu = false;
+                        break;
+                    }
+                    else if (removeInput.ToLower() == "ångra")
+                    {
+                        Console.WriteLine("Ingen prenumerant har tagits bort.");
+                        Post.BackToMenuMessage();
+                        isInMenu = false;
+                        break;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Det hittades ingen prenumerant med den e-postadressen.");
+                        
+                        isInMenu = true;
+                    }
                 }
             }
+            while (isInMenu);
         }
     }
 }
