@@ -195,8 +195,7 @@ namespace BlendasBlogg
                                     "\n1, Ja" +
                                     "\n2, Nej" +
                                     "\nSkriv siffran som motsvarar ditt val: ");
-                                    do
-                                    {
+                                    
                                         userChoice = Console.ReadLine();
                                         switch (userChoice)
                                         {
@@ -218,8 +217,8 @@ namespace BlendasBlogg
                                                 Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
                                                 break;
                                         }
-                                    } while (isInMenu);
                                 }
+                                isInMenu = true;
                             }
                             break;
 
