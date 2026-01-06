@@ -8,15 +8,17 @@ namespace BlendasBlogg
 {
     public  class PostAndComment
     {
+        //Fields
+        string userChoice;
+        bool hasComment;
 
+        //Objects
         Post postObj = new Post();
         Comment commentObj = new Comment();
 
-
+        //Konstruktor
         public PostAndComment() { }
 
-
-        bool hasComment;
 
         // Skriva ut alla inlägg:
         // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
@@ -156,7 +158,6 @@ namespace BlendasBlogg
         //alternativt gå tillbaka till huvudmenyn
         public void InteractWithPost()
         {
-            string userChoice;
             Console.WriteLine("Vill du interagera med ett inlägg?");
                         Console.WriteLine("\n1, Ge en tumme upp" +
                             "\n2, Ge en tumme ner" +
@@ -183,12 +184,14 @@ namespace BlendasBlogg
                     break;
                 case "4":
                     //Går tillbaka till användarmenyn
+                    Console.Clear();
                     Post.BackToMenuMessage();
                     break;
                 default:
-                    Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                    Thread.Sleep(2500);
                     Console.Clear();
+                    Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
+                    Thread.Sleep(1000);
+                    Post.BackToMenuMessage();
                     break;
 
             }
