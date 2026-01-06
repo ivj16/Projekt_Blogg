@@ -10,32 +10,29 @@ namespace BlendasBlogg
 {
     public class Comment
     {
+        //Fields
         bool isInvalid = true;
         int postCommentID;
+        int commentID = 1;
+        int idChoice;
         string commentMail;
         string commentName;
         string commentTitle;
         string commentContent;
         Post postObj = new Post();
         
-        // Title : string
+        // Properties
         public string CommentTitle { get; set; }
 
-        // Content : string
         public string CommentContent { get; set; }
 
-        // Date : dagens datum
         public DateTime CommentDate = DateTime.Now;
 
-        // Name : string
         public string CommentName { get; set; }
 
-        // Mail : string
         public string CommentMail { get; set; }
 
-        // commentID : int
         public int CommentID { get; set; }
-        int commentID = 1;
 
         public int PostCommentID { get; set; }
 
@@ -193,7 +190,7 @@ namespace BlendasBlogg
             }
 
             Console.Write("Ange ID på den kommentar du vill ta bort, eller ange \"0\" för att gå tillbaka: ");
-            int idChoice = Convert.ToInt32(Console.ReadLine());
+            idChoice = Convert.ToInt32(Console.ReadLine());
             foreach (Comment comment in CommentList)
             {
                 if (comment.commentID == idChoice)
