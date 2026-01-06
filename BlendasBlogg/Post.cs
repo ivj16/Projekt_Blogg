@@ -10,6 +10,7 @@ namespace BlendasBlogg
         string header;
         string title;
         string content;
+        string userChoice;
         int dislikes = 0;
         int likes = 0;
         int postID = 1;
@@ -339,7 +340,7 @@ namespace BlendasBlogg
                                 "\n5, Gå tillbaka");
                             Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
 
-                            string userChoice = Console.ReadLine();
+                            userChoice = Console.ReadLine();
                             switch (userChoice)
                             {
                                 case "1":

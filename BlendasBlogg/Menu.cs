@@ -10,14 +10,18 @@ namespace BlendasBlogg
 {
     public class Menu
     {
+        //Fields
         public string userChoice;
+        bool isInMenu = true;
 
+        //Objects
         Post postObj = new Post();
         Comment commentObj = new Comment();
         PostAndComment postAndCommentObj = new PostAndComment();
         Subscriber subscriberObj = new Subscriber();
-        bool isInMenu = true;
-        
+        UserInfo user = new UserInfo();
+
+
         public void MainMenu()
         {
             Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:");
@@ -128,7 +132,6 @@ namespace BlendasBlogg
         {
 
             isInMenu = true;
-            UserInfo user = new UserInfo();
             Console.WriteLine("Välkommen Blenda! Eller är det verkligen du??\n\n");
             Console.Write("Skriv in ditt användarnamn: ");
             user.Username = Console.ReadLine();
