@@ -171,7 +171,7 @@ namespace BlendasBlogg
             }
 
             // Lägger till nya kommentaren i listan med alla kommentarer
-            Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
+            Comment newComment = new Comment(commentMail, commentName, commentTitle, commentContent, commentID++, postCommentID);
             CommentList.Add(newComment);
 
             Console.Clear();
