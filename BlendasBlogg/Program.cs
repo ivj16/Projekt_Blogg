@@ -4,12 +4,18 @@
     {
         static void Main(string[] args)
         {
+            //Fields
+            bool isRunAgain = true;
+            string userChoice;
+
+            //Objects
+            Menu menu = new Menu();
+
+
             Console.WriteLine("************ Blendas Blogg ************");
             Console.WriteLine("En blogg av Blenda blogger, för dig som vill veta så mycket onödigt som möjligt!\n");
 
-            bool isRunAgain = true;
-            string userChoice;
-            Menu menu = new Menu();
+            
 
             //while-loop som skriver ut menyn tills användaren väljer att avsluta
             //switch-sats för att hantera användarens val utifrån en meny

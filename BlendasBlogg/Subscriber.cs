@@ -8,11 +8,18 @@ namespace BlendasBlogg
 {
     public class Subscriber
     {
+        //Fields
         bool isInMenu = true;
+        string removeInput;
         string email;
+        string name;
+
+        //Properties
         public string SubscriberName { get; set; }
         public string SubscriberEmail { get; set; }
 
+
+        //Konstruktor
         public Subscriber() { }
 
         public Subscriber(string name, string email)
@@ -30,7 +37,7 @@ namespace BlendasBlogg
                 + "\nFörst behöver vi lite information om dig.");
 
             Console.WriteLine("Vänligen ange ditt namn: ");
-            string name = Console.ReadLine();
+            name = Console.ReadLine();
 
             Console.WriteLine("Vänligen ange din e-postadress: ");
             isInMenu = true;
@@ -47,7 +54,6 @@ namespace BlendasBlogg
                     isInMenu = false;
                 }
             }
-            
 
             Subscriber newSubscriber = new Subscriber(name, email);
 
@@ -57,6 +63,7 @@ namespace BlendasBlogg
             Console.WriteLine("Klart! Tack för att du prenumererar!");
             Post.BackToMenuMessage();
         }
+
         public void PrintSubscribers()
         {
             if (SubscribersList.Count > 0)
@@ -82,7 +89,7 @@ namespace BlendasBlogg
 
             do
             {
-                string removeInput = Console.ReadLine();
+                removeInput = Console.ReadLine();
                 foreach (Subscriber subscriber in SubscribersList)
                 {
                     if (removeInput == subscriber.SubscriberEmail)
