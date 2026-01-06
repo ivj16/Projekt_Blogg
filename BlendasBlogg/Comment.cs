@@ -10,6 +10,14 @@ namespace BlendasBlogg
 {
     public class Comment
     {
+        bool isInvalid = true;
+        int postCommentID;
+        string commentMail;
+        string commentName;
+        string commentTitle;
+        string commentContent;
+        Post postObj = new Post();
+        
         // Title : string
         public string CommentTitle { get; set; }
 
@@ -72,28 +80,96 @@ namespace BlendasBlogg
         // Lägga till kommentar:
         // Input för title, content, name och mail
         // Tilldelar dagens datum till Date
-        // Anropar Skapa ID-metoden
 
         public void AddComment()
         {
             Console.Write("Ange ID:t för det inlägg du vill interagera med: ");
-            int postCommentID = Convert.ToInt32(Console.ReadLine());
+            while (isInvalid)
+            {
+                try
+                {
+                    postCommentID = Convert.ToInt32(Console.ReadLine());
+                    if (postCommentID < 0)
+                    {
+                        Console.WriteLine("Ogiltigt val, skriv ID för ett existerande inlägg");
+                        isInvalid = true;
+                    }
+                    else
+                    {
+                        isInvalid = false;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Ogiltigt val, skriv ID för ett existerande inlägg");
+                    Thread.Sleep(3000);
+                }
+            }
+
             Console.Clear();
 
             Console.Write("\nAnge din e-postadress: ");
-            string commentMail = Console.ReadLine();
+            isInvalid = true;
+            while (isInvalid)
+            {
+                commentMail = Console.ReadLine();
+
+                if (!commentMail.Contains('@'))
+                {
+                    Console.WriteLine("Ogiltig inmatning, skriv en riktig e-postadress.");
+                }
+                else
+                {
+                    isInvalid= false;
+                }
+            }
 
             Console.Write("\nAnge ditt användarnamn: ");
-            string commentName = Console.ReadLine();
+            isInvalid= true;
+            while (isInvalid)
+            {
+                commentName = Console.ReadLine();
+                if (commentName == "")
+                {
+                    Console.WriteLine("Obligatoriskt fält, ange ditt användarnamn: ");
+                }
+                else
+                {
+                    isInvalid = false;
+                }
+            }
 
             Console.WriteLine("\nSkriv in en titel för din kommentar: ");
-            string CommentTitle = Console.ReadLine();
+            isInvalid = true;
+            while (isInvalid)
+            {
+                commentTitle = Console.ReadLine();
+                if (commentTitle == "")
+                {
+                    Console.WriteLine("Obligatoriskt fält, ange titel för kommentar");
+                }
+                else
+                {
+                    isInvalid = false;
+                }
+            }
 
             Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
-            string commentContent = Console.ReadLine();
+            isInvalid = true;
+            while (isInvalid)
+            {
+                commentContent = Console.ReadLine();
+                if (commentContent == "")
+                {
+                    Console.WriteLine("Obligatoriskt fält, ange innehåll för kommentar");
+                }
+                else
+                {
+                    isInvalid = false;
+                }
+            }
 
             // Lägger till nya kommentaren i listan med alla kommentarer
-
             Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
             CommentList.Add(newComment);
 
@@ -114,7 +190,7 @@ namespace BlendasBlogg
                 Console.WriteLine("-----------------------------\n");
             }
 
-            Console.Write("Ange ID på den kommentar du vill ta bort: ");
+            Console.Write("Ange ID på den kommentar du vill ta bort, eller ange \"0\" för att gå tillbaka: ");
             int idChoice = Convert.ToInt32(Console.ReadLine());
             foreach (Comment comment in CommentList)
             {
@@ -125,6 +201,10 @@ namespace BlendasBlogg
                     Console.Clear();
                     Console.WriteLine("Kommentaren har tagits bort!");
                     Thread.Sleep(1500);
+                    break;
+                }
+                else if (idChoice == 0)
+                {
                     break;
                 }
                 else
