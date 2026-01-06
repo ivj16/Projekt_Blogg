@@ -62,7 +62,8 @@ namespace BlendasBlogg
         
         public void RemoveSubscriber()
         {
-            Console.WriteLine("Ange e-postadressen för den prenumerant du vill ta bort: ");
+            Console.WriteLine("Ange e-postadressen för den prenumerant du vill ta bort, " +
+                "\nalternativt skriv ångra för att gå tillbaka: ");
             string removeInput = Console.ReadLine();
             foreach (Subscriber subscriber in SubscribersList)
             {

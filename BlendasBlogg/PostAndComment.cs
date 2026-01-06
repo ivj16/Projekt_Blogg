@@ -10,7 +10,7 @@ namespace BlendasBlogg
     {
 
         Post postObj = new Post();
-        Comment comment = new Comment();
+        Comment commentObj = new Comment();
 
 
         public PostAndComment() { }
@@ -83,7 +83,6 @@ namespace BlendasBlogg
 
 
         // Söka på inlägg:
-        // Input för vilken del som ska sökas på: Title, Content och Category - Variabel: searchChoice: string
         // Input för sökord inom den valda delen - Variabel : searchWord : string
         // För varje del som går att söka igenom:
         // Foreach-loop som går igenom alla inlägg
@@ -152,6 +151,42 @@ namespace BlendasBlogg
             }
         }
 
+        //Utifrån ID ska användaren kunna välja att gilla eller kommentera,
+        //alternativt gå tillbaka till huvudmenyn
+        public void InteractWithPost()
+        {
+            string userChoice;
+            Console.WriteLine("Vill du interagera med ett inlägg?");
+                        Console.WriteLine("\n1, Ge en tumme upp" +
+                            "\n2, Ge en tumme ner" +
+                            "\n3, Kommentera" +
+                            "\n4, Återvänd till användarmenyn");
+                        Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+                        userChoice = Console.ReadLine();
+
+
+            switch (userChoice)
+            {
+                case "1":
+                    //anropa metod för att gilla inlägget
+                    postObj.LikePost();
+                    break;
+                case "2":
+                    //anropa metod för att ogilla inlägget
+                    postObj.DislikePost();
+                    break;
+                case "3":
+                    //anropa metod för att kommentera inlägget
+                    commentObj.AddComment();
+                    Console.Clear();
+                    break;
+                default:
+                    //gå tillbaka till användarmenyn
+                    Console.Clear();
+                    break;
+
+            }
+        }
     }
 }
 

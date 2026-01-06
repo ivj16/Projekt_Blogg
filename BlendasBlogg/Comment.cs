@@ -31,16 +31,13 @@ namespace BlendasBlogg
 
         public int PostCommentID { get; set; }
 
-        public int PostLikeID { get; set; }
-
-        // Comments : List (key postID och value är comment)
+        // Comments : List
         static public List<Comment> CommentList = new List<Comment>();
-
-        static public List<KeyValuePair<int, int>> LikesList = new List<KeyValuePair<int, int>>();
 
         // Konstruktor:
 
         public Comment() { }
+
         // Innehåller mail, name, title, content, date, commentID
         public Comment(
             string commentMail,
@@ -60,28 +57,26 @@ namespace BlendasBlogg
             PostCommentID = postCommentID;
         }
 
+        public override string ToString()
+        {
+            return $"Användare: {CommentName}, {CommentMail}\n" +
+                   $"\n{CommentTitle}\n" +
+                   $"\n{CommentContent}\n" +
+                   $"\nDatum: {CommentDate}\n" +
+                   $"Kommentars-ID: {CommentID}\n" +
+                   $"------------------";
+        }
+
         // Metoder
-
-        // Skapa ID:
-        // For-loop som räknar antalet kommentarer som finns
-        // Plussar på 1 på ID-countern för varje kommentar
-
-
 
         // Lägga till kommentar:
         // Input för title, content, name och mail
         // Tilldelar dagens datum till Date
         // Anropar Skapa ID-metoden
 
-        //public int ChoosePostID()
-        //{
-        //    Console.Write("Ange ID på det inlägg du vill interagera med: ");
-        //    postCommentID = Convert.ToInt32(Console.ReadLine());
-        //    return postCommentID;
-        //}
         public void AddComment()
         {
-            Console.Write("Ange ID på det inlägg du vill interagera med: ");
+            Console.Write("Ange ID:t för det inlägg du vill interagera med: ");
             int postCommentID = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
 
@@ -97,6 +92,8 @@ namespace BlendasBlogg
             Console.WriteLine("\nSkriv in innehållet för din kommentar: ");
             string commentContent = Console.ReadLine();
 
+            // Lägger till nya kommentaren i listan med alla kommentarer
+
             Comment newComment = new Comment(commentMail, commentName, CommentTitle, commentContent, commentID++, postCommentID);
             CommentList.Add(newComment);
 
@@ -104,27 +101,6 @@ namespace BlendasBlogg
             Console.WriteLine("Kommentaren har laddats upp!");
             Thread.Sleep(1500);
         }
-
-        public override string ToString()
-        {
-            return $"Användare: {CommentName}, {CommentMail}\n" +
-                   $"\n{CommentTitle}\n" +
-                   $"\n{CommentContent}\n" +
-                   $"\nDatum: {CommentDate}\n" +
-                   $"Kommentars-ID: {CommentID}\n" +
-                   $"------------------";
-        }
-
-        public void PrintComments()
-        {
-
-            foreach (Comment comment in CommentList)
-            {
-                Console.WriteLine(comment);
-            }
-        }
-
-        // Lägger till nya kommentaren i listan med alla kommentarer
 
         // Ta bort kommentar:
         // Välj en kommentar via ID - variabel : idChoice : int

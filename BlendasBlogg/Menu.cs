@@ -31,17 +31,16 @@ namespace BlendasBlogg
 
         public void UserMenu ()
         {
+            Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
             isInMenu = true;
             while (isInMenu) {
-                Console.WriteLine("***********************************************************\n");
-                Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
                 Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
                 Console.WriteLine("\n1, Jag vill läsa alla inlägg från alla kategorier!" +
                     "\n2, Lista alla inlägg utifrån en kategori" +
                     "\n3, Jag vill söka efter ett inlägg" +
                     "\n4, Jag vill prenumerera på bloggen" +
                     "\n5, Gå tillbaka till huvudmenyn");
-                Console.Write("Skriv den siffra som motsvara ditt val: ");
+                Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
                 userChoice = Console.ReadLine();
                 Console.Clear();
 
@@ -50,43 +49,13 @@ namespace BlendasBlogg
                     // case 1: Lista alla inlägg
                     case "1":
                         postAndCommentObj.ListPosts();
-
-                        Console.WriteLine("Vill du interagera med ett inlägg?");
-                        Console.WriteLine("\n1, Ge en tumme upp" +
-                            "\n2, Ge en tumme ner" +
-                            "\n3, Kommentera" +
-                            "\n4, Återvänd till användarmenyn");
-                        userChoice = Console.ReadLine();
-
-
-                        switch (userChoice)
-                        {
-                            case "1":
-                                //anropa metod för att gilla inlägget
-                                postObj.LikePost();
-                                break;
-                            case "2":
-                                //anropa metod för att ogilla inlägget
-                                postObj.DislikePost();
-                                break;
-                            case "3":
-                                //anropa metod för att kommentera inlägget
-                                commentObj.AddComment();
-                                Console.Clear();
-                                break;
-                            default:
-                                //gå tillbaka till användarmenyn
-                                Console.Clear();
-                                break;
-                        }
-                        //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                        postAndCommentObj.InteractWithPost();
                         break;
 
                     // case 2: Lista alla inlägg utifrån kategori
                     case "2":
                         postAndCommentObj.ListPostFromCategory();
-
-                        //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                        postAndCommentObj.InteractWithPost();
                         break;
 
                     //case 3: Söka efter inlägg
@@ -97,7 +66,7 @@ namespace BlendasBlogg
                             "\n2, Sök efter kategori" +
                             "\n3, Sök efter fritext" +
                             "\n4, Gå tillbaka");
-                        Console.Write("Skriv den siffra som motsvarar ditt val: ");
+                        Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
                         userChoice = Console.ReadLine();
 
                         switch (userChoice)
@@ -105,19 +74,19 @@ namespace BlendasBlogg
                             //case 1: Sök efter rubrik
                             case "1":
                                 postAndCommentObj.SearchPostTitle();
-                                //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                                postAndCommentObj.InteractWithPost();
                                 break;
 
                             //case 2: Sök efter kategori
                             case "2":
                                 postAndCommentObj.ListPostFromCategory();
-                                //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                                postAndCommentObj.InteractWithPost();
                                 break;
 
                             //case 3: Sök efter fritext
                             case "3":
                                 postAndCommentObj.SearchPostContent();
-                                //Utifrån ID ska användaren kunna välja att gilla eller kommentera, alternativt gå tillbaka till huvudmenyn
+                                postAndCommentObj.InteractWithPost();
                                 break;
                         }
                         break;
@@ -140,7 +109,6 @@ namespace BlendasBlogg
 
             isInMenu = true;
             UserInfo user = new UserInfo();
-            Console.WriteLine("************************\n");
             Console.WriteLine("Välkommen Blenda! Eller är det verkligen du??\n\n");
             Console.Write("Skriv in ditt användarnamn: ");
             user.Username = Console.ReadLine();
@@ -156,13 +124,13 @@ namespace BlendasBlogg
                 while (isInMenu)
                 {
                     Console.WriteLine("Du är inloggad som admin\n");
-                    Console.WriteLine("1, Skapa ett nytt inlägg  \n" +
-                        "2, Redigera ett befintligt inlägg\n" +
-                        "3, Ta bort ett inlägg\n" +
-                        "4, Ta bort en kommentar\n" +
-                        "5, Visa en lista över prenumeranter\n" +
-                        "6, Logga ut");
-                    Console.Write("Skriv den siffra som motsvara ditt val: ");
+                    Console.WriteLine("\n1, Skapa ett nytt inlägg" +
+                        "\n2, Redigera ett befintligt inlägg" +
+                        "\n3, Ta bort ett inlägg" +
+                        "\n4, Ta bort en kommentar" +
+                        "\n5, Visa en lista över prenumeranter" +
+                        "\n6, Logga ut");
+                    Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
                     userChoice = Console.ReadLine();
                     Console.Clear();
 
@@ -170,11 +138,9 @@ namespace BlendasBlogg
                     {
                         //case 1: Skapa nytt inlägg
                         case "1":
-                            //postAndCommentObj.AddPostToDictionary();
+                            //anropa metod från Post-klassen för att skapa nytt inlägg
                             postObj.AddPost();
                             Console.Clear();
-
-                            //anropa metod från Post-klassen för att skapa nytt inlägg
                             break;
 
                         //case 2: Redigera befintligt inlägg eller ta bort kommentarer
@@ -191,11 +157,9 @@ namespace BlendasBlogg
 
                             postObj.RemovePost();
                             Console.Clear();
-                            //Liknande upplägg som för användare när inlägg listas - metod från Post-klassen.
-
-                            //if-else-sats för att välja ta bort eller gå tillbaka till admin-menyn
                             break;
 
+                        //case 4: Ta bort kommentar
                         case "4":
                             commentObj.RemoveComment();
                             Console.Clear();
@@ -205,10 +169,10 @@ namespace BlendasBlogg
                             subscriberObj.PrintSubscribers();
                             if (Subscriber.SubscribersList.Count > 0)
                             {
-                                Console.Write("Vill du ta bort en prenumerant? \n" +
-                                    "1, Ja\n" +
-                                    "2, Nej\n" +
-                                    "Skriv siffran som motsvarar ditt val: ");
+                                Console.Write("Vill du ta bort en prenumerant?\n" +
+                                    "\n1, Ja" +
+                                    "\n2, Nej" +
+                                    "\nSkriv siffran som motsvarar ditt val: ");
                                 userChoice = Console.ReadLine();
                                 if (userChoice == "1")
                                 {

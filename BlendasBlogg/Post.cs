@@ -6,7 +6,6 @@ namespace BlendasBlogg
 {
     public class Post
     {
-        Comment comment = new Comment();
         // Fält
         string header;
         // Properties
@@ -19,8 +18,6 @@ namespace BlendasBlogg
         // Date : dagens datum
         public DateTime date = DateTime.Now;
 
-        // Comments
-        // Anropa listan med kommentarer och sorterar på key för postID
         // Likes : int
         public int Likes { get; set; }
         int likes = 0;
@@ -86,9 +83,6 @@ namespace BlendasBlogg
 
             // Metoder
 
-            // Overridead ToString-metod
-            // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
-
             // Lägga till inlägg:
             // Input för title, content och category
             // Tilldelar dagens datum till Date
@@ -149,7 +143,7 @@ namespace BlendasBlogg
                 Console.WriteLine(post);
             }
 
-            Console.Write("Ange ID på det inlägg du vill ta bort: ");
+            Console.Write("Ange ID:t för det inlägg du vill ta bort: ");
             int idChoice = Convert.ToInt32(Console.ReadLine());
             foreach (Post post in PostList)
             {
@@ -168,7 +162,7 @@ namespace BlendasBlogg
         // Input för om man vill likea eller dislikea - Variabel : likeChoice : string
         public void LikePost()
         {
-            Console.Write("Ange ID på det inlägg du vill gilla: ");
+            Console.Write("Ange ID:t för det inlägg du vill ge en tumme upp: ");
             int LikeID = Convert.ToInt32(Console.ReadLine());
 
             foreach (Post post in PostList)
@@ -179,12 +173,13 @@ namespace BlendasBlogg
                     break;
                 }
             }
+            Console.Clear();
 
         }
 
         public void DislikePost()
         {
-            Console.Write("Ange ID på det inlägg du vill gilla: ");
+            Console.Write("Ange ID:t för det inlägg du vill ge en tumme ner: ");
             int LikeID = Convert.ToInt32(Console.ReadLine());
 
             foreach (Post post in PostList)
@@ -195,6 +190,7 @@ namespace BlendasBlogg
                     break;
                 }
             }
+            Console.Clear();
         }
 
 
@@ -218,7 +214,7 @@ namespace BlendasBlogg
                 Console.WriteLine(post);
             }
 
-            Console.Write("Ange ID på det inlägg du vill redigera: ");
+            Console.Write("Ange ID:t för det inlägg du vill redigera: ");
             int idChoice = Convert.ToInt32(Console.ReadLine());
             
 
@@ -232,7 +228,7 @@ namespace BlendasBlogg
                         "\n3, Kategori" +
                         "\n4, Header" +
                         "\n5, Gå tillbaka");
-                    Console.Write("Skriv den siffra som motsvarar ditt val: ");
+                    Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
 
                     string userChoice = Console.ReadLine();
                     switch (userChoice)
@@ -272,6 +268,7 @@ namespace BlendasBlogg
                             "\n3. Bubblor" +
                             "\n4. Glada ansikten" +
                             "\n5. Förvånade gubbar");
+                            Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
                             post.HeaderIndex = Convert.ToInt32(Console.ReadLine()) - 1;
                             Console.Clear();
                             Console.WriteLine("Inläggets header har uppdaterats!");
@@ -281,12 +278,12 @@ namespace BlendasBlogg
                         default:
                             break;
                     }
-
                 }
             }
         }
 
-
+        // Overridead ToString-metod
+        // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
         public override string ToString()
         {
             return $"{header}" +
