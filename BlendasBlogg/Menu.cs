@@ -243,6 +243,7 @@ namespace BlendasBlogg
             {
                 Console.WriteLine("\nDu är inte Blenda, vänligen gå in som användare i stället.");
                 Console.WriteLine("PS. Om du faktiskt är Blenda så skrev du in fel inloggningsuppgifter. Försök igen!\n");
+                Console.WriteLine("testar skriva");
                 Thread.Sleep(5000);
                 Console.Clear();
             }
