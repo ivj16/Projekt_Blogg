@@ -92,6 +92,7 @@ namespace BlendasBlogg
                                 break;
 
                             case "4":
+                                Thread.Sleep(1000);
                                 Post.BackToMenuMessage();
                                 break;
 
@@ -194,26 +195,30 @@ namespace BlendasBlogg
                                     "\n1, Ja" +
                                     "\n2, Nej" +
                                     "\nSkriv siffran som motsvarar ditt val: ");
-                                    userChoice = Console.ReadLine();
-                                    switch (userChoice)
+                                    do
                                     {
+                                        userChoice = Console.ReadLine();
+                                        switch (userChoice)
+                                        {
 
-                                        case "1":
-                                            subscriberObj.RemoveSubscriber();
-                                            isInMenu = false;
-                                            break;
+                                            case "1":
+                                                subscriberObj.RemoveSubscriber();
+                                                isInMenu = false;
+                                                break;
 
-                                        case "2":
-                                            Console.Clear();
-                                            Console.WriteLine("Ingen prenumerant har tagits bort");
-                                            Post.BackToMenuMessage();
-                                            isInMenu = false;
-                                            break;
+                                            case "2":
+                                                Console.Clear();
+                                                Console.WriteLine("Ingen prenumerant har tagits bort");
+                                                Thread.Sleep(1000);
+                                                Post.BackToMenuMessage();
+                                                isInMenu = false;
+                                                break;
 
-                                        default:
-                                            Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                                            break;
-                                    }
+                                            default:
+                                                Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                                                break;
+                                        }
+                                    } while (isInMenu);
                                 }
                             }
                             break;
@@ -223,13 +228,14 @@ namespace BlendasBlogg
                             isInMenu = false;
 
                             Console.WriteLine("Du har loggats ut från admin-kontot.\n");
+                            Thread.Sleep(1000);
                             Post.BackToMenuMessage();
                             break;
 
                         default:
                             Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                            Thread.Sleep(2500);
-                            Console.Clear();
+                            Thread.Sleep(1500);
+                            Post.BackToMenuMessage();
                             break;
                     }
                 }
@@ -238,8 +244,8 @@ namespace BlendasBlogg
             {
                 Console.WriteLine("\nDu är inte Blenda, vänligen gå in som användare i stället.");
                 Console.WriteLine("PS. Om du faktiskt är Blenda så skrev du in fel inloggningsuppgifter. Försök igen!\n");
-                Thread.Sleep(5000);
-                Console.Clear();
+                Thread.Sleep(4000);
+                Post.BackToMenuMessage();
             }
         }
     }

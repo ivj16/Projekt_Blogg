@@ -90,7 +90,6 @@ namespace BlendasBlogg
 
         public static void BackToMenuMessage()
         {
-            Thread.Sleep(1000);
             Console.Write("\nGår tillbaka till menyn");
             Thread.Sleep(500);
             Console.Write(".");
@@ -155,6 +154,7 @@ namespace BlendasBlogg
             PostList.Sort((a, b) => b.date.CompareTo(a.date));
             Console.Clear();
             Console.WriteLine("Inlägget har laddats upp!");
+            Thread.Sleep(1000);
             BackToMenuMessage();
         }
 
@@ -226,6 +226,7 @@ namespace BlendasBlogg
                         PostList.Remove(post);
                         Console.Clear();
                         Console.WriteLine("Inlägget har tagits bort!");
+                        Thread.Sleep(1000);
                         BackToMenuMessage();
                         break;
                     }
@@ -233,6 +234,7 @@ namespace BlendasBlogg
                     {
                         Console.Clear();
                         Console.WriteLine("Det finns inget inlägg med det ID:t, inget inlägg har tagits bort.");
+                        Thread.Sleep(1000);
                         BackToMenuMessage();
                     }
                 }
@@ -240,6 +242,7 @@ namespace BlendasBlogg
             else
             {
                 Console.WriteLine("Det finns inga inlägg.");
+                Thread.Sleep(1000);
                 BackToMenuMessage();
             }
         }
@@ -354,6 +357,7 @@ namespace BlendasBlogg
                                     post.Title = Console.ReadLine();
                                     Console.Clear();
                                     Console.WriteLine("Titeln har uppdaterats!");
+                                    Thread.Sleep(1000);
                                     BackToMenuMessage();
                                     break;
 
@@ -363,6 +367,7 @@ namespace BlendasBlogg
                                     post.Content = Console.ReadLine();
                                     Console.Clear();
                                     Console.WriteLine("Innehållet har uppdaterats!");
+                                    Thread.Sleep(1000);
                                     BackToMenuMessage();
                                     break;
 
@@ -372,6 +377,7 @@ namespace BlendasBlogg
                                     post.Category = categoryChoice;
                                     Console.Clear();
                                     Console.WriteLine("Kategorin har uppdaterats!");
+                                    Thread.Sleep(1000);
                                     BackToMenuMessage();
                                     break;
 
@@ -407,6 +413,7 @@ namespace BlendasBlogg
                                     post.header = headerArray[headerIndex];
                                     Console.Clear();
                                     Console.WriteLine("Inläggets header har uppdaterats!");
+                                    Thread.Sleep(1000);
                                     BackToMenuMessage();
                                     break;
 
@@ -417,6 +424,7 @@ namespace BlendasBlogg
                         else
                         {
                             Console.WriteLine("Det finns inget inlägg med det ID:t, inget inlägg har redigerats.");
+                            Thread.Sleep(1000);
                             BackToMenuMessage();    
                         }
                     }
