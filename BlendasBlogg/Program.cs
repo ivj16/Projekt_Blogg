@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             Console.WriteLine("************ Blendas Blogg ************");
-            Console.WriteLine("En blogg av Blenda blogger, för dig som vill veta så mycket onödigt som möjligt\n");
+            Console.WriteLine("En blogg av Blenda blogger, för dig som vill veta så mycket onödigt som möjligt!\n");
 
             bool isRunAgain = true;
             string userChoice;

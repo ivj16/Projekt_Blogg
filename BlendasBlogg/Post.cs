@@ -8,33 +8,34 @@ namespace BlendasBlogg
     {
         // Fält
         string header;
+        string title;
+        string content;
+        int dislikes = 0;
+        int likes = 0;
+        int postID = 1;
+        int headerIndex = 0;
+        int idChoice = 0;
+        public Category categoryChoice;  
+        bool isInvalid = true;
+
         // Properties
-        // Title : string
         public string Title { get; set; }
 
-        // Content : string
         public string Content { get; set; }
 
-        // Date : dagens datum
         public DateTime date = DateTime.Now;
 
-        // Likes : int
-        public int Likes { get; set; }
-        int likes = 0;
+        public int Likes { get; set; } 
 
         public int Dislikes { get; set; }
-        int dislikes = 0;
-
-        // Category : Category enum
-        public Category Category { get; set; }
-
-        public Category categoryChoice;
         
-
-        // postID : int
+        public Category Category { get; set; }
+        
         public int PostID { get; set; }
 
-        int postID = 1;
+        public int HeaderIndex { get; set; } = 0;
+
+        
 
         // Header : string array
         static string[] headerArray =
@@ -44,23 +45,13 @@ namespace BlendasBlogg
             "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°",
             "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
             ":-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
-        };
-
-        public int HeaderIndex { get; set; } = 0;
-
-        int headerIndex = 0;
+        };  
 
         // Posts : List (Post)
         public static List<Post> PostList = new List<Post>();
 
-        // För felhantering
-        bool isInvalid = true;
 
-        // För att hantera inläggs via ID
-        int idChoice = 0;
-
-        // Konstruktor:
-        // Innehåller Title, Content, Category, Header, Likes, ID, Date, Comments 
+        // Konstruktor
 
         public Post() { }
         public Post(
@@ -139,9 +130,9 @@ namespace BlendasBlogg
             } while (isInvalid);
 
                 Console.WriteLine("\nSkriv in en titel för ditt inlägg: ");
-            string title = Console.ReadLine();
+            title = Console.ReadLine();
             Console.WriteLine("\nSkriv in innehållet för ditt inlägg: ");
-            string content = Console.ReadLine();
+            content = Console.ReadLine();
             CategoryChoice();
 
             Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++, likes, dislikes);
