@@ -92,7 +92,7 @@ namespace BlendasBlogg
                                 break;
 
                             case "4":
-                                Console.Clear();
+                                Post.BackToMenuMessage();
                                 break;
 
                             default:
@@ -109,6 +109,7 @@ namespace BlendasBlogg
 
 
                     case "5":
+                        Post.BackToMenuMessage();
                         isInMenu = false;
                         break;
 
@@ -206,7 +207,7 @@ namespace BlendasBlogg
                                             Console.Clear();
                                             Console.WriteLine("Ingen prenumerant har tagits bort");
                                             Thread.Sleep(2000);
-                                            Console.Clear();
+                                            Post.BackToMenuMessage();
                                             isInMenu = false;
                                             break;
 
@@ -228,7 +229,7 @@ namespace BlendasBlogg
                             Console.WriteLine("Du har loggats ut från admin-kontot.\n");
 
                             Thread.Sleep(2000);
-                            Console.Clear();
+                            Post.BackToMenuMessage();
                             break;
 
                         default:

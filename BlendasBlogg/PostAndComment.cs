@@ -89,6 +89,7 @@ namespace BlendasBlogg
         // If-sats som skriver ut de som matchar sökordet
         public void SearchPostTitle() 
         {
+
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på rubriken på inlägget.");
             Console.Write("Skriv in sökordet här: ");
             string searchTitle = Console.ReadLine();
@@ -180,8 +181,13 @@ namespace BlendasBlogg
                     commentObj.AddComment();
                     Console.Clear();
                     break;
+                case "4":
+                    //Går tillbaka till användarmenyn
+                    Post.BackToMenuMessage();
+                    break;
                 default:
-                    //gå tillbaka till användarmenyn
+                    Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
+                    Thread.Sleep(2500);
                     Console.Clear();
                     break;
 

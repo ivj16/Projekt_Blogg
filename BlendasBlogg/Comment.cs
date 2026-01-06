@@ -178,6 +178,7 @@ namespace BlendasBlogg
             Console.Clear();
             Console.WriteLine("Kommentaren har laddats upp!");
             Thread.Sleep(1500);
+            Post.BackToMenuMessage();
         }
 
         // Ta bort kommentar:
@@ -203,6 +204,7 @@ namespace BlendasBlogg
                     Console.Clear();
                     Console.WriteLine("Kommentaren har tagits bort!");
                     Thread.Sleep(1500);
+                    Post.BackToMenuMessage();
                     break;
                 }
                 else if (idChoice == 0)

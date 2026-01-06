@@ -88,7 +88,7 @@ namespace BlendasBlogg
 
         // Metoder
 
-        public void BackToMenuMessage()
+        public static void BackToMenuMessage()
         {
             Thread.Sleep(1000);
             Console.Write("\nGår tillbaka till menyn");

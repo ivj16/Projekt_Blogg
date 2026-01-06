@@ -40,6 +40,7 @@ namespace BlendasBlogg
             Console.Clear();
             Console.WriteLine("Klart! Tack för att du prenumererar!");
             Thread.Sleep(1500);
+            Post.BackToMenuMessage();
             Console.Clear();
 
         }
@@ -77,7 +78,8 @@ namespace BlendasBlogg
                 else if (removeInput.ToLower() == "ångra")
                 {
                     Console.WriteLine("Ingen prenumerant har tagits bort.");
-           
+                    Post.BackToMenuMessage();
+
                 }
                 else
                 {
