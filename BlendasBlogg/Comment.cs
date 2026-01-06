@@ -19,14 +19,14 @@ namespace BlendasBlogg
         string commentName;
         string commentTitle;
         string commentContent;
-        Post postObj = new Post();
-        
+        public DateTime CommentDate = DateTime.Now;
+
         // Properties
         public string CommentTitle { get; set; }
 
         public string CommentContent { get; set; }
 
-        public DateTime CommentDate = DateTime.Now;
+        
 
         public string CommentName { get; set; }
 
@@ -38,6 +38,8 @@ namespace BlendasBlogg
 
         // Comments : List
         static public List<Comment> CommentList = new List<Comment>();
+
+        Post postObj = new Post();
 
         // Konstruktor:
 

@@ -18,13 +18,12 @@ namespace BlendasBlogg
         int idChoice = 0;
         public Category categoryChoice;  
         bool isInvalid = true;
+        public DateTime date = DateTime.Now;
 
         // Properties
         public string Title { get; set; }
 
         public string Content { get; set; }
-
-        public DateTime date = DateTime.Now;
 
         public int Likes { get; set; } 
 
