@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WXj0a8v6a7k=",
+  "dgSpecHash": "v0rai8jO0pg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\idavj\\source\\repos\\Projekt_Blogg\\BlendasBlogg\\BlendasBlogg.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\idavj\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.11\\microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\idavj\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.11\\microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\idavj\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.11\\microsoft.aspnetcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\idavj\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.11\\microsoft.netcore.app.host.win-x64.9.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\idavj\\source\\repos\\BlendasBlogg\\BlendasBlogg.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
