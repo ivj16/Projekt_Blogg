@@ -34,6 +34,12 @@
                         Console.WriteLine("Hejdå!");
                         isRunAgain = false;
                         break;
+
+                    default:
+                        Console.WriteLine("Ogiltigt val, välj ett av alternativen 1, 2, 3 från menyn. Skriv endast siffran.");
+                        Thread.Sleep(2000);
+                        Console.Clear();
+                        break;
                 }
             }
         }

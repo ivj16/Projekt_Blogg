@@ -23,10 +23,12 @@ namespace BlendasBlogg
             Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:");
             Console.WriteLine("\n1, Jag är en användare som vill läsa bloggen " +
                 "\n2, Jag vill logga in som admin och få full kontroll över bloggen " +
-                "\n3, Jag har läst nog för idag och vill säga hejdå\n");
-            Console.Write("Skriv den siffra som motsvara ditt val: ");
+                "\n3, Jag har läst nog för idag och vill säga hejdå");
+            Console.Write("\nSkriv den siffra som motsvara ditt val: ");
             userChoice = Console.ReadLine();
             Console.Clear();
+
+
         }
 
         public void UserMenu ()
@@ -88,6 +90,16 @@ namespace BlendasBlogg
                                 postAndCommentObj.SearchPostContent();
                                 postAndCommentObj.InteractWithPost();
                                 break;
+
+                            case "4":
+                                Console.Clear();
+                                break;
+
+                            default:
+                                Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
+                                Thread.Sleep(2500);
+                                Console.Clear();
+                                break;
                         }
                         break;
 
@@ -98,6 +110,12 @@ namespace BlendasBlogg
 
                     case "5":
                         isInMenu = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
+                        Thread.Sleep(2500);
+                        Console.Clear();
                         break;
                 }
             }
@@ -166,20 +184,41 @@ namespace BlendasBlogg
                             break;
 
                         case "5":
-                            subscriberObj.PrintSubscribers();
                             if (Subscriber.SubscribersList.Count > 0)
                             {
-                                Console.Write("Vill du ta bort en prenumerant?\n" +
+                                while (isInMenu)
+                                {
+                                    subscriberObj.PrintSubscribers();
+                                    Console.Write("Vill du ta bort en prenumerant?\n" +
                                     "\n1, Ja" +
                                     "\n2, Nej" +
                                     "\nSkriv siffran som motsvarar ditt val: ");
-                                userChoice = Console.ReadLine();
-                                if (userChoice == "1")
-                                {
-                                    subscriberObj.RemoveSubscriber();
+                                    userChoice = Console.ReadLine();
+                                    switch (userChoice)
+                                    {
+
+                                        case "1":
+                                            subscriberObj.RemoveSubscriber();
+                                            isInMenu = false;
+                                            break;
+
+                                        case "2":
+                                            Console.Clear();
+                                            Console.WriteLine("Ingen prenumerant har tagits bort");
+                                            Thread.Sleep(2000);
+                                            Console.Clear();
+                                            isInMenu = false;
+                                            break;
+
+                                        default:
+                                            Console.Clear();
+                                            Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
+                                            Thread.Sleep(2500);
+                                            Console.Clear();
+                                            break;
+                                    }
                                 }
                             }
-
                             break;
 
                         //case 4: Logga ut
@@ -193,15 +232,19 @@ namespace BlendasBlogg
                             break;
 
                         default:
-                            Console.WriteLine("Ogiltigt val, försök igen.\n");
+                            Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
+                            Thread.Sleep(2500);
+                            Console.Clear();
                             break;
                     }
                 }
             }
             else
             {
-                Console.WriteLine("`\nDu är inte Blenda, vänligen gå in som användare i stället.");
+                Console.WriteLine("\nDu är inte Blenda, vänligen gå in som användare i stället.");
                 Console.WriteLine("PS. Om du faktiskt är Blenda så skrev du in fel inloggningsuppgifter. Försök igen!\n");
+                Thread.Sleep(5000);
+                Console.Clear();
             }
         }
     }

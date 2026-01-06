@@ -40,6 +40,7 @@ namespace BlendasBlogg
             Console.Clear();
             Console.WriteLine("Klart! Tack för att du prenumererar!");
             Thread.Sleep(1500);
+            Console.Clear();
 
         }
         public void PrintSubscribers()
