@@ -84,20 +84,22 @@ namespace BlendasBlogg
         public void AddComment()
         {
             Console.Write("Ange ID:t för det inlägg du vill interagera med: ");
+            isInvalid = true;
             while (isInvalid)
             {
                 try
                 {
                     postCommentID = Convert.ToInt32(Console.ReadLine());
-                    if (postCommentID < 0)
-                    {
-                        Console.WriteLine("Ogiltigt val, skriv ID för ett existerande inlägg");
-                        isInvalid = true;
-                    }
-                    else
-                    {
-                        isInvalid = false;
-                    }
+                    foreach (Post post in Post.PostList)
+                        if (post.PostID == postCommentID)
+                        {
+                            isInvalid = false; 
+                            break;                     
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ogiltigt val, skriv ID för ett existerande inlägg");
+                        }
                 }
                 catch
                 {
