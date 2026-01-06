@@ -9,6 +9,7 @@ namespace BlendasBlogg
     public class Subscriber
     {
         bool isInMenu = true;
+        string email;
         public string SubscriberName { get; set; }
         public string SubscriberEmail { get; set; }
 
@@ -32,7 +33,21 @@ namespace BlendasBlogg
             string name = Console.ReadLine();
 
             Console.WriteLine("Vänligen ange din e-postadress: ");
-            string email = Console.ReadLine();
+            isInMenu = true;
+            while (isInMenu)
+            {
+                email = Console.ReadLine();
+
+                if (!email.Contains('@'))
+                {
+                    Console.WriteLine("Ogiltig inmatning, skriv en riktig e-postadress.");
+                }
+                else
+                {
+                    isInMenu = false;
+                }
+            }
+            
 
             Subscriber newSubscriber = new Subscriber(name, email);
 
@@ -84,7 +99,6 @@ namespace BlendasBlogg
                         Post.BackToMenuMessage();
                         isInMenu = false;
                         break;
-
                     }
                     else
                     {
