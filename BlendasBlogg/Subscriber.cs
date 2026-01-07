@@ -74,11 +74,6 @@ namespace BlendasBlogg
                     Console.WriteLine($"\nNamn: {subscriber.SubscriberName}, E-post: {subscriber.SubscriberEmail}");
                 }
             }
-            else 
-            {
-                Console.WriteLine("\nDet finns inga prenumeranter att lista. :(");
-                Post.BackToMenuMessage();
-            }
         } 
         
         public void RemoveSubscriber()
