@@ -31,8 +31,6 @@ namespace BlendasBlogg
             Console.Write("\nSkriv den siffra som motsvara ditt val: ");
             userChoice = Console.ReadLine();
             Console.Clear();
-
-
         }
 
         public void UserMenu ()
@@ -125,7 +123,6 @@ namespace BlendasBlogg
                         break;
                 }
             }
-
         }
 
         public void AdminMenu ()
@@ -199,30 +196,36 @@ namespace BlendasBlogg
                                     "\n2, Nej" +
                                     "\nSkriv siffran som motsvarar ditt val: ");
                                     
-                                        userChoice = Console.ReadLine();
-                                        switch (userChoice)
-                                        {
+                                    userChoice = Console.ReadLine();
+                                    switch (userChoice)
+                                    {
 
-                                            case "1":
-                                                subscriberObj.RemoveSubscriber();
-                                                isInMenu = false;
-                                                break;
+                                        case "1":
+                                            subscriberObj.RemoveSubscriber();
+                                            isInMenu = false;
+                                            break;
 
-                                            case "2":
-                                                Console.Clear();
-                                                Console.WriteLine("Ingen prenumerant har tagits bort");
-                                                Thread.Sleep(1000);
-                                                Post.BackToMenuMessage();
-                                                isInMenu = false;
-                                                break;
+                                        case "2":
+                                            Console.Clear();
+                                            Console.WriteLine("Ingen prenumerant har tagits bort");
+                                            Thread.Sleep(1000);
+                                            Post.BackToMenuMessage();
+                                            isInMenu = false;
+                                            break;
 
-                                            default:
-                                                Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
-                                                break;
-                                        }
+                                        default:
+                                            Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                                            break;
+                                    }
                                 }
-                                isInMenu = true;
                             }
+                            else
+                            {
+                                Console.WriteLine("Det finns inga prenumeranter. :'(");
+                                Thread.Sleep(2000);
+                                Post.BackToMenuMessage();
+                            }
+                            isInMenu = true;
                             break;
 
                         //case 4: Logga ut
