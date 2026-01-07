@@ -15,6 +15,7 @@ namespace BlendasBlogg
         bool isInMenu = true;
         bool isInvalid = false;
         bool isInSecondMenu = true;
+        bool isrunAgain = true;
         
 
         //Objects
@@ -27,45 +28,48 @@ namespace BlendasBlogg
 
         public void MainMenu()
         {
-            Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:");
-            Console.WriteLine("\n1. Jag är en användare som vill läsa bloggen " +
-                "\n2. Jag vill logga in som admin och få full kontroll över bloggen " +
-                "\n3. Jag har läst nog för idag och vill säga hejdå");
-            Console.Write("\nSkriv den siffra som motsvara ditt val: ");
-
-            do
+            while (isrunAgain)
             {
-                userChoice = Console.ReadLine();
-                isInMenu = true;
+                
+                Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:");
+                Console.WriteLine("\n1. Jag är en användare som vill läsa bloggen " +
+                    "\n2. Jag vill logga in som admin och få full kontroll över bloggen " +
+                    "\n3. Jag har läst nog för idag och vill säga hejdå");
+                Console.Write("\nSkriv den siffra som motsvara ditt val: ");
 
-                switch (userChoice)
+                do
                 {
-                    case "1":
-                        //användarmenyn
-                        Console.Clear();
-                        UserMenu();
-                        break;
+                    userChoice = Console.ReadLine();
+                    isInMenu = true;
 
-                    case "2":
-                        //adminmenyn
-                        Console.Clear();
-                        AdminMenu();
-                        break;
+                    switch (userChoice)
+                    {
+                        case "1":
+                            //användarmenyn
+                            Console.Clear();
+                            UserMenu();
+                            break;
 
-                    //case 3: avsluta programmet
-                    case "3":
-                        Console.Clear();
-                        Console.WriteLine("Hejdå!");
-                        isInMenu = false;
-                        break;
+                        case "2":
+                            //adminmenyn
+                            Console.Clear();
+                            AdminMenu();
+                            break;
 
-                    default:
-                        
-                        Console.Write("\nOgiltigt val, välj ett av alternativen 1, 2, 3 från menyn. Skriv endast siffran: ");
-                        break;
-                }
-            } while (isInMenu);
+                        //case 3: avsluta programmet
+                        case "3":
+                            Console.Clear();
+                            Console.WriteLine("Hejdå!");
+                            isInMenu = false;
+                            isrunAgain = false;                           
+                            break;
 
+                        default:
+                            Console.Write("\nOgiltigt val, välj ett av alternativen 1, 2, 3 från menyn. Skriv endast siffran: ");
+                            break;
+                    }
+                } while (isInMenu);
+            }
         }
 
         public void UserMenu ()
