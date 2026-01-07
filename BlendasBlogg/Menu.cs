@@ -210,7 +210,7 @@ namespace BlendasBlogg
             
             //IF-sats för att kolla användarnamn och lösenord
             if (user.Username == user.BlendasUsername && user.Password == user.BlendasPassword)
-            {   
+            {
 
                 while (isInMenu)
                 {
@@ -222,105 +222,102 @@ namespace BlendasBlogg
                         "\n5, Visa en lista över prenumeranter" +
                         "\n6, Logga ut");
                     Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
-                    userChoice = Console.ReadLine();
-                    Console.Clear();
-
-                    switch (userChoice)
+                    do
                     {
-                        //case 1: Skapa nytt inlägg
-                        case "1":
-                            //anropa metod från Post-klassen för att skapa nytt inlägg
-                            postObj.AddPost();
-                            Console.Clear();
-                            break;
+                        userChoice = Console.ReadLine();
+                        isInvalid = false;
 
-                        //case 2: Redigera befintligt inlägg eller ta bort kommentarer
-                        case "2":
-                            postObj.EditPost();
-                            Console.Clear();
-                            //Lista alla inlägg med ID - via metod från Post-klassen
-                            //Ta input från användaren för att välja inlägg att redigera
-                            //Anropa redigera inlägg-metoden från Post-klassen
-                            break;
+                        switch (userChoice)
+                        {
+                            //case 1: Skapa nytt inlägg
+                            case "1":
+                                Console.Clear();
+                                postObj.AddPost();
+                                Console.Clear();
+                                break;
 
-                        //case 3: Ta bort inlägg
-                        case "3":
+                            //case 2: Redigera befintligt inlägg eller ta bort kommentarer
+                            case "2":
+                                Console.Clear();
+                                postObj.EditPost();
+                                Console.Clear();
+                                break;
 
-                            postObj.RemovePost();
-                            Console.Clear();
-                            break;
+                            //case 3: Ta bort inlägg
+                            case "3":
+                                Console.Clear();
+                                postObj.RemovePost();
+                                Console.Clear();
+                                break;
 
-                        //case 4: Ta bort kommentar
-                        case "4":
-                            commentObj.RemoveComment();
-                            Console.Clear();
-                            break;
+                            //case 4: Ta bort kommentar
+                            case "4":
+                                Console.Clear();
+                                commentObj.RemoveComment();
+                                Console.Clear();
+                                break;
 
-                        case "5":
-                            if (Subscriber.SubscribersList.Count > 0)
-                            {
-                                while (isInMenu)
+                            case "5":
+                                Console.Clear();
+                                if (Subscriber.SubscribersList.Count > 0)
                                 {
-                                    subscriberObj.PrintSubscribers();
-                                    Console.Write("Vill du ta bort en prenumerant?\n" +
-                                    "\n1, Ja" +
-                                    "\n2, Nej" +
-                                    "\nSkriv siffran som motsvarar ditt val: ");
-                                    
-                                    userChoice = Console.ReadLine();
-                                    switch (userChoice)
+                                    while (isInMenu)
                                     {
+                                        subscriberObj.PrintSubscribers();
+                                        Console.Write("Vill du ta bort en prenumerant?\n" +
+                                        "\n1, Ja" +
+                                        "\n2, Nej" +
+                                        "\nSkriv siffran som motsvarar ditt val: ");
 
-                                        case "1":
-                                            subscriberObj.RemoveSubscriber();
-                                            isInMenu = false;
-                                            break;
+                                        userChoice = Console.ReadLine();
+                                        switch (userChoice)
+                                        {
 
-                                        case "2":
-                                            Console.Clear();
-                                            Console.WriteLine("Ingen prenumerant har tagits bort");
-                                            Thread.Sleep(1000);
-                                            Post.BackToMenuMessage();
-                                            isInMenu = false;
-                                            break;
+                                            case "1":
+                                                subscriberObj.RemoveSubscriber();
+                                                isInMenu = false;
+                                                break;
 
-                                        default:
-                                            Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
-                                            break;
+                                            case "2":
+                                                Console.Clear();
+                                                Console.WriteLine("Ingen prenumerant har tagits bort");
+                                                Post.BackToMenuMessage();
+                                                isInMenu = false;
+                                                break;
+
+                                            default:
+                                                Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                                                break;
+                                        }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                Console.WriteLine("Det finns inga prenumeranter. :'(");
-                                Thread.Sleep(2000);
+                                else
+                                {
+                                    Console.WriteLine("Det finns inga prenumeranter. :'(");
+                                    Post.BackToMenuMessage();
+                                }
+                                isInMenu = true;
+                                break;
+
+                            //case 4: Logga ut
+                            case "6":
+                                isInMenu = false;
+                                Console.Clear();
+                                Console.WriteLine("Du har loggats ut från admin-kontot.\n");
                                 Post.BackToMenuMessage();
-                            }
-                            isInMenu = true;
-                            break;
+                                break;
 
-                        //case 4: Logga ut
-                        case "6":
-                            isInMenu = false;
-
-                            Console.WriteLine("Du har loggats ut från admin-kontot.\n");
-                            Thread.Sleep(1000);
-                            Post.BackToMenuMessage();
-                            break;
-
-                        default:
-                            Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                            Thread.Sleep(1500);
-                            Post.BackToMenuMessage();
-                            break;
-                    }
+                            default:
+                                Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                                isInvalid = true;
+                                break;
+                        }
+                    } while (isInvalid);
                 }
             }
             else
             {
-                Console.WriteLine("\nDu är inte Blenda, vänligen gå in som användare i stället.");
-                Console.WriteLine("PS. Om du faktiskt är Blenda så skrev du in fel inloggningsuppgifter. Försök igen!\n");
-                Thread.Sleep(4000);
+                Console.WriteLine("\nFel inloggningsuppgifter.");
                 Post.BackToMenuMessage();
             }
         }

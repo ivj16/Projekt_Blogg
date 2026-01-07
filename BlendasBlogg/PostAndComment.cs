@@ -13,7 +13,7 @@ namespace BlendasBlogg
         string userChoice;
         bool hasComment;
         public bool hasPrinted = false;
-
+        bool isInvalid = false;
 
         //Objects
         Post postObj = new Post();
@@ -49,8 +49,7 @@ namespace BlendasBlogg
                 {
                     Console.WriteLine("Inga kommentarer ännu\n");
                 }
-
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
         }
 
@@ -84,7 +83,7 @@ namespace BlendasBlogg
                     {
                         Console.WriteLine("Inga kommentarer ännu\n");
                     }
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                 }
             }
         }
@@ -124,8 +123,8 @@ namespace BlendasBlogg
                     {
                         Console.WriteLine("Inga kommentarer ännu\n");
                     }
-                    Thread.Sleep(500);
                 }
+                Thread.Sleep(1000);
             }
         }
 
@@ -158,8 +157,8 @@ namespace BlendasBlogg
                     {
                         Console.WriteLine("Inga kommentarer ännu\n");
                     }
-                    Thread.Sleep(500);
                 }
+                Thread.Sleep(1000);
             }
         }
 
@@ -168,42 +167,46 @@ namespace BlendasBlogg
         public void InteractWithPost()
         {
             Console.WriteLine("Vill du interagera med ett inlägg?");
-                        Console.WriteLine("\n1, Ge en tumme upp" +
-                            "\n2, Ge en tumme ner" +
-                            "\n3, Kommentera" +
-                            "\n4, Återvänd till användarmenyn");
-                        Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
-                        userChoice = Console.ReadLine();
-
-
-            switch (userChoice)
+            Console.WriteLine("\n1, Ge en tumme upp" +
+                "\n2, Ge en tumme ner" +
+                "\n3, Kommentera" +
+                "\n4, Återvänd till användarmenyn");
+            Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+            do
             {
-                case "1":
-                    //anropa metod för att gilla inlägget
-                    postObj.LikePost();
-                    break;
-                case "2":
-                    //anropa metod för att ogilla inlägget
-                    postObj.DislikePost();
-                    break;
-                case "3":
-                    //anropa metod för att kommentera inlägget
-                    commentObj.AddComment();
-                    Console.Clear();
-                    break;
-                case "4":
-                    //Går tillbaka till användarmenyn
-                    Console.Clear();
-                    Post.BackToMenuMessage();
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                    Thread.Sleep(1000);
-                    Post.BackToMenuMessage();
-                    break;
+                userChoice = Console.ReadLine();
+                isInvalid = false;
 
-            }
+                switch (userChoice)
+                {
+                    case "1":
+                        //anropa metod för att gilla inlägget
+                        Console.Clear();
+                        postObj.LikePost();
+                        break;
+                    case "2":
+                        //anropa metod för att ogilla inlägget
+                        Console.Clear();
+                        postObj.DislikePost();
+                        break;
+                    case "3":
+                        //anropa metod för att kommentera inlägget
+                        Console.Clear();
+                        commentObj.AddComment();
+                        Console.Clear();
+                        break;
+                    case "4":
+                        //Går tillbaka till användarmenyn
+                        Console.Clear();
+                        Post.BackToMenuMessage();
+                        break;
+                    default:
+                        Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                        isInvalid = true;
+                        break;
+
+                }
+            } while (isInvalid);
         }
     }
 }
