@@ -19,7 +19,7 @@ namespace BlendasBlogg
         string commentName;
         string commentTitle;
         string commentContent;
-        public DateTime CommentDate = DateTime.Now;
+        public DateTime commentDate;
 
         // Properties
         public string CommentTitle { get; set; }
@@ -59,7 +59,7 @@ namespace BlendasBlogg
             CommentName = commentName;
             CommentTitle = commentTitle;
             CommentContent = commentContent;
-            CommentDate = DateTime.Now;
+            commentDate = DateTime.Now;
             CommentID = commentID;
             PostCommentID = postCommentID;
         }
@@ -69,7 +69,7 @@ namespace BlendasBlogg
             return $"Användare: {CommentName}, {CommentMail}\n" +
                    $"\n{CommentTitle}\n" +
                    $"\n{CommentContent}\n" +
-                   $"\nDatum: {CommentDate}\n" +
+                   $"\nDatum: {commentDate}\n" +
                    $"Kommentars-ID: {CommentID}\n" +
                    $"------------------";
         }
