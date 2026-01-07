@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace BlendasBlogg
         //Fields
         string userChoice;
         bool hasComment;
+        public bool hasPrinted = false;
+
 
         //Objects
         Post postObj = new Post();
@@ -24,13 +27,14 @@ namespace BlendasBlogg
         // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
         public void ListPosts()
         {
-
+            hasPrinted = false;
             foreach (var post in Post.PostList) 
             {
                 Console.WriteLine("--------------------------------------------------------------\n");
                 Console.WriteLine(post);
                 Console.WriteLine("******************* Kommentarer *******************");
                 hasComment = false;
+                hasPrinted = true;
 
                 foreach (Comment comment in Comment.CommentList)
                 {
@@ -55,6 +59,7 @@ namespace BlendasBlogg
         // If-sats som skriver ut inläggen som matchar en vald kategori
         public void ListPostFromCategory()
         {
+            hasPrinted = false;
             postObj.CategoryChoice();
             foreach (Post post in Post.PostList)
             {
@@ -64,6 +69,7 @@ namespace BlendasBlogg
                     Console.WriteLine(post);
                     Console.WriteLine("******************* Kommentarer *******************");
                     hasComment = false;
+                    hasPrinted = true;
 
                     foreach (Comment comment in Comment.CommentList)
                     {
@@ -91,7 +97,7 @@ namespace BlendasBlogg
         // If-sats som skriver ut de som matchar sökordet
         public void SearchPostTitle() 
         {
-
+            hasPrinted = false;
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på rubriken på inlägget.");
             Console.Write("Skriv in sökordet här: ");
             string searchTitle = Console.ReadLine();
@@ -103,6 +109,7 @@ namespace BlendasBlogg
                     Console.WriteLine(post);
                     Console.WriteLine("******************* Kommentarer *******************");
                     hasComment = false;
+                    hasPrinted = true;
 
                     foreach (Comment comment in Comment.CommentList)
                     {
@@ -124,6 +131,7 @@ namespace BlendasBlogg
 
         public void SearchPostContent()
         {
+            hasPrinted = false;
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på ett ord som inlägget innehåller");
             Console.Write("Skriv in sökordet här: ");
             string searchContent = Console.ReadLine();
@@ -135,6 +143,7 @@ namespace BlendasBlogg
                     Console.WriteLine(post);
                     Console.WriteLine("******************* Kommentarer *******************");
                     hasComment = false;
+                    hasPrinted = true;
 
                     foreach (Comment comment in Comment.CommentList)
                     {

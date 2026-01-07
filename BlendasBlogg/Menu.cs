@@ -13,6 +13,8 @@ namespace BlendasBlogg
         //Fields
         public string userChoice;
         bool isInMenu = true;
+        bool isInvalid = false;
+        bool isInSecondMenu = true;
 
         //Objects
         Post postObj = new Post();
@@ -36,8 +38,10 @@ namespace BlendasBlogg
         public void UserMenu ()
         {
             Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
+
             isInMenu = true;
-            while (isInMenu) {
+            while (isInMenu)
+            {
                 Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
                 Console.WriteLine("\n1, Jag vill läsa alla inlägg från alla kategorier!" +
                     "\n2, Lista alla inlägg utifrån en kategori" +
@@ -45,83 +49,150 @@ namespace BlendasBlogg
                     "\n4, Jag vill prenumerera på bloggen" +
                     "\n5, Gå tillbaka till huvudmenyn");
                 Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
-                userChoice = Console.ReadLine();
-                Console.Clear();
 
-                switch (userChoice)
+                isInMenu = true;
+                do
                 {
-                    // case 1: Lista alla inlägg
-                    case "1":
-                        postAndCommentObj.ListPosts();
-                        postAndCommentObj.InteractWithPost();
-                        break;
+                    isInvalid = false;
+                    userChoice = Console.ReadLine();
 
-                    // case 2: Lista alla inlägg utifrån kategori
-                    case "2":
-                        postAndCommentObj.ListPostFromCategory();
-                        postAndCommentObj.InteractWithPost();
-                        break;
-
-                    //case 3: Söka efter inlägg
-                    case "3":
-                        //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
-                        Console.WriteLine("Nu ska vi leta reda på inlägget du söker! Hur vill du söka efter det?" +
-                            "\n1, Sök efter rubrik" +
-                            "\n2, Sök efter kategori" +
-                            "\n3, Sök efter fritext" +
-                            "\n4, Gå tillbaka");
-                        Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
-                        userChoice = Console.ReadLine();
-
-                        switch (userChoice)
-                        {
-                            //case 1: Sök efter rubrik
-                            case "1":
-                                postAndCommentObj.SearchPostTitle();
+                    switch (userChoice)
+                    {
+                        // case 1: Lista alla inlägg
+                        case "1":
+                            Console.Clear();
+                            postAndCommentObj.ListPosts();
+                            if (postAndCommentObj.hasPrinted)
+                            {
                                 postAndCommentObj.InteractWithPost();
-                                break;
-
-                            //case 2: Sök efter kategori
-                            case "2":
-                                postAndCommentObj.ListPostFromCategory();
-                                postAndCommentObj.InteractWithPost();
-                                break;
-
-                            //case 3: Sök efter fritext
-                            case "3":
-                                postAndCommentObj.SearchPostContent();
-                                postAndCommentObj.InteractWithPost();
-                                break;
-
-                            case "4":
-                                Thread.Sleep(1000);
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Inga inlägg hittades.");
                                 Post.BackToMenuMessage();
                                 break;
+                            }
+                            break;
 
-                            default:
-                                Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                                Thread.Sleep(2500);
+                        // case 2: Lista alla inlägg utifrån kategori
+                        case "2":
+                            Console.Clear();
+                            postAndCommentObj.ListPostFromCategory();
+                            if (postAndCommentObj.hasPrinted)
+                            {
+                                postAndCommentObj.InteractWithPost();
+                            }
+                            else
+                            {
                                 Console.Clear();
+                                Console.WriteLine("Inga inlägg hittades.");
+                                Post.BackToMenuMessage();
                                 break;
-                        }
-                        break;
+                            }
+                            break;
 
-                    case "4":
-                        subscriberObj.AddSubscriber();
-                        break;
+                        //case 3: Söka efter inlägg
+                        case "3":
+                            Console.Clear();
+                            //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
+                            while (isInSecondMenu)
+                            {
+                                Console.WriteLine("Nu ska vi leta reda på inlägget du söker! Hur vill du söka efter det?" +
+                                "\n1, Sök efter rubrik" +
+                                "\n2, Sök efter kategori" +
+                                "\n3, Sök efter fritext" +
+                                "\n4, Gå tillbaka");
+                                Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+
+                            
+                                userChoice = Console.ReadLine();
+
+                                switch (userChoice)
+                                {
+                                    //case 1: Sök efter rubrik
+                                    case "1":
+                                        Console.Clear();
+                                        postAndCommentObj.SearchPostTitle();
+                                        if (postAndCommentObj.hasPrinted)
+                                        {
+                                            postAndCommentObj.InteractWithPost();
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Inga inlägg hittades.");
+                                            Post.BackToMenuMessage();
+                                            break;
+                                        }
+                                        break;
+
+                                    //case 2: Sök efter kategori
+                                    case "2":
+                                        Console.Clear();
+                                        postAndCommentObj.ListPostFromCategory();
+                                        if (postAndCommentObj.hasPrinted)
+                                        {
+                                            postAndCommentObj.InteractWithPost();
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Inga inlägg hittades.");
+                                            Post.BackToMenuMessage();
+                                            break;
+                                        }
+                                        break;
+
+                                    //case 3: Sök efter fritext
+                                    case "3":
+                                        Console.Clear();
+                                        postAndCommentObj.SearchPostContent();
+                                        if (postAndCommentObj.hasPrinted)
+                                        {
+                                            postAndCommentObj.InteractWithPost();
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Inga inlägg hittades.");
+                                            Post.BackToMenuMessage();
+                                            break;
+                                        }
+                                        break;
+
+                                    case "4":
+                                        Console.Clear();
+                                        Post.BackToMenuMessage();
+                                        isInSecondMenu = false;
+                                        break;
+
+                                    default:
+                                        Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran:");
+                                        break;
+                                }
+                            }                           
+                            break;
+
+                        case "4":
+                            Console.Clear();
+                            subscriberObj.AddSubscriber();
+                            break;
 
 
-                    case "5":
-                        Post.BackToMenuMessage();
-                        isInMenu = false;
-                        break;
+                        case "5":
+                            Console.Clear();
+                            Post.BackToMenuMessage();
+                            isInMenu = false;
+                            break;
 
-                    default:
-                        Console.WriteLine("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran.");
-                        Thread.Sleep(2500);
-                        Console.Clear();
-                        break;
+                        default:
+                            Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran:");
+                            isInvalid = true;
+                            break;
+                    }                   
                 }
+                while (isInvalid);
             }
         }
 

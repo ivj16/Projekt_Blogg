@@ -36,10 +36,10 @@ namespace BlendasBlogg
             Console.WriteLine("Så kul att du vill prenumerera på Blendas coola blogg!"
                 + "\nFörst behöver vi lite information om dig.");
 
-            Console.WriteLine("Vänligen ange ditt namn: ");
+            Console.WriteLine("\nVänligen ange ditt namn: ");
             name = Console.ReadLine();
 
-            Console.WriteLine("Vänligen ange din e-postadress: ");
+            Console.WriteLine("\nVänligen ange din e-postadress: ");
             isInMenu = true;
             while (isInMenu)
             {
@@ -47,7 +47,7 @@ namespace BlendasBlogg
 
                 if (!email.Contains('@'))
                 {
-                    Console.WriteLine("Ogiltig inmatning, skriv en riktig e-postadress.");
+                    Console.Write("\nOgiltig inmatning, skriv en riktig e-postadress:");
                 }
                 else
                 {
@@ -71,12 +71,12 @@ namespace BlendasBlogg
                 Console.WriteLine("Här är en lista av alla prenumeranter:");
                 foreach (var subscriber in SubscribersList)
                 {
-                    Console.WriteLine($"Namn: {subscriber.SubscriberName}, E-post: {subscriber.SubscriberEmail}\n");
+                    Console.WriteLine($"\nNamn: {subscriber.SubscriberName}, E-post: {subscriber.SubscriberEmail}");
                 }
             }
             else 
             {
-                Console.WriteLine("Det finns inga prenumeranter att lista. :(");
+                Console.WriteLine("\nDet finns inga prenumeranter att lista. :(");
                 Post.BackToMenuMessage();
             }
         } 
@@ -84,7 +84,7 @@ namespace BlendasBlogg
         public void RemoveSubscriber()
         {
             
-            Console.WriteLine("Ange e-postadressen för den prenumerant du vill ta bort, " +
+            Console.WriteLine("\nAnge e-postadressen för den prenumerant du vill ta bort, " +
                 "\nalternativt skriv ångra för att gå tillbaka: ");
 
             do
@@ -95,21 +95,21 @@ namespace BlendasBlogg
                     if (removeInput == subscriber.SubscriberEmail)
                     {
                         SubscribersList.Remove(subscriber);
-                        Console.WriteLine($"{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
+                        Console.WriteLine($"\n{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
                         Post.BackToMenuMessage();
                         isInMenu = false;
                         break;
                     }
                     else if (removeInput.ToLower() == "ångra")
                     {
-                        Console.WriteLine("Ingen prenumerant har tagits bort.");
+                        Console.WriteLine("\nIngen prenumerant har tagits bort.");
                         Post.BackToMenuMessage();
                         isInMenu = false;
                         break;
                     }
                     else
                     {
-                        Console.WriteLine("Det hittades ingen prenumerant med den e-postadressen.");
+                        Console.WriteLine("\nDet hittades ingen prenumerant med den e-postadressen.");
                         
                         isInMenu = true;
                     }
