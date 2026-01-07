@@ -306,27 +306,31 @@ namespace BlendasBlogg
                                         "\n1, Ja" +
                                         "\n2, Nej" +
                                         "\nSkriv siffran som motsvarar ditt val: ");
-
-                                        userChoice = Console.ReadLine();
-                                        switch (userChoice)
+                                        do
                                         {
+                                            isInvalid = false;
+                                            userChoice = Console.ReadLine();
+                                            switch (userChoice)
+                                            {
 
-                                            case "1":
-                                                subscriberObj.RemoveSubscriber();
-                                                isInMenu = false;
-                                                break;
+                                                case "1":
+                                                    subscriberObj.RemoveSubscriber();
+                                                    isInMenu = false;
+                                                    break;
 
-                                            case "2":
-                                                Console.Clear();
-                                                Console.WriteLine("Ingen prenumerant har tagits bort");
-                                                Post.BackToMenuMessage();
-                                                isInMenu = false;
-                                                break;
+                                                case "2":
+                                                    Console.Clear();
+                                                    Console.WriteLine("Ingen prenumerant har tagits bort");
+                                                    Post.BackToMenuMessage();
+                                                    isInMenu = false;
+                                                    break;
 
-                                            default:
-                                                Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
-                                                break;
-                                        }
+                                                default:
+                                                    Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                                                    isInvalid = true;
+                                                    break;
+                                            }
+                                        } while (isInvalid);
                                     }
                                 }
                                 else
