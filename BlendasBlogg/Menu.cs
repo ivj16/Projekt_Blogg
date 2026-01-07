@@ -15,6 +15,7 @@ namespace BlendasBlogg
         bool isInMenu = true;
         bool isInvalid = false;
         bool isInSecondMenu = true;
+        
 
         //Objects
         Post postObj = new Post();
@@ -27,27 +28,60 @@ namespace BlendasBlogg
         public void MainMenu()
         {
             Console.WriteLine("Välj ett av nedan val för det som du önskar göra idag:");
-            Console.WriteLine("\n1, Jag är en användare som vill läsa bloggen " +
-                "\n2, Jag vill logga in som admin och få full kontroll över bloggen " +
-                "\n3, Jag har läst nog för idag och vill säga hejdå");
+            Console.WriteLine("\n1. Jag är en användare som vill läsa bloggen " +
+                "\n2. Jag vill logga in som admin och få full kontroll över bloggen " +
+                "\n3. Jag har läst nog för idag och vill säga hejdå");
             Console.Write("\nSkriv den siffra som motsvara ditt val: ");
-            userChoice = Console.ReadLine();
-            Console.Clear();
+
+            do
+            {
+                userChoice = Console.ReadLine();
+                isInMenu = true;
+
+                switch (userChoice)
+                {
+                    case "1":
+                        //användarmenyn
+                        Console.Clear();
+                        UserMenu();
+                        break;
+
+                    case "2":
+                        //adminmenyn
+                        Console.Clear();
+                        AdminMenu();
+                        break;
+
+                    //case 3: avsluta programmet
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine("Hejdå!");
+                        isInMenu = false;
+                        break;
+
+                    default:
+                        
+                        Console.Write("\nOgiltigt val, välj ett av alternativen 1, 2, 3 från menyn. Skriv endast siffran: ");
+                        break;
+                }
+            } while (isInMenu);
+
         }
 
         public void UserMenu ()
         {
+            Console.Clear();
             Console.WriteLine("Så kul att du hittat hit! Det finns massor av kul att läsa om och kommentera gärna och dela med dig av dina historier\n\n");
 
             isInMenu = true;
             while (isInMenu)
             {
                 Console.WriteLine("Vad är du intresserad av att läsa om idag?\n");
-                Console.WriteLine("\n1, Jag vill läsa alla inlägg från alla kategorier!" +
-                    "\n2, Lista alla inlägg utifrån en kategori" +
-                    "\n3, Jag vill söka efter ett inlägg" +
-                    "\n4, Jag vill prenumerera på bloggen" +
-                    "\n5, Gå tillbaka till huvudmenyn");
+                Console.WriteLine("\n1. Jag vill läsa alla inlägg från alla kategorier!" +
+                    "\n2. Lista alla inlägg utifrån en kategori" +
+                    "\n3. Jag vill söka efter ett inlägg" +
+                    "\n4. Jag vill prenumerera på bloggen" +
+                    "\n5. Gå tillbaka till huvudmenyn");
                 Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
 
                 isInMenu = true;
@@ -99,10 +133,10 @@ namespace BlendasBlogg
                             while (isInSecondMenu)
                             {
                                 Console.WriteLine("Nu ska vi leta reda på inlägget du söker! Hur vill du söka efter det?" +
-                                "\n1, Sök efter rubrik" +
-                                "\n2, Sök efter kategori" +
-                                "\n3, Sök efter fritext" +
-                                "\n4, Gå tillbaka");
+                                "\n1. Sök efter rubrik" +
+                                "\n2. Sök efter kategori" +
+                                "\n3. Sök efter fritext" +
+                                "\n4. Gå tillbaka");
                                 Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
 
                             
@@ -198,7 +232,7 @@ namespace BlendasBlogg
 
         public void AdminMenu ()
         {
-
+            Console.Clear();
             isInMenu = true;
             Console.WriteLine("Välkommen Blenda! Eller är det verkligen du??\n\n");
             Console.Write("Skriv in ditt användarnamn: ");
@@ -215,12 +249,12 @@ namespace BlendasBlogg
                 while (isInMenu)
                 {
                     Console.WriteLine("Du är inloggad som admin\n");
-                    Console.WriteLine("\n1, Skapa ett nytt inlägg" +
-                        "\n2, Redigera ett befintligt inlägg" +
-                        "\n3, Ta bort ett inlägg" +
-                        "\n4, Ta bort en kommentar" +
-                        "\n5, Visa en lista över prenumeranter" +
-                        "\n6, Logga ut");
+                    Console.WriteLine("\n1. Skapa ett nytt inlägg" +
+                        "\n2. Redigera ett befintligt inlägg" +
+                        "\n3. Ta bort ett inlägg" +
+                        "\n4. Ta bort en kommentar" +
+                        "\n5. Visa en lista över prenumeranter" +
+                        "\n6. Logga ut");
                     Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
                     do
                     {

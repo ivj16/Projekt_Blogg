@@ -90,10 +90,7 @@ namespace BlendasBlogg
 
 
         // Söka på inlägg:
-        // Input för sökord inom den valda delen - Variabel : searchWord : string
-        // För varje del som går att söka igenom:
-        // Foreach-loop som går igenom alla inlägg
-        // If-sats som skriver ut de som matchar sökordet
+
         public void SearchPostTitle() 
         {
             hasPrinted = false;
@@ -201,7 +198,7 @@ namespace BlendasBlogg
                         Post.BackToMenuMessage();
                         break;
                     default:
-                        Console.Write("Ogiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
+                        Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");
                         isInvalid = true;
                         break;
 

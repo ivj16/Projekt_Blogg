@@ -296,18 +296,6 @@ namespace BlendasBlogg
 
 
         // Redigera inlägg:
-        // Switch-case för vilken del av inlägget som vill redigeras
-        // Title:
-        // Input för nytt värde
-        // Content: 
-        // Input för nytt värde
-        // Category
-        // Input för nytt värde
-        // Header
-        // Input för nytt värde
-        // Avsluta
-        // Gå tillbaka med break
-
         public void EditPost()
         {
             foreach (Post post in PostList)
