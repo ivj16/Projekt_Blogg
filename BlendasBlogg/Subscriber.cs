@@ -10,7 +10,8 @@ namespace BlendasBlogg
     {
         //Fields
         bool isInMenu = true;
-        string removeInput;
+        string removeInputName;
+        string removeInputEmail;
         string email;
         string name;
 
@@ -74,40 +75,58 @@ namespace BlendasBlogg
                     Console.WriteLine($"\nNamn: {subscriber.SubscriberName}, E-post: {subscriber.SubscriberEmail}");
                 }
             }
+            else 
+            {
+                Console.WriteLine("\nDet finns inga prenumeranter att lista. :(");
+                Post.BackToMenuMessage();
+            }
         } 
         
         public void RemoveSubscriber()
         {
-            
-            Console.WriteLine("\nAnge e-postadressen för den prenumerant du vill ta bort, " +
-                "\nalternativt skriv ångra för att gå tillbaka: ");
-
             do
             {
-                removeInput = Console.ReadLine();
-                foreach (Subscriber subscriber in SubscribersList)
+                isInMenu = true;
+                Console.WriteLine("\nAnge namn för den prenumerant du vill ta bort, " +
+                "\nalternativt skriv ångra för att gå tillbaka: ");
+            
+                removeInputName = Console.ReadLine();
+
+                if (removeInputName == "ångra")
                 {
-                    if (removeInput == subscriber.SubscriberEmail)
+                    Console.Clear();
+                    Console.WriteLine("\nIngen prenumerant har tagits bort.");
+                    Post.BackToMenuMessage();
+                    isInMenu = false;
+                    break;
+                }
+                else 
+                {
+                    Console.WriteLine("\nAnge e-post för den prenumerant du vill ta bort: ");
+                    removeInputEmail = Console.ReadLine();
+
+                    Subscriber removeSubscriber = new Subscriber(removeInputName, removeInputEmail);
+
+                    foreach (Subscriber subscriber in SubscribersList)
                     {
-                        SubscribersList.Remove(subscriber);
-                        Console.WriteLine($"\n{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
-                        Post.BackToMenuMessage();
-                        isInMenu = false;
-                        break;
+
+                        if (removeSubscriber.SubscriberEmail == subscriber.SubscriberEmail)
+                        {
+                            SubscribersList.Remove(subscriber);
+                            Console.WriteLine($"\n{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
+                            Post.BackToMenuMessage();
+                            isInMenu = false;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Det finns ingen prenumerant med de angivna uppgifterna");
+                            isInMenu = true;
+                            break;
+                        }
                     }
-                    else if (removeInput.ToLower() == "ångra")
-                    {
-                        Console.WriteLine("\nIngen prenumerant har tagits bort.");
-                        Post.BackToMenuMessage();
-                        isInMenu = false;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nDet hittades ingen prenumerant med den e-postadressen.");
-                        
-                        isInMenu = true;
-                    }
+                      
+                   
                 }
             }
             while (isInMenu);

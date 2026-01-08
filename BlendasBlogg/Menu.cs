@@ -302,7 +302,7 @@ namespace BlendasBlogg
                                     while (isInMenu)
                                     {
                                         subscriberObj.PrintSubscribers();
-                                        Console.Write("Vill du ta bort en prenumerant?\n" +
+                                        Console.Write("\nVill du ta bort en prenumerant?\n" +
                                         "\n1, Ja" +
                                         "\n2, Nej" +
                                         "\nSkriv siffran som motsvarar ditt val: ");
