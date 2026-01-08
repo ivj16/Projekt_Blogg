@@ -177,18 +177,17 @@ namespace BlendasBlogg
                 switch (userChoice)
                 {
                     case "1":
-                        //anropa metod för att gilla inlägget
-                        Console.Clear();
+                        //anropa metod för att gilla inlägget                      
                         postObj.LikePost();
+                        Console.Clear();
                         break;
                     case "2":
                         //anropa metod för att ogilla inlägget
-                        Console.Clear();
                         postObj.DislikePost();
+                        Console.Clear();
                         break;
                     case "3":
                         //anropa metod för att kommentera inlägget
-                        Console.Clear();
                         commentObj.AddComment();
                         Console.Clear();
                         break;

@@ -176,7 +176,7 @@ namespace BlendasBlogg
                 }
                 catch
                 {
-                    Console.Write("Ogiltigt val, vänligen välj en kategori ur listan. Skriv endast siffran: ");
+                    Console.Write("\nOgiltigt val, vänligen välj en kategori ur listan. Skriv endast siffran: ");
                     isInvalid = true;
 
                 }
@@ -217,6 +217,12 @@ namespace BlendasBlogg
                         Console.Clear();
                         Console.WriteLine("Inlägget har tagits bort!");
                         BackToMenuMessage();
+                        break;
+                    }
+                    else if (idChoice == 0)
+                    {
+                        Console.Clear();
+                        BackToMenuMessage(); 
                         break;
                     }
                     else
