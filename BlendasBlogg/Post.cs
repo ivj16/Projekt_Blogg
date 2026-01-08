@@ -19,6 +19,7 @@ namespace BlendasBlogg
         public Category categoryChoice;  
         bool isInvalid = true;
         public DateTime date = DateTime.Now;
+        bool isFound;
 
         // Properties
         public string Title { get; set; }
@@ -188,6 +189,7 @@ namespace BlendasBlogg
         // Ta bort inlägget ur listan med alla inlägg
         public void RemovePost()
         {
+            isFound = false;
             foreach (Post post in PostList)
             {
                 Console.WriteLine(post);
@@ -217,6 +219,7 @@ namespace BlendasBlogg
                         Console.Clear();
                         Console.WriteLine("Inlägget har tagits bort!");
                         BackToMenuMessage();
+                        isFound = true;
                         break;
                     }
                     else if (idChoice == 0)
@@ -225,13 +228,13 @@ namespace BlendasBlogg
                         BackToMenuMessage(); 
                         break;
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Det finns inget inlägg med det ID:t, inget inlägg har tagits bort.");
-                        BackToMenuMessage();
-                        Thread.Sleep(500);
-                    }
+                }
+                if (isFound == false)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Det finns inget inlägg med det ID:t, inget inlägg har tagits bort.");
+                    BackToMenuMessage();
+                    Thread.Sleep(500);
                 }
             }
             else

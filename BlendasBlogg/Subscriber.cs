@@ -10,6 +10,7 @@ namespace BlendasBlogg
     {
         //Fields
         bool isInMenu = true;
+        bool isFound;
         string removeInputName;
         string removeInputEmail;
         string email;
@@ -86,6 +87,7 @@ namespace BlendasBlogg
         {
             do
             {
+                isFound = false;
                 isInMenu = true;
                 Console.WriteLine("\nAnge namn för den prenumerant du vill ta bort, " +
                 "\nalternativt skriv ångra för att gå tillbaka: ");
@@ -113,20 +115,21 @@ namespace BlendasBlogg
                         if (removeSubscriber.SubscriberEmail == subscriber.SubscriberEmail)
                         {
                             SubscribersList.Remove(subscriber);
+                            Console.Clear();
                             Console.WriteLine($"\n{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
                             Post.BackToMenuMessage();
                             isInMenu = false;
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Det finns ingen prenumerant med de angivna uppgifterna");
-                            isInMenu = true;
+                            isFound = true;
                             break;
                         }
                     }
-                      
-                   
+                    if (isFound = false)
+                    {
+                        Console.WriteLine("Det finns ingen prenumerant med de angivna uppgifterna");
+                        isInMenu = true;
+                        break;
+                    }
+
                 }
             }
             while (isInMenu);
