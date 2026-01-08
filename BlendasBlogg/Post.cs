@@ -41,10 +41,10 @@ namespace BlendasBlogg
         static string[] headerArray =
         {   
             "",
-            "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
-            "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°",
-            "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
-            ":-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
+            "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
+            "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO",
+            "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
+            "|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
         };  
 
         // Posts : List (Post)
@@ -419,14 +419,19 @@ namespace BlendasBlogg
         // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
         public override string ToString()
         {
-            return $"{header}" +
-                $"\n{Title}\n" +
-                $"\n{Content}\n" +
-                $"\n\nKategori: {Category}" +
-                $"\nDatum: {date}" +
-                $"\nInläggsID: {PostID}\n" +
+            return
+                $"------------------------------------------------------------------\n" +
+                $"{header}\n" +
+                $"\nTITEL: {Title}\n" +
+                $"| Kategori: {Category}" +
+                $" | Datum: {date}" +
+                $" | InläggsID: {PostID} |\n" +
+                $"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
+                $"\n\n{Content}\n\n" +
+                $"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
                 $"\nLikes: {likes}" +
-                $"\nDislikes: {dislikes}\n\n";
+                $"\nDislikes: {dislikes}\n" +
+                $"************************** Kommentarer **************************";
         }
     }
 }

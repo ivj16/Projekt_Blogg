@@ -19,7 +19,8 @@ namespace BlendasBlogg
         string commentName;
         string commentTitle;
         string commentContent;
-        public DateTime commentDate;
+        public DateOnly commentDate;
+        DateTime dateNow = DateTime.Now;
 
         // Properties
         public string CommentTitle { get; set; }
@@ -59,19 +60,15 @@ namespace BlendasBlogg
             CommentName = commentName;
             CommentTitle = commentTitle;
             CommentContent = commentContent;
-            commentDate = DateTime.Now;
+            commentDate = DateOnly.FromDateTime(dateNow);
             CommentID = commentID;
             PostCommentID = postCommentID;
         }
 
         public override string ToString()
         {
-            return $"Användare: {CommentName}, {CommentMail}\n" +
-                   $"\n{CommentTitle}\n" +
-                   $"\n{CommentContent}\n" +
-                   $"\nDatum: {commentDate}\n" +
-                   $"Kommentars-ID: {CommentID}\n" +
-                   $"------------------";
+            return $">> {CommentName} ({CommentMail}) skrev: {CommentTitle} || {commentDate}, ID: {CommentID} |\n" +
+                   $"   {CommentContent}\n";
         }
 
         // Metoder

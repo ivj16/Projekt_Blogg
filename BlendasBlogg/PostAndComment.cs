@@ -30,9 +30,7 @@ namespace BlendasBlogg
             hasPrinted = false;
             foreach (var post in Post.PostList) 
             {
-                Console.WriteLine("--------------------------------------------------------------\n");
                 Console.WriteLine(post);
-                Console.WriteLine("******************* Kommentarer *******************");
                 hasComment = false;
                 hasPrinted = true;
 
@@ -49,6 +47,7 @@ namespace BlendasBlogg
                 {
                     Console.WriteLine("Inga kommentarer ännu\n");
                 }
+                Console.WriteLine("------------------------------------------------------------------\n\n");
                 Thread.Sleep(1000);
             }
         }
@@ -63,10 +62,8 @@ namespace BlendasBlogg
             foreach (Post post in Post.PostList)
             {
                 if (post.Category == postObj.categoryChoice)
-                {
-                    Console.WriteLine("--------------------------------------------------------------\n");
+                {  
                     Console.WriteLine(post);
-                    Console.WriteLine("******************* Kommentarer *******************");
                     hasComment = false;
                     hasPrinted = true;
 
@@ -103,7 +100,6 @@ namespace BlendasBlogg
                 if (post.Title.ToLower().Contains(searchTitle.ToLower()))
                 {
                     Console.WriteLine(post);
-                    Console.WriteLine("******************* Kommentarer *******************");
                     hasComment = false;
                     hasPrinted = true;
 
@@ -137,7 +133,6 @@ namespace BlendasBlogg
                 if (post.Content.ToLower().Contains(searchContent.ToLower()))
                 {
                     Console.WriteLine(post);
-                    Console.WriteLine("******************* Kommentarer *******************");
                     hasComment = false;
                     hasPrinted = true;
 
