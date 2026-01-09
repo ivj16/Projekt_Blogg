@@ -200,10 +200,10 @@ namespace BlendasBlogg
         public void InteractWithPost()
         {
             Console.WriteLine("Vill du interagera med ett inlägg?");
-            Console.WriteLine("\n1, Ge en tumme upp" +
-                "\n2, Ge en tumme ner" +
-                "\n3, Kommentera" +
-                "\n4, Återvänd till användarmenyn");
+            Console.WriteLine("\n1. Ge en tumme upp" +
+                "\n2. Ge en tumme ner" +
+                "\n3. Kommentera" +
+                "\n4. Återvänd till användarmenyn");
             Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
             do
             {

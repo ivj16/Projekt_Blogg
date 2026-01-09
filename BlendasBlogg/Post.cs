@@ -14,7 +14,7 @@ namespace BlendasBlogg
         int dislikes = 0;
         int likes = 0;
         // Startar på 4 på grund av default-inläggen i Program.cs
-        public int postID = 1;
+        public int postID = 4;
         int headerIndex = 0;
         int idChoice = 0;
         public Category categoryChoice;  
@@ -81,6 +81,13 @@ namespace BlendasBlogg
 
         // Metoder
 
+        //Default-inlägg
+        public void CreateDefaultPosts()
+        {
+            PostList.Add(new Post(1, "Välkommen till Blendas Blogg!", "Hej och välkommen till min blogg! Här kommer jag att dela med mig \nav mina tankar, idéer och äventyr. Hoppas du gillar det!", Category.Nyheter, 1, 5, 0));
+            PostList.Add(new Post(4, "Ordspråk med mumsig twist!", "Brukar du säga \"Som man bäddar får man ligga?\" Då tycker jag du \nkan lägga till en fika-twist och istället säga \n\"Som man bakar får man fika!\" :D", Category.Ordspråk, 2, 0, 0));
+            PostList.Add(new Post(0, "Du är snabbare än du tror!", "I alla fall när du är sjuk... Visste du att nysningar kan nå \nupp till 160 km/h i hastighet?! Det är snabbare än en \nkategori 1 orkan!", Category.Roliga_Fakta, 3, 0, 0));
+        }
 
         // Lägga till inlägg:
         public void AddPost()
@@ -175,53 +182,63 @@ namespace BlendasBlogg
         // Ta bort inlägg:
         public void RemovePost()
         {
+            // Bool för att kontrollera om några matchande inlägg hittas
             isFound = false;
+
             foreach (Post post in PostList)
             {
                 Console.WriteLine(post);
             }
+
+            //Kollar om det finns några inlägg i listan, som kan tas bort. Annars skrivs passande felmeddelande ut
             if (PostList.Count > 0)
             {
-                Console.Write("Ange ID:t för det inlägg du vill ta bort, alternativt skriv '0' för att gå tillbaka: ");
+                Console.Write("\nAnge ID:t för det inlägg du vill ta bort, alternativt skriv '0' för att gå tillbaka: ");
+
+                // do-while som kör om tills ett matchande inlägg hittas
                 do
                 {
-                    try
-                    {
-                        idChoice = Convert.ToInt32(Console.ReadLine());
-                        isInvalid = false;
-                    }
-                    catch
-                    {
-                        Console.Write("Ogiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
-                        isInvalid = true;
-                    }
-                } while (isInvalid);
 
-                foreach (Post post in PostList)
-                {
-                    if (post.PostID == idChoice)
+                    //do-while som kör om tills ett giltigt värde inmatas från användaren, siffra för int.
+                    do
                     {
-                        PostList.Remove(post);
-                        Console.Clear();
-                        Console.WriteLine("Inlägget har tagits bort!");
-                        Menu.BackToMenuMessage();
-                        isFound = true;
-                        break;
-                    }
-                    else if (idChoice == 0)
+                        try
+                        {
+                            idChoice = Convert.ToInt32(Console.ReadLine());
+                            isInvalid = false;
+                        }
+                        catch
+                        {
+                            Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                            isInvalid = true;
+                        }
+                    } while (isInvalid);
+
+                    foreach (Post post in PostList)
                     {
-                        Console.Clear();
-                        Menu.BackToMenuMessage(); 
-                        break;
+                        if (post.PostID == idChoice)
+                        {
+                            PostList.Remove(post);
+                            Console.Clear();
+                            Console.WriteLine("Inlägget har tagits bort!");
+                            Menu.BackToMenuMessage();
+                            isFound = true;
+                            break;
+                        }
+                        else if (idChoice == 0)
+                        {
+                            Console.Clear();
+                            Menu.BackToMenuMessage();
+                            break;
+                        }
                     }
-                }
-                if (isFound == false)
-                {
-                    Console.Clear();
-                    Console.WriteLine("Det finns inget inlägg med det ID:t, inget inlägg har tagits bort.");
-                    Menu.BackToMenuMessage();
-                    Thread.Sleep(500);
-                }
+
+                    if (isFound == false)
+                    {
+                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                    }
+
+                }while(isFound == false);
             }
             else
             {
@@ -233,9 +250,10 @@ namespace BlendasBlogg
         // Gilla inlägg:
         public void LikePost()
         {
-            Console.Write("Ange ID:t för det inlägg du vill ge en tumme upp och tryck sedan enter: ");
+            Console.Write("\nAnge ID:t för det inlägg du vill ge en tumme upp och tryck sedan enter: ");
             do
             {
+                isFound = false;
                 try
                 {
                     idChoice = Convert.ToInt32(Console.ReadLine());
@@ -244,28 +262,36 @@ namespace BlendasBlogg
                     {
                         if (post.PostID == idChoice)
                         {
+                            isFound = true;
                             post.likes++;
                             isInvalid = false;
+                            Console.Clear();
+                            Console.WriteLine("Du har gett inlägget en tumme upp!");
+                            Menu.BackToMenuMessage();
                             break;
                         }
+                    }
+                    if (!isFound)
+                    {
+                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                        isInvalid = true;
                     }
                 }
                 catch
                 {
-                    Console.Write("Ogiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                    Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
                     isInvalid = true;
                 }
             } while (isInvalid);
-            Console.Clear();
-
         }
 
         // Ogilla inlägg:
         public void DislikePost()
         {
-            Console.Write("Ange ID:t för det inlägg du vill ge en tumme ner och tryck sedan enter: ");
+            Console.Write("\nAnge ID:t för det inlägg du vill ge en tumme ner och tryck sedan enter: ");
             do
             {
+                isFound = false;
                 try
                 {
                     idChoice = Convert.ToInt32(Console.ReadLine());
@@ -274,19 +300,27 @@ namespace BlendasBlogg
                     {
                         if (post.PostID == idChoice)
                         {
+                            isFound = true;
                             post.dislikes++;
                             isInvalid = false;
+                            Console.Clear();
+                            Console.WriteLine("Du har gett inlägget en tumme ner!");
+                            Menu.BackToMenuMessage();
                             break;
                         }
+                    }
+                    if (!isFound)
+                    {
+                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                        isInvalid = true;
                     }
                 }
                 catch
                 {
-                    Console.Write("Ogiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                    Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
                     isInvalid = true;
                 }
             } while (isInvalid);
-            Console.Clear();
         }
 
         // Redigera inlägg:
