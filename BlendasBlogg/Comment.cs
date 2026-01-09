@@ -11,6 +11,7 @@ namespace BlendasBlogg
     public class Comment
     {
         //Fields
+        bool isFound = false;
         bool isInvalid = true;
         int postCommentID;
         int commentID = 1;
@@ -182,34 +183,55 @@ namespace BlendasBlogg
 
         public void RemoveComment()
         {
-            foreach (Comment comment in CommentList)
+            if (CommentList.Count > 0)
             {
-                Console.WriteLine(comment);
-                Console.WriteLine("-----------------------------\n");
-            }
+                isFound = false;
+                foreach (Comment comment in CommentList)
+                {
+                    Console.WriteLine(comment);
+                    Console.WriteLine("-----------------------------\n");
+                }
+                do
+                {
+                    isInvalid = false;
+                    Console.Write("\nAnge ID på den kommentar du vill ta bort, eller ange \"0\" för att gå tillbaka: ");
+                    try
+                    {
+                        idChoice = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.Write("\nOgiltigt val, skriv ett giltigt ID med endast siffror: ");
+                        isInvalid = true;
+                    }
+                } while (isInvalid);
+                foreach (Comment comment in CommentList)
+                {
+                    if (comment.commentID == idChoice)
+                    {
+                        CommentList.Remove(comment);
+                        isFound = true;
+                        Console.Clear();
+                        Console.WriteLine("Kommentaren har tagits bort!");
+                        Post.BackToMenuMessage();
+                        break;
+                    }
+                    else if (idChoice == 0)
+                    {
+                        break;
+                    }
 
-            Console.Write("Ange ID på den kommentar du vill ta bort, eller ange \"0\" för att gå tillbaka: ");
-            idChoice = Convert.ToInt32(Console.ReadLine());
-            foreach (Comment comment in CommentList)
-            {
-                if (comment.commentID == idChoice)
-                {
-                    CommentList.Remove(comment);
-                   
-                    Console.Clear();
-                    Console.WriteLine("Kommentaren har tagits bort!");
-                    Post.BackToMenuMessage();
-                    break;
                 }
-                else if (idChoice == 0)
-                {
-                    break;
-                }
-                else
+                if (isFound == false)
                 {
                     Console.WriteLine("Kommentaren med det ID:t finns inte.");
-                    break;
+
                 }
+            }
+            else
+            {
+                Console.WriteLine("Det finns inga kommentarer att ta bort.");
+                Post.BackToMenuMessage();
             }
         }
     }

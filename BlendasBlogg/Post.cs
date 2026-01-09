@@ -40,8 +40,8 @@ namespace BlendasBlogg
 
         // Header : string array
         static string[] headerArray =
-        {   
-            "",
+        {
+            "C-:|)  (-:|]  C-:|=  (-:|B  C-:|>  (-:P  C-:|)  (-:|]  (-:|B  (-:P",
             "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
             "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO",
             "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
@@ -102,7 +102,7 @@ namespace BlendasBlogg
         public void AddPost()
         {
             Console.WriteLine("Välj en header till ditt inlägg!" +
-                "\n1. Tom" +
+                "\n1. Gubbar i hattar" +
                 "\n2. Hjärtan" +
                 "\n3. Bubblor" +
                 "\n4. Glada ansikten" +
@@ -368,7 +368,7 @@ namespace BlendasBlogg
                                     case "4":
                                         Console.Clear();
                                         Console.WriteLine("Välj en header till ditt inlägg!" +
-                                        "\n1. Tom" +
+                                        "\n1. Gubbar med hattar" +
                                         "\n2. Hjärtan" +
                                         "\n3. Bubblor" +
                                         "\n4. Glada ansikten" +
@@ -435,7 +435,6 @@ namespace BlendasBlogg
         public override string ToString()
         {
             return
-                $"------------------------------------------------------------------\n" +
                 $"{header}\n" +
                 $"\nTITEL: {Title}\n" +
                 $"| Kategori: {Category}" +
