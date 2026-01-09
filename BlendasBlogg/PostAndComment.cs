@@ -50,6 +50,16 @@ namespace BlendasBlogg
                 Console.WriteLine("------------------------------------------------------------------\n\n");
                 Thread.Sleep(1000);
             }
+            if (hasPrinted)
+            {
+                InteractWithPost();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Inga resultat hittades");
+                Menu.BackToMenuMessage();
+            }
         }
 
         // Skriva ut inlägg från kategori:
@@ -59,6 +69,7 @@ namespace BlendasBlogg
         {
             hasPrinted = false;
             postObj.CategoryChoice();
+            Console.Clear();
             foreach (Post post in Post.PostList)
             {
                 if (post.Category == postObj.categoryChoice)
@@ -82,6 +93,16 @@ namespace BlendasBlogg
                     }
                     Thread.Sleep(1000);
                 }
+            }
+            if (hasPrinted)
+            {
+                InteractWithPost();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Inga resultat hittades");
+                Menu.BackToMenuMessage();
             }
         }
 
@@ -116,8 +137,18 @@ namespace BlendasBlogg
                     {
                         Console.WriteLine("Inga kommentarer ännu\n");
                     }
-                }
-                Thread.Sleep(1000);
+                    Thread.Sleep(1000);
+                }                
+            }
+            if (hasPrinted)
+            {
+                InteractWithPost();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Inga resultat hittades");
+                Menu.BackToMenuMessage();
             }
         }
 
@@ -151,6 +182,16 @@ namespace BlendasBlogg
                     }
                 }
                 Thread.Sleep(1000);
+            }
+            if (hasPrinted)
+            {
+                InteractWithPost();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Inga resultat hittades");
+                Menu.BackToMenuMessage();
             }
         }
 
@@ -189,7 +230,7 @@ namespace BlendasBlogg
                     case "4":
                         //Går tillbaka till användarmenyn
                         Console.Clear();
-                        Post.BackToMenuMessage();
+                        Menu.BackToMenuMessage();
                         break;
                     default:
                         Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran: ");

@@ -174,7 +174,7 @@ namespace BlendasBlogg
 
             Console.Clear();
             Console.WriteLine("Kommentaren har laddats upp!");
-            Post.BackToMenuMessage();
+            Menu.BackToMenuMessage();
         }
 
         // Ta bort kommentar:
@@ -213,14 +213,14 @@ namespace BlendasBlogg
                         isFound = true;
                         Console.Clear();
                         Console.WriteLine("Kommentaren har tagits bort!");
-                        Post.BackToMenuMessage();
+                        Menu.BackToMenuMessage();
                         break;
                     }
                     else if (idChoice == 0)
                     {
                         isFound = true;
                         Console.Clear();
-                        Post.BackToMenuMessage();
+                        Menu.BackToMenuMessage();
                         break;
                     }
 
@@ -229,14 +229,14 @@ namespace BlendasBlogg
                 {
                     Console.Clear();
                     Console.WriteLine("Kommentaren med det ID:t finns inte.");
-                    Post.BackToMenuMessage();
+                    Menu.BackToMenuMessage();
 
                 }
             }
             else
             {
                 Console.WriteLine("Det finns inga kommentarer att ta bort.");
-                Post.BackToMenuMessage();
+                Menu.BackToMenuMessage();
             }
         }
     }

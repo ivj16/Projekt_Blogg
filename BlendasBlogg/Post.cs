@@ -80,18 +80,6 @@ namespace BlendasBlogg
 
         // Metoder
 
-        public static void BackToMenuMessage()
-        {
-            Console.Write("\nGår tillbaka till menyn");
-            Thread.Sleep(500);
-            Console.Write(".");
-            Thread.Sleep(200);
-            Console.Write(".");
-            Thread.Sleep(200);
-            Console.Write(".");
-            Thread.Sleep(1500);
-            Console.Clear();
-        }
 
         // Lägga till inlägg:
         // Input för title, content och category
@@ -146,7 +134,7 @@ namespace BlendasBlogg
             PostList.Sort((a, b) => b.date.CompareTo(a.date));
             Console.Clear();
             Console.WriteLine("Inlägget har laddats upp!");
-            BackToMenuMessage();
+            Menu.BackToMenuMessage();
         }
 
 
@@ -218,14 +206,14 @@ namespace BlendasBlogg
                         PostList.Remove(post);
                         Console.Clear();
                         Console.WriteLine("Inlägget har tagits bort!");
-                        BackToMenuMessage();
+                        Menu.BackToMenuMessage();
                         isFound = true;
                         break;
                     }
                     else if (idChoice == 0)
                     {
                         Console.Clear();
-                        BackToMenuMessage(); 
+                        Menu.BackToMenuMessage(); 
                         break;
                     }
                 }
@@ -233,14 +221,14 @@ namespace BlendasBlogg
                 {
                     Console.Clear();
                     Console.WriteLine("Det finns inget inlägg med det ID:t, inget inlägg har tagits bort.");
-                    BackToMenuMessage();
+                    Menu.BackToMenuMessage();
                     Thread.Sleep(500);
                 }
             }
             else
             {
                 Console.WriteLine("Det finns inga inlägg.");
-                BackToMenuMessage();
+                Menu.BackToMenuMessage();
             }
         }
 
@@ -344,7 +332,7 @@ namespace BlendasBlogg
                                         post.Title = Console.ReadLine();
                                         Console.Clear();
                                         Console.WriteLine("Titeln har uppdaterats!");
-                                        BackToMenuMessage();
+                                        Menu.BackToMenuMessage();
                                         break;
 
                                     case "2":
@@ -353,7 +341,7 @@ namespace BlendasBlogg
                                         post.Content = Console.ReadLine();
                                         Console.Clear();
                                         Console.WriteLine("Innehållet har uppdaterats!");
-                                        BackToMenuMessage();
+                                        Menu.BackToMenuMessage();
                                         break;
 
                                     case "3":
@@ -362,7 +350,7 @@ namespace BlendasBlogg
                                         post.Category = categoryChoice;
                                         Console.Clear();
                                         Console.WriteLine("Kategorin har uppdaterats!");
-                                        BackToMenuMessage();
+                                        Menu.BackToMenuMessage();
                                         break;
 
                                     case "4":
@@ -397,12 +385,12 @@ namespace BlendasBlogg
                                         post.header = headerArray[headerIndex];
                                         Console.Clear();
                                         Console.WriteLine("Inläggets header har uppdaterats!");
-                                        BackToMenuMessage();
+                                        Menu.BackToMenuMessage();
                                         break;
 
                                     case "5":
                                         Console.Clear();
-                                        BackToMenuMessage();
+                                        Menu.BackToMenuMessage();
                                         break;
 
                                     default:
@@ -426,7 +414,7 @@ namespace BlendasBlogg
             {
                 Console.Clear();
                 Console.WriteLine("Det finn inga inlägg ännu :'(");
-                BackToMenuMessage ();
+                Menu.BackToMenuMessage ();
             }
         }
 

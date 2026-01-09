@@ -25,6 +25,18 @@ namespace BlendasBlogg
         Subscriber subscriberObj = new Subscriber();
         UserInfo user = new UserInfo();
 
+        public static void BackToMenuMessage()
+        {
+            Console.Write("\nGår tillbaka till menyn");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(200);
+            Console.Write(".");
+            Thread.Sleep(200);
+            Console.Write(".");
+            Thread.Sleep(1500);
+            Console.Clear();
+        }
 
         public void MainMenu()
         {
@@ -100,34 +112,12 @@ namespace BlendasBlogg
                         case "1":
                             Console.Clear();
                             postAndCommentObj.ListPosts();
-                            if (postAndCommentObj.hasPrinted)
-                            {
-                                postAndCommentObj.InteractWithPost();
-                            }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Inga inlägg hittades.");
-                                Post.BackToMenuMessage();
-                                break;
-                            }
                             break;
 
                         // case 2: Lista alla inlägg utifrån kategori
                         case "2":
                             Console.Clear();
                             postAndCommentObj.ListPostFromCategory();
-                            if (postAndCommentObj.hasPrinted)
-                            {
-                                postAndCommentObj.InteractWithPost();
-                            }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Inga inlägg hittades.");
-                                Post.BackToMenuMessage();
-                                break;
-                            }
                             break;
 
                         //case 3: Söka efter inlägg
@@ -143,72 +133,43 @@ namespace BlendasBlogg
                                 "\n4. Gå tillbaka");
                                 Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
 
-                            
-                                userChoice = Console.ReadLine();
-
-                                switch (userChoice)
+                                do
                                 {
-                                    //case 1: Sök efter rubrik
-                                    case "1":
-                                        Console.Clear();
-                                        postAndCommentObj.SearchPostTitle();
-                                        if (postAndCommentObj.hasPrinted)
-                                        {
-                                            postAndCommentObj.InteractWithPost();
-                                        }
-                                        else
-                                        {
+                                    isInvalid = false;
+                                    userChoice = Console.ReadLine();
+
+                                    switch (userChoice)
+                                    {
+                                        //case 1: Sök efter rubrik
+                                        case "1":
                                             Console.Clear();
-                                            Console.WriteLine("Inga inlägg hittades.");
-                                            Post.BackToMenuMessage();
+                                            postAndCommentObj.SearchPostTitle();                                            
                                             break;
-                                        }
-                                        break;
 
-                                    //case 2: Sök efter kategori
-                                    case "2":
-                                        Console.Clear();
-                                        postAndCommentObj.ListPostFromCategory();
-                                        if (postAndCommentObj.hasPrinted)
-                                        {
-                                            postAndCommentObj.InteractWithPost();
-                                        }
-                                        else
-                                        {
+                                        //case 2: Sök efter kategori
+                                        case "2":
                                             Console.Clear();
-                                            Console.WriteLine("Inga inlägg hittades.");
-                                            Post.BackToMenuMessage();
+                                            postAndCommentObj.ListPostFromCategory();
                                             break;
-                                        }
-                                        break;
 
-                                    //case 3: Sök efter fritext
-                                    case "3":
-                                        Console.Clear();
-                                        postAndCommentObj.SearchPostContent();
-                                        if (postAndCommentObj.hasPrinted)
-                                        {
-                                            postAndCommentObj.InteractWithPost();
-                                        }
-                                        else
-                                        {
+                                        //case 3: Sök efter fritext
+                                        case "3":
                                             Console.Clear();
-                                            Console.WriteLine("Inga inlägg hittades.");
-                                            Post.BackToMenuMessage();
+                                            postAndCommentObj.SearchPostContent();
                                             break;
-                                        }
-                                        break;
 
-                                    case "4":
-                                        Console.Clear();
-                                        Post.BackToMenuMessage();
-                                        isInSecondMenu = false;
-                                        break;
+                                        case "4":
+                                            Console.Clear();
+                                            BackToMenuMessage();
+                                            isInSecondMenu = false;
+                                            break;
 
-                                    default:
-                                        Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran:");
-                                        break;
-                                }
+                                        default:
+                                            isInvalid = true;
+                                            Console.Write("\nOgiltigt val, välj ett av alternativen från menyn, skriv endast siffran:");
+                                            break;
+                                    }
+                                } while (isInvalid);
                             }                           
                             break;
 
@@ -220,7 +181,7 @@ namespace BlendasBlogg
 
                         case "5":
                             Console.Clear();
-                            Post.BackToMenuMessage();
+                            BackToMenuMessage();
                             isInMenu = false;
                             break;
 
@@ -321,7 +282,7 @@ namespace BlendasBlogg
                                                 case "2":
                                                     Console.Clear();
                                                     Console.WriteLine("Ingen prenumerant har tagits bort");
-                                                    Post.BackToMenuMessage();
+                                                    BackToMenuMessage();
                                                     isInMenu = false;
                                                     break;
 
@@ -336,7 +297,7 @@ namespace BlendasBlogg
                                 else
                                 {
                                     Console.WriteLine("Det finns inga prenumeranter. :'(");
-                                    Post.BackToMenuMessage();
+                                    BackToMenuMessage();
                                 }
                                 isInMenu = true;
                                 break;
@@ -346,7 +307,7 @@ namespace BlendasBlogg
                                 isInMenu = false;
                                 Console.Clear();
                                 Console.WriteLine("Du har loggats ut från admin-kontot.\n");
-                                Post.BackToMenuMessage();
+                                BackToMenuMessage();
                                 break;
 
                             default:
@@ -359,8 +320,9 @@ namespace BlendasBlogg
             }
             else
             {
+                isInMenu = false;
                 Console.WriteLine("\nFel inloggningsuppgifter.");
-                Post.BackToMenuMessage();
+                BackToMenuMessage();
             }
         }
     }

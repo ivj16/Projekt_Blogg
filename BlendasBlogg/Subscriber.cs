@@ -63,7 +63,7 @@ namespace BlendasBlogg
 
             Console.Clear();
             Console.WriteLine("Klart! Tack för att du prenumererar!");
-            Post.BackToMenuMessage();
+            Menu.BackToMenuMessage();
         }
 
         public void PrintSubscribers()
@@ -79,7 +79,7 @@ namespace BlendasBlogg
             else 
             {
                 Console.WriteLine("\nDet finns inga prenumeranter att lista. :(");
-                Post.BackToMenuMessage();
+                Menu.BackToMenuMessage();
             }
         } 
         
@@ -98,7 +98,7 @@ namespace BlendasBlogg
                 {
                     Console.Clear();
                     Console.WriteLine("\nIngen prenumerant har tagits bort.");
-                    Post.BackToMenuMessage();
+                    Menu.BackToMenuMessage();
                     isInMenu = false;
                     break;
                 }
@@ -117,7 +117,7 @@ namespace BlendasBlogg
                             SubscribersList.Remove(subscriber);
                             Console.Clear();
                             Console.WriteLine($"\n{subscriber.SubscriberName} har tagits bort från prenumeranterna.");
-                            Post.BackToMenuMessage();
+                            Menu.BackToMenuMessage();
                             isInMenu = false;
                             isFound = true;
                         }
