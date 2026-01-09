@@ -305,103 +305,10 @@ namespace BlendasBlogg
                 Console.Write("Ange ID:t för det inlägg du vill redigera: ");
                 do
                 {
+                    isInvalid = false;
                     try
                     {
                         idChoice = Convert.ToInt32(Console.ReadLine());
-
-
-                        foreach (Post post in PostList)
-                        {
-                            if (idChoice == post.PostID)
-                            {
-                                isInvalid = false;
-                                Console.WriteLine("Vad önskar du redigera?" +
-                                    "\n1, Titel" +
-                                    "\n2, Innehåll" +
-                                    "\n3, Kategori" +
-                                    "\n4, Header" +
-                                    "\n5, Gå tillbaka");
-                                Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
-
-                                userChoice = Console.ReadLine();
-                                switch (userChoice)
-                                {
-                                    case "1":
-                                        Console.Clear();
-                                        Console.WriteLine("Ange ny titel:");
-                                        post.Title = Console.ReadLine();
-                                        Console.Clear();
-                                        Console.WriteLine("Titeln har uppdaterats!");
-                                        Menu.BackToMenuMessage();
-                                        break;
-
-                                    case "2":
-                                        Console.Clear();
-                                        Console.WriteLine("Ange nytt innehåll:");
-                                        post.Content = Console.ReadLine();
-                                        Console.Clear();
-                                        Console.WriteLine("Innehållet har uppdaterats!");
-                                        Menu.BackToMenuMessage();
-                                        break;
-
-                                    case "3":
-                                        Console.Clear();
-                                        CategoryChoice();
-                                        post.Category = categoryChoice;
-                                        Console.Clear();
-                                        Console.WriteLine("Kategorin har uppdaterats!");
-                                        Menu.BackToMenuMessage();
-                                        break;
-
-                                    case "4":
-                                        Console.Clear();
-                                        Console.WriteLine("Välj en header till ditt inlägg!" +
-                                        "\n1. Gubbar med hattar" +
-                                        "\n2. Hjärtan" +
-                                        "\n3. Bubblor" +
-                                        "\n4. Glada ansikten" +
-                                        "\n5. Förvånade gubbar");
-                                        Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
-                                        do
-                                        {
-                                            try
-                                            {
-                                                headerIndex = Convert.ToInt32(Console.ReadLine()) - 1;
-                                                if (headerIndex < 0 || headerIndex > headerArray.Length)
-                                                {
-                                                    throw new Exception();
-                                                }
-                                                else
-                                                {
-                                                    isInvalid = false;
-                                                }
-                                            }
-                                            catch
-                                            {
-                                                Console.Write("Ogiltigt val, vänligen skriv en siffra som motsvarar ett header-alternativ: ");
-                                                isInvalid = true;
-                                            }
-                                        } while (isInvalid);
-                                        post.header = headerArray[headerIndex];
-                                        Console.Clear();
-                                        Console.WriteLine("Inläggets header har uppdaterats!");
-                                        Menu.BackToMenuMessage();
-                                        break;
-
-                                    case "5":
-                                        Console.Clear();
-                                        Menu.BackToMenuMessage();
-                                        break;
-
-                                    default:
-                                        break;
-                                }
-                            }
-                            else
-                            {
-                                throw new Exception();
-                            }
-                        }
                     }
                     catch
                     {
@@ -409,14 +316,111 @@ namespace BlendasBlogg
                         isInvalid = true;
                     }
                 } while (isInvalid);
+
+                foreach (Post post in PostList)
+                {
+                    if (idChoice == post.PostID)
+                    {
+                        Console.WriteLine("Vad önskar du redigera?" +
+                            "\n1, Titel" +
+                            "\n2, Innehåll" +
+                            "\n3, Kategori" +
+                            "\n4, Header" +
+                            "\n5, Gå tillbaka");
+                        Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+
+                        userChoice = Console.ReadLine();
+                        switch (userChoice)
+                        {
+                            case "1":
+                                Console.Clear();
+                                Console.WriteLine("Ange ny titel:");
+                                post.Title = Console.ReadLine();
+                                Console.Clear();
+                                Console.WriteLine("Titeln har uppdaterats!");
+                                Menu.BackToMenuMessage();
+                                break;
+
+                            case "2":
+                                Console.Clear();
+                                Console.WriteLine("Ange nytt innehåll:");
+                                post.Content = Console.ReadLine();
+                                Console.Clear();
+                                Console.WriteLine("Innehållet har uppdaterats!");
+                                Menu.BackToMenuMessage();
+                                break;
+
+                            case "3":
+                                Console.Clear();
+                                CategoryChoice();
+                                post.Category = categoryChoice;
+                                Console.Clear();
+                                Console.WriteLine("Kategorin har uppdaterats!");
+                                Menu.BackToMenuMessage();
+                                break;
+
+                            case "4":
+                                Console.Clear();
+                                Console.WriteLine("Välj en header till ditt inlägg!" +
+                                "\n1. Gubbar med hattar" +
+                                "\n2. Hjärtan" +
+                                "\n3. Bubblor" +
+                                "\n4. Glada ansikten" +
+                                "\n5. Förvånade gubbar");
+                                Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+                                do
+                                {
+                                    isInvalid = false;
+                                    try
+                                    {
+                                        headerIndex = Convert.ToInt32(Console.ReadLine()) - 1;
+                                        if (headerIndex < 0 || headerIndex > headerArray.Length)
+                                        {
+                                            throw new Exception();
+                                        }
+                                        else
+                                        {
+                                            isInvalid = false;
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                                        isInvalid = true;
+                                    }
+                                } while (isInvalid);
+                                post.header = headerArray[headerIndex];
+                                Console.Clear();
+                                Console.WriteLine("Inläggets header har uppdaterats!");
+                                Menu.BackToMenuMessage();
+                                break;
+
+                            case "5":
+                                Console.Clear();
+                                Menu.BackToMenuMessage();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
             }
             else
             {
                 Console.Clear();
                 Console.WriteLine("Det finn inga inlägg ännu :'(");
-                Menu.BackToMenuMessage ();
+                Menu.BackToMenuMessage();
             }
+            
         }
+
+        
+
 
         // Overridead ToString-metod
         // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
