@@ -13,7 +13,8 @@ namespace BlendasBlogg
         string userChoice;
         int dislikes = 0;
         int likes = 0;
-        int postID = 1;
+        // Startar på 4 på grund av default-inläggen i Program.cs
+        public int postID = 1;
         int headerIndex = 0;
         int idChoice = 0;
         public Category categoryChoice;  
@@ -82,11 +83,6 @@ namespace BlendasBlogg
 
 
         // Lägga till inlägg:
-        // Input för title, content och category
-        // Tilldelar dagens datum till Date
-        // Anropar Skapa ID-metoden
-        // Lägger till nya inlägget i listan med alla inlägg
-
         public void AddPost()
         {
             Console.WriteLine("Välj en header till ditt inlägg!" +
@@ -96,6 +92,8 @@ namespace BlendasBlogg
                 "\n4. Glada ansikten" +
                 "\n5. Förvånade gubbar");
             Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+
+            // Do-while loop som fortsätter tills ett giltigt header-val gjorts
             do
             {
                 try
@@ -113,32 +111,34 @@ namespace BlendasBlogg
                 }
                 catch
                 {
-                    Console.Write("Ogiltigt val, vänligen skriv en siffra som motsvarar ett header-alternativ: ");
+                    Console.Write("\nOgiltigt val, vänligen skriv en siffra som motsvarar ett header-alternativ: ");
                     isInvalid = true;
                 }
             } while (isInvalid);
 
-                Console.WriteLine("\nSkriv in en titel för ditt inlägg: ");
+            Console.WriteLine("\nSkriv in en titel för ditt inlägg: ");
             title = Console.ReadLine();
+            
             Console.WriteLine("\nSkriv in innehållet för ditt inlägg: ");
             content = Console.ReadLine();
+            
             CategoryChoice();
 
+            // Skapar det nya inlägget och lägger till det i listan med alla inlägg
             Post newPost = new Post(headerIndex, title, content, categoryChoice, postID++, likes, dislikes);
 
             PostList.Add(newPost);
-            
-            // Sortera inlägg på datum:
-            // Göra en List - Sort
-            // Skriva ut med ToString
+
+            // Sortera inlägg på datum direkt i AddPost eftersom inläggen alltid
+            // ska skrivas ut i samma ordning oavsett var i listan
+            // Använder ett lambda-uttryck för att sortera listan i fallande ordning baserat på datum
             PostList.Sort((a, b) => b.date.CompareTo(a.date));
             Console.Clear();
             Console.WriteLine("Inlägget har laddats upp!");
             Menu.BackToMenuMessage();
         }
 
-
-
+        // Välja kategori:
         public void CategoryChoice()
         {
             Console.WriteLine("\nVälj en kategori:" +
@@ -173,8 +173,6 @@ namespace BlendasBlogg
         }
 
         // Ta bort inlägg:
-        // Välj ett inlägg via ID - variabel : idChoice : int
-        // Ta bort inlägget ur listan med alla inlägg
         public void RemovePost()
         {
             isFound = false;
@@ -232,8 +230,7 @@ namespace BlendasBlogg
             }
         }
 
-        // Gilla / ogilla
-        // Input för om man vill likea eller dislikea - Variabel : likeChoice : string
+        // Gilla inlägg:
         public void LikePost()
         {
             Console.Write("Ange ID:t för det inlägg du vill ge en tumme upp och tryck sedan enter: ");
@@ -263,6 +260,7 @@ namespace BlendasBlogg
 
         }
 
+        // Ogilla inlägg:
         public void DislikePost()
         {
             Console.Write("Ange ID:t för det inlägg du vill ge en tumme ner och tryck sedan enter: ");
@@ -291,13 +289,13 @@ namespace BlendasBlogg
             Console.Clear();
         }
 
-
         // Redigera inlägg:
         public void EditPost()
         {
+            // If-sats som kollar om det finns inlägg i listan
             if (PostList.Count > 0)
             {
-                
+                // Använder en bool som kollar om det skrivits ut några matchande inlägg med idChoice.
                 isFound = false;
 
                 foreach (Post post in PostList)
@@ -307,7 +305,11 @@ namespace BlendasBlogg
                 }
 
                 Console.Write("\nAnge ID:t för det inlägg du vill redigera: ");
-                do { 
+
+                // Do-while loop som fortsätter tills ett matchande inlägg valts alternativt gått tillbaka
+                do
+                {
+                    // Do-while loop som fortsätter tills ett giltigt ID skrivits in, alltså en siffra för int
                     do
                     {
                         isInvalid = false;
@@ -318,7 +320,7 @@ namespace BlendasBlogg
                         }
                         catch
                         {
-                            Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                            Console.Write("\nOgiltigt val, vänligen ange ett befintligt ID. Skriv endast siffran: ");
                             isInvalid = true;
                         }
                     } while (isInvalid);
@@ -338,6 +340,8 @@ namespace BlendasBlogg
                                 "\n4, Header" +
                                 "\n5, Gå tillbaka");
                             Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+
+                            // Do-while loop som fortsätter tills ett giltigt val gjorts från menyn
                             do
                             {
                                 isInvalid = false;
@@ -401,11 +405,14 @@ namespace BlendasBlogg
                                         "\n4. Glada ansikten" +
                                         "\n5. Förvånade gubbar");
                                         Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+
+                                        // Do-while loop som fortsätter tills ett giltigt header-val gjorts
                                         do
                                         {
                                             isInvalid = false;
                                             try
                                             {
+                                                // Tar in header-valet och kollar så det är en int och finns i arrayen
                                                 headerIndex = Convert.ToInt32(Console.ReadLine()) - 1;
                                                 if (headerIndex < 0 || headerIndex > headerArray.Length)
                                                 {
@@ -418,10 +425,11 @@ namespace BlendasBlogg
                                             }
                                             catch
                                             {
-                                                Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                                                Console.Write("\nOgiltigt val, vänligen skriv en siffra som motsvarar ett header-alternativ: "); 
                                                 isInvalid = true;
                                             }
                                         } while (isInvalid);
+
                                         post.header = headerArray[headerIndex];
                                         Console.Clear();
                                         Console.WriteLine("Inläggets header har uppdaterats!\n");
@@ -445,12 +453,14 @@ namespace BlendasBlogg
                             } while (isInvalid);
                         }
                     }
+                    // Om inget inlägg matchade med det valda ID:t
                     if (isFound == false)
                     {
-                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                        Console.Write("\nOgiltigt val, vänligen ange ett befintligt ID. Skriv endast siffran: ");
                     }
                 } while (isFound == false);
             }
+            // Om det inte finns några inlägg i listan
             else
             {
                 Console.Clear();
@@ -460,11 +470,7 @@ namespace BlendasBlogg
             
         }
 
-        
-
-
-        // Overridead ToString-metod
-        // Gör en fin utskrift av ett inlägg med allt innehåll som parametrar
+        // Overridead ToString-metod:
         public override string ToString()
         {
             return
