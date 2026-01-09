@@ -120,7 +120,6 @@ namespace BlendasBlogg
                             Post.BackToMenuMessage();
                             isInMenu = false;
                             isFound = true;
-                            break;
                         }
                     }
                     if (isFound = false)

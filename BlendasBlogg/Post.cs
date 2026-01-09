@@ -248,7 +248,7 @@ namespace BlendasBlogg
         // Input för om man vill likea eller dislikea - Variabel : likeChoice : string
         public void LikePost()
         {
-            Console.Write("Ange ID:t för det inlägg du vill ge en tumme upp: ");
+            Console.Write("Ange ID:t för det inlägg du vill ge en tumme upp och tryck sedan enter: ");
             do
             {
                 try
@@ -277,7 +277,7 @@ namespace BlendasBlogg
 
         public void DislikePost()
         {
-            Console.Write("Ange ID:t för det inlägg du vill ge en tumme ner: ");
+            Console.Write("Ange ID:t för det inlägg du vill ge en tumme ner och tryck sedan enter: ");
             do
             {
                 try

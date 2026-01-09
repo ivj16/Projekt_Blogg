@@ -10,6 +10,6 @@ namespace BlendasBlogg
     {
         Nyheter = 1,
         Ordspråk,
-        FunFact
+        Roliga_Fakta
     }
 }

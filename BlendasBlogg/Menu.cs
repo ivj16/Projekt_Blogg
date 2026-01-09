@@ -35,7 +35,7 @@ namespace BlendasBlogg
                 Console.WriteLine("\n1. Jag är en användare som vill läsa bloggen " +
                     "\n2. Jag vill logga in som admin och få full kontroll över bloggen " +
                     "\n3. Jag har läst nog för idag och vill säga hejdå");
-                Console.Write("\nSkriv den siffra som motsvara ditt val: ");
+                Console.Write("\nSkriv den siffra som motsvara ditt val och tryck sedan enter: ");
 
                 do
                 {
@@ -86,7 +86,7 @@ namespace BlendasBlogg
                     "\n3. Jag vill söka efter ett inlägg" +
                     "\n4. Jag vill prenumerera på bloggen" +
                     "\n5. Gå tillbaka till huvudmenyn");
-                Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+                Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
 
                 isInMenu = true;
                 do
@@ -141,7 +141,7 @@ namespace BlendasBlogg
                                 "\n2. Sök efter kategori" +
                                 "\n3. Sök efter fritext" +
                                 "\n4. Gå tillbaka");
-                                Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+                                Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
 
                             
                                 userChoice = Console.ReadLine();

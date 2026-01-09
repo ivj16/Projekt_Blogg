@@ -92,7 +92,7 @@ namespace BlendasBlogg
         {
             hasPrinted = false;
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på rubriken på inlägget.");
-            Console.Write("Skriv in sökordet här: ");
+            Console.Write("Skriv in sökordet här och tryck sedan enter: ");
             string searchTitle = Console.ReadLine();
 
             foreach (Post post in Post.PostList)
@@ -163,7 +163,7 @@ namespace BlendasBlogg
                 "\n2, Ge en tumme ner" +
                 "\n3, Kommentera" +
                 "\n4, Återvänd till användarmenyn");
-            Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+            Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
             do
             {
                 userChoice = Console.ReadLine();
