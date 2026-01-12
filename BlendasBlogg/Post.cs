@@ -13,33 +13,16 @@ namespace BlendasBlogg
         string userChoice;
         int dislikes = 0;
         int likes = 0;
-        // Startar på 4 på grund av default-inläggen
-        public int postID = 4;
+        // Startar på 4 på grund av default-inläggen som alltid skapas
+        int postID = 4;
         int headerIndex = 0;
         int idChoice = 0;
-        public Category categoryChoice;  
+        Category categoryChoice;  
+        DateTime date = DateTime.Now;
         bool isInvalid = true;
-        public DateTime date = DateTime.Now;
         bool isFound;
 
-        // Properties
-        public string Title { get; set; }
-
-        public string Content { get; set; }
-
-        public int Likes { get; set; } 
-
-        public int Dislikes { get; set; }
-        
-        public Category Category { get; set; }
-        
-        public int PostID { get; set; }
-
-        public int HeaderIndex { get; set; } = 0;
-
-        
-
-        // Header : string array
+        // Array med headers
         static string[] headerArray =
         {
             "C-:|)  (-:|]  C-:|=  (-:|B  C-:|>  (-:P  C-:|)  (-:|]  (-:|B  (-:P",
@@ -47,14 +30,21 @@ namespace BlendasBlogg
             "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO",
             "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
             "|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
-        };  
+        };
 
-        // Posts : List (Post)
+        // Lista med inlägg
         public static List<Post> PostList = new List<Post>();
 
+        // Properties
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public int Likes { get; set; } 
+        public int Dislikes { get; set; }  
+        public Category Category { get; set; }
+        public int PostID { get; set; }
+        public int HeaderIndex { get; set; } = 0;
 
-        // Konstruktor
-
+        // Konstruktorer:
         public Post() { }
         public Post(
             int headerIndex,
@@ -63,8 +53,7 @@ namespace BlendasBlogg
             Category categoryChoice,
             int postID,
             int likes,
-            int dislikes
-            
+            int dislikes   
         )
         {
             HeaderIndex = headerIndex;
@@ -76,12 +65,11 @@ namespace BlendasBlogg
             Dislikes = dislikes;
             date = DateTime.Now;
             PostID = postID;
-
         }
 
-        // Metoder
+        // Metoder:
 
-        //Default-inlägg
+        //Default-inlägg:
         public void CreateDefaultPosts()
         {
             PostList.Add(new Post(1, "Välkommen till Blendas Blogg!", "Hej och välkommen till min blogg! Här kommer jag att dela med mig \nav mina tankar, idéer och äventyr. Hoppas du gillar det!", Category.Nyheter, 1, 5, 0));

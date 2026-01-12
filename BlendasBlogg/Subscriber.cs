@@ -16,23 +16,24 @@ namespace BlendasBlogg
         string email;
         string name;
 
+        // Lista med subscribers
+        public static List<Subscriber> SubscribersList = new List<Subscriber>();
+
         //Properties
         public string SubscriberName { get; set; }
         public string SubscriberEmail { get; set; }
 
-
-        //Konstruktor
+        //Konstruktorer:
         public Subscriber() { }
-
         public Subscriber(string name, string email)
         {
             SubscriberName = name;
             SubscriberEmail = email;
         }
 
-        public static List<Subscriber> SubscribersList = new List<Subscriber>();
+        // Metoder:
 
-        // Metod för att lägga till subscribers
+        // Metod för att lägga till subscribers:
         public void AddSubscriber()
         {
             Console.WriteLine("Så kul att du vill prenumerera på Blendas coola blogg!"
@@ -103,7 +104,7 @@ namespace BlendasBlogg
             Menu.BackToMenuMessage();
         }
 
-        // Metod för att skriva ut alla subscribers
+        // Metod för att skriva ut alla subscribers:
         public void PrintSubscribers()
         {
             if (SubscribersList.Count > 0)
@@ -121,7 +122,7 @@ namespace BlendasBlogg
             }
         }
 
-        // Metod för att ta bort subscribers
+        // Metod för att ta bort subscribers:
         public void RemoveSubscriber()
         {
             Console.Clear();

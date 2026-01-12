@@ -20,34 +20,22 @@ namespace BlendasBlogg
         string commentName;
         string commentTitle;
         string commentContent;
-        public DateOnly commentDate;
+        DateOnly commentDate;
         DateTime dateNow = DateTime.Now;
+        
+        // Lista med kommentarer
+        static public List<Comment> CommentList = new List<Comment>();
 
         // Properties
         public string CommentTitle { get; set; }
-
         public string CommentContent { get; set; }
-
-        
-
         public string CommentName { get; set; }
-
         public string CommentMail { get; set; }
-
         public int CommentID { get; set; }
-
         public int PostCommentID { get; set; }
 
-        // Comments : List
-        static public List<Comment> CommentList = new List<Comment>();
-
-        Post postObj = new Post();
-
-        // Konstruktor:
-
+        // Konstruktorer:
         public Comment() { }
-
-        // Innehåller mail, name, title, content, date, commentID
         public Comment(
             string commentMail,
             string commentName,
@@ -66,14 +54,7 @@ namespace BlendasBlogg
             PostCommentID = postCommentID;
         }
 
-        // Metoder
-
-        //ToString-metod för att skriva ut kommentarer
-        public override string ToString()
-        {
-            return $">> {CommentName} ({CommentMail}) skrev: {CommentTitle} || {commentDate}, ID: {CommentID} |\n" +
-                   $"   {CommentContent}\n";
-        }
+        // Metoder:
 
         // Lägga till kommentar:
         public void AddComment()
@@ -249,6 +230,13 @@ namespace BlendasBlogg
                 Console.WriteLine("Det finns inga kommentarer att ta bort.");
                 Menu.BackToMenuMessage();
             }
+        }
+
+        //ToString-metod för att skriva ut kommentarer:
+        public override string ToString()
+        {
+            return $">> {CommentName} ({CommentMail}) skrev: {CommentTitle} || {commentDate}, ID: {CommentID} |\n" +
+                   $"   {CommentContent}\n";
         }
     }
 }

@@ -13,10 +13,9 @@ namespace BlendasBlogg
         //Fields
         public string userChoice;
         bool isInMenu = true;
-        bool isInvalid = false;
         bool isInSecondMenu = true;
-        bool isrunAgain = true;
-        
+        bool isInvalid = false;
+        bool isrunAgain = true;  
 
         //Objects
         Post postObj = new Post();
@@ -25,7 +24,9 @@ namespace BlendasBlogg
         Subscriber subscriberObj = new Subscriber();
         UserInfo user = new UserInfo();
 
-        //Metod för att visa "går tillbaka till menyn"-meddelande
+        // Metoder:
+
+        // Metod för att visa "går tillbaka till menyn"-meddelande:
         public static void BackToMenuMessage()
         {
             Console.Write("\nGår tillbaka till menyn");
@@ -39,7 +40,7 @@ namespace BlendasBlogg
             Console.Clear();
         }
 
-        //Huvudmeny
+        // Huvudmeny:
         public void MainMenu()
         {
             while (isrunAgain)
@@ -86,7 +87,7 @@ namespace BlendasBlogg
             }
         }
 
-        //Användarmeny
+        // Användarmeny:
         public void UserMenu ()
         {
             Console.Clear();
@@ -198,7 +199,7 @@ namespace BlendasBlogg
             }
         }
 
-        //Adminmeny
+        // Adminmeny:
         public void AdminMenu ()
         {
             Console.Clear();

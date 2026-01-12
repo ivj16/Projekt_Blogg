@@ -11,9 +11,11 @@ namespace BlendasBlogg
     {
         //Fields
         string userChoice;
+        string searchTitle;
+        string searchContent;
         bool hasComment;
-        public bool hasPrinted = false;
-        bool isInvalid = false;
+        bool hasPrinted = false;
+        bool isInvalid = false; 
 
         //Objects
         Post postObj = new Post();
@@ -22,6 +24,7 @@ namespace BlendasBlogg
         //Konstruktor
         public PostAndComment() { }
 
+        // Metoder:
 
         // Skriva ut alla inlägg:
         public void ListPosts()
@@ -111,7 +114,7 @@ namespace BlendasBlogg
             hasPrinted = false;
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på rubriken på inlägget.");
             Console.Write("Skriv in sökordet här och tryck sedan enter: ");
-            string searchTitle = Console.ReadLine();
+            searchTitle = Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine($"RESULTAT AV SÖKORD \"{searchTitle}\": \n");
@@ -157,7 +160,7 @@ namespace BlendasBlogg
             hasPrinted = false;
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på ett ord som inlägget innehåller");
             Console.Write("Skriv in sökordet här: ");
-            string searchContent = Console.ReadLine();
+            searchContent = Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine($"RESULTAT AV SÖKORD \"{searchContent}\": \n");
