@@ -39,7 +39,7 @@ namespace BlendasBlogg
             Console.WriteLine("Så kul att du vill prenumerera på Blendas coola blogg!"
                 + "\nFörst behöver vi lite information om dig.");
 
-            Console.WriteLine("\nVänligen ange ditt namn: ");
+            Console.WriteLine("\nVänligen ange ditt namn och tryck sedan enter: ");
             do
             {
                 isInMenu = true;
@@ -66,7 +66,7 @@ namespace BlendasBlogg
                 }
             } while (isInMenu);
 
-            Console.WriteLine("\nVänligen ange din e-postadress: ");
+            Console.WriteLine("\nVänligen ange din e-postadress och tryck sedan enter: ");
 
             do
             {

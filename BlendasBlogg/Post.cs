@@ -141,7 +141,7 @@ namespace BlendasBlogg
                "\n1. Nyheter" +
                "\n2. Ordspråk" +
                "\n3. Roliga fakta");
-            Console.Write("\nSkriv den siffra som motsvarar ditt val: ");
+            Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
             do
             {
                 try
@@ -176,7 +176,8 @@ namespace BlendasBlogg
 
             foreach (Post post in PostList)
             {
-                Console.WriteLine(post);
+                Console.WriteLine(post + "\n\n");
+
             }
 
             //Kollar om det finns några inlägg i listan, som kan tas bort. Annars skrivs passande felmeddelande ut
@@ -226,6 +227,7 @@ namespace BlendasBlogg
                         else if (idChoice == 0)
                         {
                             Console.Clear();
+                            Console.WriteLine("Inget inlägg har tagits bort.\n");
                             Menu.BackToMenuMessage();
                             isFound = true;
                             break;                          
