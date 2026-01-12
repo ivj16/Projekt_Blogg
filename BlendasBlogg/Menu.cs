@@ -25,6 +25,7 @@ namespace BlendasBlogg
         Subscriber subscriberObj = new Subscriber();
         UserInfo user = new UserInfo();
 
+        //Metod för att visa "går tillbaka till menyn"-meddelande
         public static void BackToMenuMessage()
         {
             Console.Write("\nGår tillbaka till menyn");
@@ -38,6 +39,7 @@ namespace BlendasBlogg
             Console.Clear();
         }
 
+        //Huvudmeny
         public void MainMenu()
         {
             while (isrunAgain)
@@ -77,13 +79,14 @@ namespace BlendasBlogg
                             break;
 
                         default:
-                            Console.Write("\nOgiltigt val, välj ett av alternativen 1, 2, 3 från menyn. Skriv endast siffran: ");
+                            Console.Write("\nOgiltigt val, välj ett av alternativen från menyn. Skriv endast siffran: ");
                             break;
                     }
                 } while (isInMenu);
             }
         }
 
+        //Användarmeny
         public void UserMenu ()
         {
             Console.Clear();
@@ -195,6 +198,7 @@ namespace BlendasBlogg
             }
         }
 
+        //Adminmeny
         public void AdminMenu ()
         {
             Console.Clear();
@@ -271,6 +275,8 @@ namespace BlendasBlogg
                                         {
                                             isInvalid = false;
                                             userChoice = Console.ReadLine();
+
+                                            //Switch-sats för att hantera admins val att ta bort prenumerant eller inte
                                             switch (userChoice)
                                             {
 
