@@ -32,30 +32,67 @@ namespace BlendasBlogg
 
         public static List<Subscriber> SubscribersList = new List<Subscriber>();
 
-
+        // Metod för att lägga till subscribers
         public void AddSubscriber()
         {
             Console.WriteLine("Så kul att du vill prenumerera på Blendas coola blogg!"
                 + "\nFörst behöver vi lite information om dig.");
 
             Console.WriteLine("\nVänligen ange ditt namn: ");
-            name = Console.ReadLine();
-
-            Console.WriteLine("\nVänligen ange din e-postadress: ");
-            isInMenu = true;
-            while (isInMenu)
+            do
             {
-                email = Console.ReadLine();
-
-                if (!email.Contains('@'))
+                isInMenu = true;
+                name = Console.ReadLine();
+                // Kollar så att namnet inte är tomt
+                if (name == "")
                 {
-                    Console.Write("\nOgiltig inmatning, skriv en riktig e-postadress:");
+                    Console.WriteLine("\nOgiltig inmatning, du måste ange ett användarnamn: ");
                 }
                 else
                 {
                     isInMenu = false;
                 }
-            }
+
+                // Kollar så att namnet inte redan är taget
+                foreach (Subscriber subscriber in SubscribersList)
+                {
+                    if (name == subscriber.SubscriberName)
+                    {
+                        Console.WriteLine("\nAnvändarnamnet är redan taget, vänligen ange ett annat namn: ");
+                        isInMenu = true;
+                        break;
+                    }
+                }
+            } while (isInMenu);
+
+            Console.WriteLine("\nVänligen ange din e-postadress: ");
+
+            do
+            {
+                isInMenu = true;
+                email = Console.ReadLine();
+
+                // Kollar så att e-postadressen innehåller @
+                if (!email.Contains('@'))
+                {
+                    Console.WriteLine("\nOgiltig inmatning, skriv en riktig e-postadress:");
+                }
+                else
+                {
+                    isInMenu = false;
+                }
+
+                // Kollar så att e-postadressen inte redan är använd
+                foreach (Subscriber subscriber in SubscribersList)
+                {
+                    if (email == subscriber.SubscriberEmail)
+                    {
+                        Console.WriteLine("\nE-postadressen är redan använd, vänligen ange en annan e-post: ");
+                        isInMenu = true;
+                        break;
+                    }
+                }
+            } while (isInMenu);
 
             Subscriber newSubscriber = new Subscriber(name, email);
 
@@ -66,6 +103,7 @@ namespace BlendasBlogg
             Menu.BackToMenuMessage();
         }
 
+        // Metod för att skriva ut alla subscribers
         public void PrintSubscribers()
         {
             if (SubscribersList.Count > 0)
@@ -81,14 +119,18 @@ namespace BlendasBlogg
                 Console.WriteLine("\nDet finns inga prenumeranter att lista. :(");
                 Menu.BackToMenuMessage();
             }
-        } 
-        
+        }
+
+        // Metod för att ta bort subscribers
         public void RemoveSubscriber()
         {
+            Console.Clear();
+            PrintSubscribers();
             do
             {
                 isFound = false;
                 isInMenu = true;
+
                 Console.WriteLine("\nAnge namn för den prenumerant du vill ta bort, " +
                 "\nalternativt skriv ångra för att gå tillbaka: ");
             
@@ -107,12 +149,10 @@ namespace BlendasBlogg
                     Console.WriteLine("\nAnge e-post för den prenumerant du vill ta bort: ");
                     removeInputEmail = Console.ReadLine();
 
-                    Subscriber removeSubscriber = new Subscriber(removeInputName, removeInputEmail);
-
                     foreach (Subscriber subscriber in SubscribersList)
                     {
-
-                        if (removeSubscriber.SubscriberEmail == subscriber.SubscriberEmail)
+                        // Jämför input med varje subscribers namn och e-post
+                        if (removeInputEmail == subscriber.SubscriberEmail && removeInputName == subscriber.SubscriberName)
                         {
                             SubscribersList.Remove(subscriber);
                             Console.Clear();
@@ -120,13 +160,15 @@ namespace BlendasBlogg
                             Menu.BackToMenuMessage();
                             isInMenu = false;
                             isFound = true;
+                            break;
                         }
                     }
-                    if (isFound = false)
+                    if (!isFound)
                     {
-                        Console.WriteLine("Det finns ingen prenumerant med de angivna uppgifterna");
+                        Console.Clear();
+                        Console.WriteLine("Det finns ingen prenumerant med de angivna uppgifterna, försök igen. \n");
+                        PrintSubscribers();
                         isInMenu = true;
-                        break;
                     }
 
                 }

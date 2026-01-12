@@ -105,7 +105,6 @@ namespace BlendasBlogg
             }
         }
 
-
         // Söka på inlägg:
         public void SearchPostTitle() 
         {

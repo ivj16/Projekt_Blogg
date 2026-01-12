@@ -13,7 +13,7 @@ namespace BlendasBlogg
         string userChoice;
         int dislikes = 0;
         int likes = 0;
-        // Startar på 4 på grund av default-inläggen i Program.cs
+        // Startar på 4 på grund av default-inläggen
         public int postID = 4;
         int headerIndex = 0;
         int idChoice = 0;
