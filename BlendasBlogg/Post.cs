@@ -81,6 +81,7 @@ namespace BlendasBlogg
         public void AddPost()
         {
             Console.WriteLine("Välj en header till ditt inlägg!" +
+                "" +
                 "\n1. Gubbar i hattar" +
                 "\n2. Hjärtan" +
                 "\n3. Bubblor" +
@@ -182,7 +183,7 @@ namespace BlendasBlogg
             if (PostList.Count > 0)
             {
                 Console.Write("\nAnge ID:t för det inlägg du vill ta bort, alternativt skriv '0' för att gå tillbaka: ");
-
+                
                 // do-while som kör om tills ett matchande inlägg hittas
                 do
                 {
@@ -204,29 +205,39 @@ namespace BlendasBlogg
 
                     foreach (Post post in PostList)
                     {
-                        if (post.PostID == idChoice)
+                        if (idChoice > 0)
                         {
-                            PostList.Remove(post);
-                            Console.Clear();
-                            Console.WriteLine("Inlägget har tagits bort!");
-                            Menu.BackToMenuMessage();
-                            isFound = true;
-                            break;
+                            if (post.PostID == idChoice)
+                            {
+                                PostList.Remove(post);
+                                Console.Clear();
+                                Console.WriteLine("Inlägget har tagits bort!");
+                                Menu.BackToMenuMessage();
+                                isFound = true;
+                                break;
+                            }
+                            else if (idChoice == 0)
+                            {
+                                Console.Clear();
+                                Menu.BackToMenuMessage();
+                                break;
+                            }
                         }
                         else if (idChoice == 0)
                         {
                             Console.Clear();
                             Menu.BackToMenuMessage();
-                            break;
+                            isFound = true;
+                            break;                          
+                        }
+
+                        if (!isFound)
+                        {
+                            Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
                         }
                     }
 
-                    if (isFound == false)
-                    {
-                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
-                    }
-
-                }while(isFound == false);
+                }while(!isFound);
             }
             else
             {
