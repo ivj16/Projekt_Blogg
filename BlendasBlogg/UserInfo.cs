@@ -9,11 +9,9 @@ namespace BlendasBlogg
     public struct UserInfo
     {
         public UserInfo() { }
-        private string blendasUsername = "1";
-        private string blendasPassword = "1";
+        private string blendasUsername = "BlendaIsCool";
+        private string blendasPassword = "BlendaIsReallyCool123";
 
-        // "Stampe4ever<3"
-        // "BlendaIsCool123"
         public string BlendasUsername { get { return blendasUsername; } }  
         public string BlendasPassword { get { return blendasPassword; } }
         public string Username { get; set; }
