@@ -24,7 +24,6 @@ namespace BlendasBlogg
 
 
         // Skriva ut alla inlägg:
-        // Foreach-loop som skriver ut alla inlägg med en egen ToString-metod
         public void ListPosts()
         {
             hasPrinted = false;
@@ -34,6 +33,7 @@ namespace BlendasBlogg
                 hasComment = false;
                 hasPrinted = true;
 
+                //Ser över om inlägget har några kommentarer och skriver i så fall ut dem
                 foreach (Comment comment in Comment.CommentList)
                 {
                     if (comment.PostCommentID == post.PostID)
@@ -50,6 +50,7 @@ namespace BlendasBlogg
                 Console.WriteLine("------------------------------------------------------------------\n\n");
                 Thread.Sleep(1000);
             }
+            //Om något inlägg har skrivits ut, anropa metod för interaktion
             if (hasPrinted)
             {
                 InteractWithPost();
@@ -62,9 +63,7 @@ namespace BlendasBlogg
             }
         }
 
-        // Skriva ut inlägg från kategori:
-        // Input för vilken kategori som ska skrivas ut - Variabel : categoryChoice : string
-        // If-sats som skriver ut inläggen som matchar en vald kategori
+        // Skriva ut inlägg från kategori + eventuella kommentarer:
         public void ListPostFromCategory()
         {
             hasPrinted = false;
@@ -108,7 +107,6 @@ namespace BlendasBlogg
 
 
         // Söka på inlägg:
-
         public void SearchPostTitle() 
         {
             hasPrinted = false;
@@ -116,6 +114,8 @@ namespace BlendasBlogg
             Console.Write("Skriv in sökordet här och tryck sedan enter: ");
             string searchTitle = Console.ReadLine();
 
+            Console.Clear();
+            Console.WriteLine($"RESULTAT AV SÖKORD \"{searchTitle}\": \n");
             foreach (Post post in Post.PostList)
             {
                 if (post.Title.ToLower().Contains(searchTitle.ToLower()))
@@ -152,6 +152,7 @@ namespace BlendasBlogg
             }
         }
 
+        // Söka på inläggens innehåll:
         public void SearchPostContent()
         {
             hasPrinted = false;
@@ -159,6 +160,8 @@ namespace BlendasBlogg
             Console.Write("Skriv in sökordet här: ");
             string searchContent = Console.ReadLine();
 
+            Console.Clear();
+            Console.WriteLine($"RESULTAT AV SÖKORD \"{searchContent}\": \n");
             foreach (Post post in Post.PostList)
             {
                 if (post.Content.ToLower().Contains(searchContent.ToLower()))
@@ -180,8 +183,8 @@ namespace BlendasBlogg
                     {
                         Console.WriteLine("Inga kommentarer ännu\n");
                     }
+                    Thread.Sleep(1000);
                 }
-                Thread.Sleep(1000);
             }
             if (hasPrinted)
             {
@@ -195,8 +198,7 @@ namespace BlendasBlogg
             }
         }
 
-        //Utifrån ID ska användaren kunna välja att gilla eller kommentera,
-        //alternativt gå tillbaka till huvudmenyn
+        //Metod för att interagera med inlägg:
         public void InteractWithPost()
         {
             Console.WriteLine("Vill du interagera med ett inlägg?");
