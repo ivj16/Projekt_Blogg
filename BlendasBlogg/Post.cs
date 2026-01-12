@@ -17,7 +17,7 @@ namespace BlendasBlogg
         int postID = 4;
         int headerIndex = 0;
         int idChoice = 0;
-        Category categoryChoice;  
+        public Category categoryChoice;  
         DateTime date = DateTime.Now;
         bool isInvalid = true;
         bool isFound;
