@@ -206,34 +206,24 @@ namespace BlendasBlogg
 
                     foreach (Post post in PostList)
                     {
-                        if (idChoice > 0)
+                        if (post.PostID == idChoice)
                         {
-                            if (post.PostID == idChoice)
-                            {
-                                PostList.Remove(post);
-                                Console.Clear();
-                                Console.WriteLine("Inlägget har tagits bort!");
-                                Menu.BackToMenuMessage();
-                                isFound = true;
-                                break;
-                            }
-                            else if (idChoice == 0)
-                            {
-                                Console.Clear();
-                                Menu.BackToMenuMessage();
-                                break;
-                            }
+                            PostList.Remove(post);
+                            Console.Clear();
+                            Console.WriteLine("Inlägget har tagits bort!");
+                            Menu.BackToMenuMessage();
+                            isFound = true;
+                            break;
                         }
                         else if (idChoice == 0)
                         {
                             Console.Clear();
-                            Console.WriteLine("Inget inlägg har tagits bort.\n");
                             Menu.BackToMenuMessage();
                             isFound = true;
-                            break;                          
+                            break;
                         }
 
-                        if (!isFound)
+                    if (!isFound)
                         {
                             Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
                         }
