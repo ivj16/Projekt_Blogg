@@ -222,14 +222,14 @@ namespace BlendasBlogg
                             isFound = true;
                             break;
                         }
-
-                    if (!isFound)
-                        {
-                            Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
-                        }
                     }
 
-                }while(!isFound);
+                    //Om inget inlägg matchade med det valda ID:t förblir isFound falskt och felmeddelande skrivs ut. do.while-loopen körs sedan om.
+                    if (!isFound)
+                    {
+                        Console.Write("\nOgiltigt val, vänligen ange ett giltigt ID. Skriv endast siffran: ");
+                    }
+                } while(!isFound);
             }
             else
             {
