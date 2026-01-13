@@ -32,6 +32,18 @@ namespace BlendasBlogg
             hasPrinted = false;
             foreach (var post in Post.PostList) 
             {
+                switch (post.Category)
+                {
+                    case Category.Roliga_Nyheter:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case Category.Ordspråk:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    case Category.Roliga_Fakta:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        break;
+                }
                 Console.WriteLine(post);
                 hasComment = false;
                 hasPrinted = true;
@@ -48,10 +60,11 @@ namespace BlendasBlogg
 
                 if (!hasComment)
                 {
-                    Console.WriteLine("Inga kommentarer ännu\n");
+                    Console.WriteLine("Inga kommentarer ännu\n\n");
                 }
-                Console.WriteLine("------------------------------------------------------------------\n\n");
+                
                 Thread.Sleep(1000);
+                Console.ResetColor();
             }
             //Om något inlägg har skrivits ut, anropa metod för interaktion
             if (hasPrinted)
@@ -75,7 +88,19 @@ namespace BlendasBlogg
             foreach (Post post in Post.PostList)
             {
                 if (post.Category == postObj.categoryChoice)
-                {  
+                {
+                    switch (post.Category)
+                    {
+                        case Category.Roliga_Nyheter:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            break;
+                        case Category.Ordspråk:
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        case Category.Roliga_Fakta:
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                    }
                     Console.WriteLine(post);
                     hasComment = false;
                     hasPrinted = true;
@@ -91,9 +116,10 @@ namespace BlendasBlogg
 
                     if (!hasComment)
                     {
-                        Console.WriteLine("Inga kommentarer ännu\n");
+                        Console.WriteLine("Inga kommentarer ännu\n\n");
                     }
                     Thread.Sleep(1000);
+                    Console.ResetColor();
                 }
             }
             if (hasPrinted)
@@ -122,6 +148,18 @@ namespace BlendasBlogg
             {
                 if (post.Title.ToLower().Contains(searchTitle.ToLower()))
                 {
+                    switch (post.Category)
+                    {
+                        case Category.Roliga_Nyheter:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            break;
+                        case Category.Ordspråk:
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        case Category.Roliga_Fakta:
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                    }
                     Console.WriteLine(post);
                     hasComment = false;
                     hasPrinted = true;
@@ -137,9 +175,10 @@ namespace BlendasBlogg
 
                     if (!hasComment)
                     {
-                        Console.WriteLine("Inga kommentarer ännu\n");
+                        Console.WriteLine("Inga kommentarer ännu\n\n");
                     }
                     Thread.Sleep(1000);
+                    Console.ResetColor();
                 }                
             }
             if (hasPrinted)
@@ -168,6 +207,18 @@ namespace BlendasBlogg
             {
                 if (post.Content.ToLower().Contains(searchContent.ToLower()))
                 {
+                    switch (post.Category)
+                    {
+                        case Category.Roliga_Nyheter:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            break;
+                        case Category.Ordspråk:
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        case Category.Roliga_Fakta:
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                    }
                     Console.WriteLine(post);
                     hasComment = false;
                     hasPrinted = true;
@@ -183,9 +234,10 @@ namespace BlendasBlogg
 
                     if (!hasComment)
                     {
-                        Console.WriteLine("Inga kommentarer ännu\n");
+                        Console.WriteLine("Inga kommentarer ännu\n\n");
                     }
                     Thread.Sleep(1000);
+                    Console.ResetColor();
                 }
             }
             if (hasPrinted)

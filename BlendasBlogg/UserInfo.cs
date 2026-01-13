@@ -9,8 +9,8 @@ namespace BlendasBlogg
     public struct UserInfo
     {
         public UserInfo() { }
-        private string blendasUsername = "BlendaIsCool";
-        private string blendasPassword = "BlendaIsReallyCool123";
+        private string blendasUsername = "Blenda";
+        private string blendasPassword = "123";
 
         public string BlendasUsername { get { return blendasUsername; } }  
         public string BlendasPassword { get { return blendasPassword; } }

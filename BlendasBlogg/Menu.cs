@@ -128,6 +128,7 @@ namespace BlendasBlogg
                         case "3":
                             Console.Clear();
                             //Inläggssök-meny. Användaren får välja vilket sätt den vill söka på:
+                            isInSecondMenu = true;
                             while (isInSecondMenu)
                             {
                                 Console.WriteLine("Nu ska vi leta reda på inlägget du söker! Hur vill du söka efter det?" +

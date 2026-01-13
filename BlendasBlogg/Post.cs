@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics.Metrics;
+using System.Drawing;
 using System.Net.NetworkInformation;
+using System.Reflection.Emit;
 
 namespace BlendasBlogg
 {
@@ -25,11 +27,11 @@ namespace BlendasBlogg
         // Array med headers
         static string[] headerArray =
         {
-            "C-:|)  (-:|]  C-:|=  (-:|B  C-:|>  (-:P  C-:|)  (-:|]  (-:|B  (-:P",
-            "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
-            "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO",
-            "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
-            "|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
+            "C-:|)  (-:|]  C-:|=  (-:|B  C-:|>  (-:P  C-:|)  (-:|]  (-:|B  (-:P  C-:|>",
+            "<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3",
+            "°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO°oO",
+            "|^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^||^_^|",
+            "|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|:-O|"
         };
 
         // Lista med inlägg
@@ -72,8 +74,8 @@ namespace BlendasBlogg
         //Default-inlägg:
         public void CreateDefaultPosts()
         {
-            PostList.Add(new Post(1, "Välkommen till Blendas Blogg!", "Hej och välkommen till min blogg! Här kommer jag att dela med mig \nav mina tankar, idéer och äventyr. Hoppas du gillar det!", Category.Nyheter, 1, 5, 0));
-            PostList.Add(new Post(4, "Ordspråk med mumsig twist!", "Brukar du säga \"Som man bäddar får man ligga\"? Då tycker jag du \nkan lägga till en fika-twist och istället säga \n\"Som man bakar får man fika!\" :D", Category.Ordspråk, 2, 0, 0));
+            PostList.Add(new Post(1, "Välkommen till Blendas Blogg!", "Hej och välkommen till min blogg! Här kommer jag att dela med mig \nav mina tankar, idéer och äventyr. Hoppas du gillar det!", Category.Roliga_Nyheter, 1, 5, 0));
+            PostList.Add(new Post(4, "Ordspråk med mumsig twist!", "Brukar du säga \"Som man bäddar får man ligga\"? Då tycker jag du \nkan lägga till en fika-twist och istället säga \n\"Som man bakar får man fika\"! :D", Category.Ordspråk, 2, 0, 0));
             PostList.Add(new Post(0, "Du är snabbare än du tror!", "I alla fall när du är sjuk... Visste du att nysningar kan nå \nupp till 160 km/h i hastighet?! Det är snabbare än en \nkategori 1 orkan!", Category.Roliga_Fakta, 3, 0, 0));
         }
 
@@ -138,7 +140,7 @@ namespace BlendasBlogg
         public void CategoryChoice()
         {
             Console.WriteLine("\nVälj en kategori:" +
-               "\n1. Nyheter" +
+               "\n1. Roliga nyheter" +
                "\n2. Ordspråk" +
                "\n3. Roliga fakta");
             Console.Write("\nSkriv den siffra som motsvarar ditt val och tryck sedan enter: ");
@@ -325,8 +327,20 @@ namespace BlendasBlogg
 
                 foreach (Post post in PostList)
                 {
+                    switch (post.Category)
+                    {
+                        case Category.Roliga_Nyheter:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            break;
+                        case Category.Ordspråk:
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        case Category.Roliga_Fakta:
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                    }
                     Console.WriteLine(post + "\n");
-
+                    Console.ResetColor();
                 }
 
                 Console.Write("\nAnge ID:t för det inlägg du vill redigera: ");
@@ -357,7 +371,21 @@ namespace BlendasBlogg
                             isFound = true;
                             Console.Clear();
                             Console.WriteLine("REDIGERAR:\n");
+                            switch (post.Category)
+                            {
+                                case Category.Roliga_Nyheter:
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    break;
+                                case Category.Ordspråk:
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    break;
+                                case Category.Roliga_Fakta:
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    break;
+                            }
                             Console.WriteLine(post);
+                            Console.ResetColor();
+
                             Console.WriteLine("\nVad önskar du redigera?" +
                                 "\n1, Titel" +
                                 "\n2, Innehåll" +
@@ -407,12 +435,38 @@ namespace BlendasBlogg
                                     case "3":
                                         Console.Clear();
                                         Console.WriteLine("REDIGERAR:\n");
+                                        switch (post.Category)
+                                        {
+                                            case Category.Roliga_Nyheter:
+                                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                                break;
+                                            case Category.Ordspråk:
+                                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                                break;
+                                            case Category.Roliga_Fakta:
+                                                Console.ForegroundColor = ConsoleColor.Green;
+                                                break;
+                                        }
                                         Console.WriteLine(post);
+                                        Console.ResetColor();
                                         CategoryChoice();
                                         post.Category = categoryChoice;
                                         Console.Clear();
                                         Console.WriteLine("Kategorin har uppdaterats!\n");
+                                        switch (post.Category)
+                                        {
+                                            case Category.Roliga_Nyheter:
+                                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                                break;
+                                            case Category.Ordspråk:
+                                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                                break;
+                                            case Category.Roliga_Fakta:
+                                                Console.ForegroundColor = ConsoleColor.Green;
+                                                break;
+                                        }
                                         Console.WriteLine(post);
+                                        Console.ResetColor();
                                         Console.WriteLine("\nKlicka på valfri knapp för att gå tillbaka till menyn.");
                                         Console.ReadKey();
                                         Console.Clear();
@@ -504,12 +558,12 @@ namespace BlendasBlogg
                 $"| Kategori: {Category}" +
                 $" | Datum: {date}" +
                 $" | InläggsID: {PostID} |\n" +
-                $"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
+                $"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
                 $"\n\n{Content}\n\n" +
-                $"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
+                $"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" +
                 $"\nLikes: {likes}" +
                 $"\nDislikes: {dislikes}\n" +
-                $"************************** Kommentarer **************************";
+                $"***************************** Kommentarer *****************************";
         }
     }
 }
