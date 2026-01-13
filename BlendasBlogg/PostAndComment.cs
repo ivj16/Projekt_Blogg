@@ -159,7 +159,7 @@ namespace BlendasBlogg
         {
             hasPrinted = false;
             Console.WriteLine("Här kan du hitta ett inlägg genom att söka på ett ord som inlägget innehåller");
-            Console.Write("Skriv in sökordet här: ");
+            Console.Write("Skriv in sökordet här och tryck sedan enter: ");
             searchContent = Console.ReadLine();
 
             Console.Clear();

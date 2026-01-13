@@ -8,7 +8,7 @@ namespace BlendasBlogg
 {
     public enum Category
     {
-        Nyheter = 1,
+        Roliga_Nyheter = 1,
         Ordspråk,
         Roliga_Fakta
     }
